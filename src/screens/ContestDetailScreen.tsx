@@ -1,7 +1,7 @@
 import React from "react";
 import { useApp } from "@/context/AppContext";
 import { motion } from "framer-motion";
-import { ChevronLeft, Clock, Users, ShoppingBag, Info } from "lucide-react";
+import { ChevronLeft, Clock, Users, ShoppingBag, Info, Award } from "lucide-react";
 
 const ENTRY_HISTORY = [
   { orderId: "#RS-2024-88410", date: "Feb 16, 2026", amount: "$284", entries: 3 },
@@ -20,26 +20,26 @@ export const ContestDetailScreen: React.FC = () => {
       </div>
 
       <div className="flex items-center gap-3 px-4 py-3" style={{ background: "hsl(var(--primary-dark))" }}>
-        <motion.button onClick={() => navigate("contests")} whileTap={{ scale: 0.9 }}>
-          <ChevronLeft size={22} strokeWidth={1.7} style={{ color: "white" }} />
+        <motion.button onClick={() => navigate("contests")} whileTap={{ scale: 0.92 }}>
+          <ChevronLeft size={21} strokeWidth={1.6} style={{ color: "white" }} />
         </motion.button>
-        <h1 className="font-bold flex-1" style={{ fontSize: 17, color: "white" }}>Contest Details</h1>
-        <span className="rounded-full font-semibold px-2.5 py-1" style={{ background: "hsl(0 0% 100% / 0.15)", color: "white", fontSize: 11 }}>
+        <h1 className="font-semibold flex-1" style={{ fontSize: 17, color: "white" }}>Contest Details</h1>
+        <span className="rounded-md font-medium px-2 py-0.5" style={{ background: "hsl(0 0% 100% / 0.12)", color: "white", fontSize: 11 }}>
           Active
         </span>
       </div>
 
-      <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 20 }}>
+      <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 88 }}>
         {/* Prize banner */}
         <div className="px-4 py-5" style={{ background: "hsl(var(--primary-dark))" }}>
-          <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.6)", fontSize: 12, letterSpacing: "0.04em" }}>PRIZE</p>
-          <h2 className="font-bold leading-tight" style={{ fontSize: 22, color: "white", letterSpacing: "-0.02em" }}>
+          <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 11, letterSpacing: "0.04em" }}>PRIZE</p>
+          <h2 className="font-semibold leading-tight" style={{ fontSize: 20, color: "white", letterSpacing: "-0.01em" }}>
             iPhone 15 Pro 256GB
           </h2>
-          <p className="font-bold mt-1" style={{ color: "hsl(var(--accent))", fontSize: 20 }}>$1,199 value</p>
+          <p className="font-semibold mt-1" style={{ color: "hsl(var(--accent))", fontSize: 18 }}>$1,199 value</p>
         </div>
 
-        <div className="px-4 pt-4 flex flex-col gap-4">
+        <div className="px-4 pt-4 flex flex-col gap-3.5">
           {/* Timeline */}
           <div className="card-base p-4">
             <h3 className="font-semibold mb-3" style={{ fontSize: 14 }}>Timeline</h3>
@@ -60,7 +60,7 @@ export const ContestDetailScreen: React.FC = () => {
                         border: item.done ? "none" : "2px solid hsl(var(--border))",
                       }}
                     />
-                    {i < 3 && <div className="w-px mt-1" style={{ height: 20, background: "hsl(var(--border))" }} />}
+                    {i < 3 && <div className="w-px mt-1" style={{ height: 18, background: "hsl(var(--border))" }} />}
                   </div>
                   <div>
                     <p className="font-medium" style={{ fontSize: 13 }}>{item.label}</p>
@@ -72,37 +72,37 @@ export const ContestDetailScreen: React.FC = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2.5">
             <div className="card-base p-3.5">
               <div className="flex items-center gap-2 mb-1.5">
-                <Users size={14} strokeWidth={1.7} className="text-muted-foreground" />
+                <Users size={14} strokeWidth={1.6} className="text-muted-foreground" />
                 <p className="text-muted-foreground" style={{ fontSize: 12 }}>Total entries</p>
               </div>
-              <p className="font-bold" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>4,821</p>
+              <p className="font-semibold" style={{ fontSize: 20, letterSpacing: "-0.02em" }}>4,821</p>
             </div>
             <div className="card-base p-3.5" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}>
               <div className="flex items-center gap-2 mb-1.5">
                 <Award size={14} style={{ color: "hsl(var(--accent-dark))" }} />
                 <p className="text-muted-foreground" style={{ fontSize: 12 }}>Your entries</p>
               </div>
-              <p className="font-bold" style={{ fontSize: 22, letterSpacing: "-0.02em", color: "hsl(var(--accent-dark))" }}>7</p>
+              <p className="font-semibold" style={{ fontSize: 20, letterSpacing: "-0.02em", color: "hsl(var(--accent-dark))" }}>7</p>
             </div>
           </div>
 
           {/* Entry requirement */}
           <div className="card-base p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Info size={15} strokeWidth={1.7} className="text-primary" />
+              <Info size={14} strokeWidth={1.6} className="text-primary" />
               <h3 className="font-semibold" style={{ fontSize: 14 }}>Entry requirement</h3>
             </div>
             <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 13 }}>
               Complete any purchase of <strong>$50 or more</strong> during the contest period to earn entries.
             </p>
-            <div className="mt-3 rounded-lg p-3" style={{ background: "hsl(var(--muted))" }}>
+            <div className="mt-3 rounded-md p-3" style={{ background: "hsl(var(--muted))" }}>
               {[["$50–$99", "1 entry"], ["$100–$199", "2 entries"], ["$200+", "3 entries"]].map(([range, entry]) => (
                 <div key={range} className="flex justify-between mb-1 last:mb-0">
                   <span className="text-muted-foreground" style={{ fontSize: 12 }}>{range}</span>
-                  <span className="font-semibold" style={{ fontSize: 12 }}>{entry}</span>
+                  <span className="font-medium" style={{ fontSize: 12 }}>{entry}</span>
                 </div>
               ))}
             </div>
@@ -111,7 +111,7 @@ export const ContestDetailScreen: React.FC = () => {
           {/* Entry history */}
           <div className="card-base p-4">
             <div className="flex items-center gap-2 mb-3">
-              <ShoppingBag size={15} strokeWidth={1.7} className="text-primary" />
+              <ShoppingBag size={14} strokeWidth={1.6} className="text-primary" />
               <h3 className="font-semibold" style={{ fontSize: 14 }}>Your entry history</h3>
             </div>
             {ENTRY_HISTORY.map((entry) => (
@@ -121,7 +121,7 @@ export const ContestDetailScreen: React.FC = () => {
                   <p className="text-muted-foreground" style={{ fontSize: 12 }}>{entry.date} · {entry.amount}</p>
                 </div>
                 <div className="text-right">
-                  <span className="font-semibold" style={{ fontSize: 14, color: "hsl(var(--primary))" }}>+{entry.entries}</span>
+                  <span className="font-medium" style={{ fontSize: 14, color: "hsl(var(--primary))" }}>+{entry.entries}</span>
                   <p className="text-muted-foreground" style={{ fontSize: 11 }}>entries</p>
                 </div>
               </div>
@@ -148,14 +148,11 @@ export const ContestDetailScreen: React.FC = () => {
       </div>
 
       {/* CTA */}
-      <div className="px-4 pb-8 pt-3 bg-card" style={{ borderTop: "1px solid hsl(var(--border))" }}>
-        <motion.button className="btn-primary" onClick={() => navigate("product-list")} whileTap={{ scale: 0.97 }}>
+      <div className="sticky-cta">
+        <motion.button className="btn-primary" onClick={() => navigate("product-list")} whileTap={{ scale: 0.98 }}>
           Shop to Earn More Entries
         </motion.button>
       </div>
     </div>
   );
 };
-
-// Need Award icon import
-import { Award } from "lucide-react";

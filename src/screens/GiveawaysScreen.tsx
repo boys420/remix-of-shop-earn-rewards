@@ -26,25 +26,25 @@ export const GiveawaysScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar" style={{ background: "hsl(var(--card))", borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       {/* Header */}
       <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-        <h1 className="font-bold" style={{ fontSize: 20, letterSpacing: "-0.02em" }}>Giveaways</h1>
+        <h1 className="font-semibold" style={{ fontSize: 18, letterSpacing: "-0.01em" }}>Giveaways</h1>
         <p className="text-muted-foreground" style={{ fontSize: 13 }}>Redeem points for a chance to win prizes</p>
       </div>
 
       {/* Balance bar */}
-      <div className="px-4 py-3" style={{ background: "hsl(var(--ivory))", borderBottom: "1px solid hsl(var(--accent-muted))" }}>
+      <div className="px-4 py-2.5" style={{ background: "hsl(var(--ivory))", borderBottom: "1px solid hsl(var(--accent-muted))" }}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Award size={16} style={{ color: "hsl(var(--accent-dark))" }} />
-            <span className="font-semibold" style={{ fontSize: 14 }}>Your Balance</span>
+            <Award size={15} style={{ color: "hsl(var(--accent-dark))" }} />
+            <span className="font-medium" style={{ fontSize: 13 }}>Your Balance</span>
           </div>
-          <span className="font-bold" style={{ fontSize: 18, color: "hsl(var(--accent-dark))" }}>
+          <span className="font-semibold" style={{ fontSize: 16, color: "hsl(var(--accent-dark))" }}>
             {userPoints.toLocaleString()} pts
           </span>
         </div>
@@ -52,7 +52,7 @@ export const GiveawaysScreen: React.FC = () => {
 
       {/* Giveaway grid */}
       <div className="flex-1 overflow-y-auto px-4 pt-3" style={{ paddingBottom: 80 }}>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2.5">
           {GIVEAWAYS.map((g, i) => {
             const status = getStatus(g);
             const isLocked = status === "locked";
@@ -62,31 +62,32 @@ export const GiveawaysScreen: React.FC = () => {
               <motion.button
                 key={g.id}
                 className="card-base overflow-hidden text-left"
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.04 }}
+                transition={{ delay: i * 0.03, duration: 0.2 }}
                 onClick={() => {
                   if (!isLocked && !isEntered) setSelectedGiveaway(g);
                 }}
-                style={{ opacity: isLocked ? 0.65 : 1 }}
+                style={{ opacity: isLocked ? 0.6 : 1 }}
               >
                 <div className="relative">
                   <img
                     src={g.image}
                     alt={g.name}
-                    style={{ width: "100%", height: 110, objectFit: "cover" }}
+                    style={{ width: "100%", height: 105, objectFit: "cover" }}
+                    loading="lazy"
                   />
                   {isLocked && (
                     <div
                       className="absolute inset-0 flex items-center justify-center"
-                      style={{ background: "hsl(220 25% 10% / 0.35)" }}
+                      style={{ background: "hsl(220 20% 12% / 0.3)" }}
                     >
-                      <Lock size={20} style={{ color: "white" }} />
+                      <Lock size={18} style={{ color: "white" }} />
                     </div>
                   )}
                   {isEntered && (
                     <div
-                      className="absolute top-2 right-2 rounded-full px-2 py-0.5 flex items-center gap-1"
+                      className="absolute top-2 right-2 rounded-md px-2 py-0.5 flex items-center gap-1"
                       style={{ background: "hsl(var(--ledger-credit))", color: "white", fontSize: 10, fontWeight: 600 }}
                     >
                       <Check size={10} /> Entered
@@ -94,11 +95,11 @@ export const GiveawaysScreen: React.FC = () => {
                   )}
                 </div>
                 <div className="p-2.5">
-                  <p className="font-semibold leading-tight" style={{ fontSize: 13 }}>{g.name}</p>
+                  <p className="font-medium leading-tight" style={{ fontSize: 13 }}>{g.name}</p>
                   <p className="text-muted-foreground" style={{ fontSize: 11 }}>{g.value}</p>
                   <div className="mt-2 flex items-center justify-between">
                     <span
-                      className="font-bold"
+                      className="font-semibold"
                       style={{ fontSize: 13, color: isLocked ? "hsl(var(--muted-foreground))" : "hsl(var(--accent-dark))" }}
                     >
                       {g.pointsRequired} pts
@@ -107,7 +108,6 @@ export const GiveawaysScreen: React.FC = () => {
                       <ChevronRight size={14} style={{ color: "hsl(var(--primary))" }} />
                     )}
                   </div>
-                  {/* Progress bar */}
                   {isLocked && (
                     <div className="mt-1.5">
                       <div className="h-1 rounded-full overflow-hidden" style={{ background: "hsl(var(--muted))" }}>
@@ -131,7 +131,6 @@ export const GiveawaysScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Redeem sheet */}
       {selectedGiveaway && (
         <RedeemSheet giveaway={selectedGiveaway} onClose={handleClose} />
       )}

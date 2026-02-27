@@ -21,7 +21,7 @@ export const BottomNav: React.FC = () => {
   if (!MAIN_SCREENS.includes(screen)) return null;
 
   return (
-    <div className="bottom-nav" style={{ width: "100%", maxWidth: "390px", left: "50%", transform: "translateX(-50%)" }}>
+    <nav className="bottom-nav" style={{ width: "100%", maxWidth: "390px", left: "50%", transform: "translateX(-50%)" }}>
       {NAV_ITEMS.map((item) => {
         const isActive = screen === item.screen;
         const Icon = item.icon;
@@ -30,18 +30,20 @@ export const BottomNav: React.FC = () => {
             key={item.screen}
             className={`nav-item ${isActive ? "active" : ""}`}
             onClick={() => navigate(item.screen)}
+            aria-label={item.label}
           >
             <motion.div
-              className="relative p-1.5 rounded-xl"
+              className="p-1.5 rounded-lg"
               style={{ background: isActive ? "hsl(var(--primary-light))" : "transparent" }}
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ duration: 0.1 }}
             >
-              <Icon size={20} strokeWidth={isActive ? 2.2 : 1.7} />
+              <Icon size={20} strokeWidth={isActive ? 2 : 1.6} />
             </motion.div>
-            <span style={{ fontWeight: isActive ? 600 : 500 }}>{item.label}</span>
+            <span style={{ fontWeight: isActive ? 600 : 400 }}>{item.label}</span>
           </button>
         );
       })}
-    </div>
+    </nav>
   );
 };

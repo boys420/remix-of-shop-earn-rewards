@@ -1,7 +1,7 @@
 import React from "react";
 import { useApp } from "@/context/AppContext";
 import { motion } from "framer-motion";
-import { CheckCircle, Package, Wallet, Sparkles } from "lucide-react";
+import { CheckCircle, Package, Wallet, Sparkles, ChevronLeft } from "lucide-react";
 
 export const OrderSuccessScreen: React.FC = () => {
   const { navigate, userPoints } = useApp();
@@ -17,20 +17,20 @@ export const OrderSuccessScreen: React.FC = () => {
         {/* Confirmation */}
         <motion.div
           className="flex flex-col items-center pt-10 pb-6"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <motion.div
             className="flex items-center justify-center rounded-full"
-            style={{ width: 72, height: 72, background: "hsl(152 55% 35% / 0.1)" }}
+            style={{ width: 64, height: 64, background: "hsl(152 45% 38% / 0.08)" }}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ type: "spring", damping: 12, stiffness: 200, delay: 0.15 }}
+            transition={{ type: "spring", damping: 14, stiffness: 200, delay: 0.12 }}
           >
-            <CheckCircle size={36} strokeWidth={1.7} style={{ color: "hsl(var(--ledger-credit))" }} />
+            <CheckCircle size={32} strokeWidth={1.6} style={{ color: "hsl(var(--ledger-credit))" }} />
           </motion.div>
-          <h1 className="font-bold mt-4" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Order Confirmed</h1>
+          <h1 className="font-semibold mt-4" style={{ fontSize: 20, letterSpacing: "-0.01em" }}>Order Confirmed</h1>
           <p className="text-muted-foreground mt-1 text-center" style={{ fontSize: 14 }}>
             Your order has been placed successfully.
           </p>
@@ -38,7 +38,7 @@ export const OrderSuccessScreen: React.FC = () => {
 
         {/* Order info */}
         <div className="card-base p-4 mb-3">
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2.5">
             {[
               ["Order number", "#RS-2024-88412"],
               ["Date placed", "Feb 18, 2026 · 9:41 AM"],
@@ -47,7 +47,7 @@ export const OrderSuccessScreen: React.FC = () => {
             ].map(([label, val]) => (
               <div key={label} className="flex justify-between">
                 <span className="text-muted-foreground" style={{ fontSize: 13 }}>{label}</span>
-                <span className="font-semibold" style={{ fontSize: 13 }}>{val}</span>
+                <span className="font-medium" style={{ fontSize: 13 }}>{val}</span>
               </div>
             ))}
           </div>
@@ -56,11 +56,11 @@ export const OrderSuccessScreen: React.FC = () => {
         {/* Delivery */}
         <div className="card-base p-4 mb-3">
           <div className="flex items-center gap-3 mb-3">
-            <div className="flex items-center justify-center rounded-lg" style={{ width: 36, height: 36, background: "hsl(var(--primary-light))" }}>
-              <Package size={18} className="text-primary" strokeWidth={1.7} />
+            <div className="flex items-center justify-center rounded-md" style={{ width: 34, height: 34, background: "hsl(var(--primary-light))" }}>
+              <Package size={17} className="text-primary" strokeWidth={1.6} />
             </div>
             <div>
-              <p className="font-semibold" style={{ fontSize: 14 }}>Estimated delivery</p>
+              <p className="font-medium" style={{ fontSize: 14 }}>Estimated delivery</p>
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>Feb 22–24, 2026</p>
             </div>
           </div>
@@ -90,15 +90,15 @@ export const OrderSuccessScreen: React.FC = () => {
 
         {/* Rewards credited */}
         <motion.div
-          className="p-4 rounded-xl mb-3"
+          className="p-4 rounded-lg mb-3"
           style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.25, duration: 0.25 }}
         >
           <div className="flex items-center gap-2 mb-2.5">
-            <Sparkles size={15} style={{ color: "hsl(var(--accent-dark))" }} />
-            <p className="font-semibold" style={{ fontSize: 14 }}>Rewards credited</p>
+            <Sparkles size={14} style={{ color: "hsl(var(--accent-dark))" }} />
+            <p className="font-medium" style={{ fontSize: 13 }}>Rewards credited</p>
           </div>
           <div className="flex flex-col gap-2">
             {[
@@ -107,10 +107,10 @@ export const OrderSuccessScreen: React.FC = () => {
               ["New wallet balance", `${userPoints.toLocaleString()} pts`, false],
             ].map(([label, val, isGold]) => (
               <div key={label as string} className="flex justify-between">
-                <span className="text-muted-foreground" style={{ fontSize: 13 }}>{label as string}</span>
+                <span className="text-muted-foreground" style={{ fontSize: 12 }}>{label as string}</span>
                 <span
-                  className="font-semibold"
-                  style={{ fontSize: 13, color: isGold ? "hsl(var(--accent-dark))" : "hsl(var(--foreground))" }}
+                  className="font-medium"
+                  style={{ fontSize: 12, color: isGold ? "hsl(var(--accent-dark))" : "hsl(var(--foreground))" }}
                 >
                   {val as string}
                 </span>
@@ -124,30 +124,30 @@ export const OrderSuccessScreen: React.FC = () => {
 
         {/* Items */}
         <div className="card-base p-3.5 mb-6">
-          <p className="font-semibold mb-2.5" style={{ fontSize: 14 }}>Items ordered</p>
+          <p className="font-semibold mb-2.5" style={{ fontSize: 13 }}>Items ordered</p>
           {[
             { name: "Sony WH-1000XM5", price: "$279", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=60&h=60&fit=crop" },
             { name: "Kindle Paperwhite (16 GB)", price: "$119", image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=60&h=60&fit=crop" },
           ].map((item) => (
             <div key={item.name} className="flex items-center gap-3 py-2" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-              <img src={item.image} alt={item.name} style={{ width: 44, height: 44, objectFit: "cover", borderRadius: 6 }} />
+              <img src={item.image} alt={item.name} style={{ width: 40, height: 40, objectFit: "cover", borderRadius: 6 }} />
               <p className="font-medium flex-1" style={{ fontSize: 13 }}>{item.name}</p>
-              <span className="font-semibold" style={{ fontSize: 13 }}>{item.price}</span>
+              <span className="font-medium" style={{ fontSize: 13 }}>{item.price}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* CTAs */}
-      <div className="px-4 pb-8 pt-3 bg-card" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+      <div className="sticky-cta flex flex-col gap-2.5">
         <motion.button
-          className="btn-primary flex items-center justify-center gap-2 mb-2.5"
+          className="btn-primary flex items-center justify-center gap-2"
           onClick={() => navigate("wallet")}
-          whileTap={{ scale: 0.97 }}
+          whileTap={{ scale: 0.98 }}
         >
           <Wallet size={16} /> View Wallet & Rewards
         </motion.button>
-        <motion.button className="btn-secondary" onClick={() => navigate("home")} whileTap={{ scale: 0.97 }}>
+        <motion.button className="btn-secondary" onClick={() => navigate("home")} whileTap={{ scale: 0.98 }}>
           Continue Shopping
         </motion.button>
       </div>

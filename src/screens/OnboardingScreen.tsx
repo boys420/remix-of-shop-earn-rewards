@@ -52,21 +52,21 @@ export const OnboardingScreen: React.FC = () => {
           <motion.div
             key={idx}
             className="flex flex-col gap-8 w-full"
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.25 }}
+            exit={{ opacity: 0, x: -16 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <div className="flex justify-center">
               <div
-                className="flex items-center justify-center rounded-3xl"
-                style={{ width: 100, height: 100, background: slide.iconBg }}
+                className="flex items-center justify-center rounded-2xl"
+                style={{ width: 88, height: 88, background: slide.iconBg }}
               >
-                <Icon size={44} strokeWidth={1.5} style={{ color: slide.iconColor }} />
+                <Icon size={40} strokeWidth={1.4} style={{ color: slide.iconColor }} />
               </div>
             </div>
             <div>
-              <h2 className="font-bold leading-tight mb-3" style={{ fontSize: 22, letterSpacing: "-0.02em", whiteSpace: "pre-line" }}>
+              <h2 className="font-semibold leading-tight mb-3" style={{ fontSize: 22, letterSpacing: "-0.015em", whiteSpace: "pre-line" }}>
                 {slide.title}
               </h2>
               <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 14 }}>{slide.body}</p>
@@ -75,21 +75,21 @@ export const OnboardingScreen: React.FC = () => {
         </AnimatePresence>
       </div>
 
-      <div className="px-5 pb-10 flex flex-col gap-5">
+      <div className="px-5 safe-bottom flex flex-col gap-5 pb-10">
         <div className="flex gap-1.5">
           {SLIDES.map((_, i) => (
             <div
               key={i}
               className="rounded-full"
               style={{
-                width: i === idx ? 20 : 6, height: 6,
+                width: i === idx ? 18 : 6, height: 5,
                 background: i === idx ? "hsl(var(--primary))" : "hsl(var(--muted))",
-                transition: "all 0.3s",
+                transition: "all 0.25s ease",
               }}
             />
           ))}
         </div>
-        <motion.button className="btn-primary flex items-center justify-center gap-2" onClick={next} whileTap={{ scale: 0.97 }}>
+        <motion.button className="btn-primary flex items-center justify-center gap-2" onClick={next} whileTap={{ scale: 0.98 }}>
           {idx < SLIDES.length - 1 ? "Continue" : "Get Started"}
           <ChevronRight size={16} />
         </motion.button>

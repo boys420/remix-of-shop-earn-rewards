@@ -26,82 +26,82 @@ export const WalletScreen: React.FC = () => {
       </div>
 
       {/* Balance header */}
-      <div className="px-4 pb-5 pt-2" style={{ background: "hsl(var(--primary-dark))" }}>
-        <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.55)", fontSize: 12, letterSpacing: "0.04em" }}>
+      <div className="px-4 pb-4 pt-2" style={{ background: "hsl(var(--primary-dark))" }}>
+        <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 11, letterSpacing: "0.04em" }}>
           WALLET BALANCE
         </p>
         <div className="flex items-end gap-2">
           <motion.span
-            className="font-bold"
-            style={{ fontSize: 40, color: "white", letterSpacing: "-0.03em" }}
+            className="font-semibold"
+            style={{ fontSize: 36, color: "white", letterSpacing: "-0.03em" }}
             key={userPoints}
-            initial={{ scale: 1.08 }}
+            initial={{ scale: 1.04 }}
             animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             {userPoints.toLocaleString()}
           </motion.span>
-          <span className="mb-2 font-medium" style={{ color: "hsl(0 0% 100% / 0.55)", fontSize: 15 }}>pts</span>
+          <span className="mb-1.5 font-medium" style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 14 }}>pts</span>
         </div>
-        <p style={{ color: "hsl(var(--accent))", fontSize: 14, fontWeight: 600 }}>
+        <p style={{ color: "hsl(var(--accent))", fontSize: 13, fontWeight: 500 }}>
           ≈ ${walletValue} wallet value
         </p>
 
         {/* Quick stats */}
-        <div className="flex gap-3 mt-4">
+        <div className="flex gap-2.5 mt-3.5">
           {[
             { label: "This month", value: "+428 pts" },
             { label: "Redeemed", value: "350 pts" },
-            { label: "Giveaway entries", value: "3 total" },
+            { label: "Entries", value: "3 total" },
           ].map((stat) => (
             <div
               key={stat.label}
-              className="flex-1 rounded-xl p-2.5 text-center"
-              style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              className="flex-1 rounded-lg p-2.5 text-center"
+              style={{ background: "hsl(0 0% 100% / 0.06)" }}
             >
-              <p style={{ color: "white", fontSize: 13, fontWeight: 700 }}>{stat.value}</p>
-              <p style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 10 }}>{stat.label}</p>
+              <p style={{ color: "white", fontSize: 13, fontWeight: 600 }}>{stat.value}</p>
+              <p style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 10 }}>{stat.label}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Action cards */}
-      <div className="px-4 mt-3 flex gap-3">
+      <div className="px-4 mt-3 flex gap-2.5">
         <motion.button
-          className="flex-1 card-base p-3.5 flex items-center gap-3"
-          whileTap={{ scale: 0.97 }}
+          className="flex-1 card-base p-3 flex items-center gap-2.5"
+          whileTap={{ scale: 0.98 }}
           onClick={() => navigate("giveaways")}
         >
-          <div className="flex items-center justify-center rounded-lg" style={{ width: 36, height: 36, background: "hsl(var(--accent-light))" }}>
-            <Gift size={17} style={{ color: "hsl(var(--accent-dark))" }} strokeWidth={1.7} />
+          <div className="flex items-center justify-center rounded-md" style={{ width: 34, height: 34, background: "hsl(var(--accent-light))" }}>
+            <Gift size={16} style={{ color: "hsl(var(--accent-dark))" }} strokeWidth={1.6} />
           </div>
           <div className="text-left">
-            <p className="font-semibold" style={{ fontSize: 13 }}>Giveaways</p>
+            <p className="font-medium" style={{ fontSize: 13 }}>Giveaways</p>
             <p className="text-muted-foreground" style={{ fontSize: 11 }}>10 prizes</p>
           </div>
         </motion.button>
         <motion.button
-          className="flex-1 card-base p-3.5 flex items-center gap-3"
-          whileTap={{ scale: 0.97 }}
+          className="flex-1 card-base p-3 flex items-center gap-2.5"
+          whileTap={{ scale: 0.98 }}
           onClick={() => navigate("my-entries")}
         >
-          <div className="flex items-center justify-center rounded-lg" style={{ width: 36, height: 36, background: "hsl(var(--primary-light))" }}>
-            <Award size={17} className="text-primary" strokeWidth={1.7} />
+          <div className="flex items-center justify-center rounded-md" style={{ width: 34, height: 34, background: "hsl(var(--primary-light))" }}>
+            <Award size={16} className="text-primary" strokeWidth={1.6} />
           </div>
           <div className="text-left">
-            <p className="font-semibold" style={{ fontSize: 13 }}>My Entries</p>
+            <p className="font-medium" style={{ fontSize: 13 }}>My Entries</p>
             <p className="text-muted-foreground" style={{ fontSize: 11 }}>4 entries</p>
           </div>
         </motion.button>
       </div>
 
       {/* Tabs */}
-      <div className="flex mx-4 mt-3 mb-3 rounded-xl p-1" style={{ background: "hsl(var(--muted))" }}>
+      <div className="flex mx-4 mt-3 mb-3 rounded-lg p-1" style={{ background: "hsl(var(--muted))" }}>
         {(["points", "entries"] as const).map((t) => (
           <button
             key={t}
-            className="flex-1 rounded-lg py-2 font-semibold transition-colors"
+            className="flex-1 rounded-md py-2 font-medium transition-colors"
             style={{
               fontSize: 13,
               background: tab === t ? "hsl(var(--card))" : "transparent",
@@ -123,21 +123,21 @@ export const WalletScreen: React.FC = () => {
               <motion.div
                 key={tx.id}
                 className="ledger-row"
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.03 }}
+                transition={{ delay: i * 0.025, duration: 0.2 }}
               >
                 <div className="flex items-start gap-3">
                   <div
-                    className="flex items-center justify-center rounded-lg flex-shrink-0 mt-0.5"
+                    className="flex items-center justify-center rounded-md flex-shrink-0 mt-0.5"
                     style={{
-                      width: 32, height: 32,
-                      background: tx.type === "credit" ? "hsl(152 55% 35% / 0.08)" : "hsl(var(--secondary-light))",
+                      width: 30, height: 30,
+                      background: tx.type === "credit" ? "hsl(152 45% 38% / 0.06)" : "hsl(var(--secondary-light))",
                     }}
                   >
                     {tx.type === "credit"
-                      ? <TrendingUp size={15} strokeWidth={1.7} style={{ color: "hsl(var(--ledger-credit))" }} />
-                      : <TrendingDown size={15} strokeWidth={1.7} style={{ color: "hsl(var(--ledger-debit))" }} />
+                      ? <TrendingUp size={14} strokeWidth={1.6} style={{ color: "hsl(var(--ledger-credit))" }} />
+                      : <TrendingDown size={14} strokeWidth={1.6} style={{ color: "hsl(var(--ledger-debit))" }} />
                     }
                   </div>
                   <div>
@@ -150,7 +150,7 @@ export const WalletScreen: React.FC = () => {
                   <p
                     className="font-semibold"
                     style={{
-                      fontSize: 15,
+                      fontSize: 14,
                       color: tx.type === "credit" ? "hsl(var(--ledger-credit))" : "hsl(var(--ledger-debit))",
                     }}
                   >
@@ -174,14 +174,14 @@ export const WalletScreen: React.FC = () => {
                   <p className="font-medium" style={{ fontSize: 13 }}>{item.contest}</p>
                   <p className="text-muted-foreground" style={{ fontSize: 11 }}>Ends {item.deadline}</p>
                   <span
-                    className="inline-block rounded-full font-medium mt-0.5 px-2 py-0.5"
+                    className="inline-block rounded-md font-medium mt-0.5 px-2 py-0.5"
                     style={{ fontSize: 10, background: "hsl(var(--primary-light))", color: "hsl(var(--primary))" }}
                   >
                     {item.status}
                   </span>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold" style={{ fontSize: 20, color: "hsl(var(--primary))" }}>{item.entries}</p>
+                  <p className="font-semibold" style={{ fontSize: 18, color: "hsl(var(--primary))" }}>{item.entries}</p>
                   <p className="text-muted-foreground" style={{ fontSize: 11 }}>entries</p>
                 </div>
               </div>

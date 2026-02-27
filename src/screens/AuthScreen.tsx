@@ -25,9 +25,9 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
             className="flex items-center gap-1 text-muted-foreground mb-4"
             style={{ fontSize: 13 }}
             onClick={() => setView(view === "otp" ? "signup" : "login")}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.96 }}
           >
-            <ChevronLeft size={16} strokeWidth={1.7} /> Back
+            <ChevronLeft size={16} strokeWidth={1.6} /> Back
           </motion.button>
         )}
         <div className="flex items-center gap-2.5 mb-1">
@@ -35,18 +35,18 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
             <svg width="18" height="18" viewBox="0 0 38 38" fill="none">
               <rect x="5" y="14" width="28" height="20" rx="3" fill="white" opacity="0.9" />
               <path d="M12 14v-3a7 7 0 0 1 14 0v3" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
-              <circle cx="19" cy="24" r="3" fill="hsl(221 71% 30%)" />
+              <circle cx="19" cy="24" r="3" fill="hsl(221 65% 28%)" />
             </svg>
           </div>
-          <span className="font-bold text-foreground" style={{ fontSize: 17 }}>RegalShop</span>
+          <span className="font-semibold text-foreground" style={{ fontSize: 16 }}>RegalShop</span>
         </div>
       </div>
 
-      <div className="px-5 flex-1 overflow-y-auto">
+      <div className="px-5 flex-1 overflow-y-auto safe-bottom">
         {view === "login" && (
-          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
             <div>
-              <h1 className="font-bold mb-1" style={{ fontSize: 24, letterSpacing: "-0.02em" }}>Sign in</h1>
+              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.015em" }}>Sign in</h1>
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>Enter your credentials to continue</p>
             </div>
             <div className="flex flex-col gap-3">
@@ -59,7 +59,7 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
                 <div className="relative">
                   <input className="field-input pr-11" type={showPass ? "text" : "password"} placeholder="••••••••" />
                   <button className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" onClick={() => setShowPass(!showPass)}>
-                    {showPass ? <EyeOff size={16} strokeWidth={1.7} /> : <Eye size={16} strokeWidth={1.7} />}
+                    {showPass ? <EyeOff size={16} strokeWidth={1.6} /> : <Eye size={16} strokeWidth={1.6} />}
                   </button>
                 </div>
               </div>
@@ -67,13 +67,13 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
                 <button className="text-primary font-medium" style={{ fontSize: 13 }}>Forgot password?</button>
               </div>
             </div>
-            <motion.button className="btn-primary" onClick={() => navigate("home")} whileTap={{ scale: 0.97 }}>Sign In</motion.button>
+            <motion.button className="btn-primary" onClick={() => navigate("home")} whileTap={{ scale: 0.98 }}>Sign In</motion.button>
             <div className="relative flex items-center gap-3">
               <div className="flex-1" style={{ borderTop: "1px solid hsl(var(--border))" }} />
               <span className="text-muted-foreground" style={{ fontSize: 12 }}>or continue with</span>
               <div className="flex-1" style={{ borderTop: "1px solid hsl(var(--border))" }} />
             </div>
-            <motion.button className="btn-secondary flex items-center gap-3" whileTap={{ scale: 0.97 }}>
+            <motion.button className="btn-secondary flex items-center gap-3" whileTap={{ scale: 0.98 }}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M17.64 9.2a10.3 10.3 0 0 0-.164-1.84H9v3.481h4.844A4.14 4.14 0 0 1 12.077 13.1v1.936h2.902c1.697-1.563 2.661-3.866 2.661-6.637z" fill="#4285F4"/>
                 <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.902-2.254C11.25 14.237 10.198 14.5 9 14.5c-3.33 0-5.507-2.21-6.42-5.19H.57v2.328A9 9 0 0 0 9 18z" fill="#34A853"/>
@@ -90,9 +90,9 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
         )}
 
         {view === "signup" && (
-          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}>
+          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.2 }}>
             <div>
-              <h1 className="font-bold mb-1" style={{ fontSize: 24, letterSpacing: "-0.02em" }}>Create account</h1>
+              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.015em" }}>Create account</h1>
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>Fill in your details to get started</p>
             </div>
             <div className="flex flex-col gap-3">
@@ -125,7 +125,7 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
             <p className="text-muted-foreground" style={{ fontSize: 12 }}>
               By creating an account you agree to our <span className="text-primary">Terms of Service</span> and <span className="text-primary">Privacy Policy</span>.
             </p>
-            <motion.button className="btn-primary" onClick={() => setView("otp")} whileTap={{ scale: 0.97 }}>Create Account</motion.button>
+            <motion.button className="btn-primary" onClick={() => setView("otp")} whileTap={{ scale: 0.98 }}>Create Account</motion.button>
             <p className="text-center text-muted-foreground" style={{ fontSize: 13 }}>
               Already have an account?{" "}
               <button className="text-primary font-medium" onClick={() => setView("login")}>Sign in</button>
@@ -134,13 +134,13 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
         )}
 
         {view === "otp" && (
-          <motion.div className="flex flex-col gap-6" initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}>
-            <div className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "hsl(var(--primary-light))" }}>
-              <Shield size={18} strokeWidth={1.7} className="text-primary flex-shrink-0" />
+          <motion.div className="flex flex-col gap-6" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.2 }}>
+            <div className="flex items-center gap-3 p-3.5 rounded-lg" style={{ background: "hsl(var(--primary-light))" }}>
+              <Shield size={16} strokeWidth={1.6} className="text-primary flex-shrink-0" />
               <p style={{ fontSize: 13 }}>We sent a 6-digit code to <strong>you@example.com</strong></p>
             </div>
             <div>
-              <h1 className="font-bold mb-1" style={{ fontSize: 24, letterSpacing: "-0.02em" }}>Verify your email</h1>
+              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.015em" }}>Verify your email</h1>
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>Enter the code to confirm your identity</p>
             </div>
             <div className="flex gap-2 justify-between">
@@ -150,18 +150,19 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
                   maxLength={1}
                   value={val}
                   onChange={(e) => handleOtpChange(e.target.value, i)}
-                  className="text-center font-bold rounded-xl"
+                  className="text-center font-semibold rounded-lg"
                   style={{
-                    width: 48, height: 56, fontSize: 22,
+                    width: 46, height: 52, fontSize: 20,
                     background: "hsl(var(--muted))",
                     border: `1.5px solid ${val ? "hsl(var(--primary))" : "hsl(var(--border))"}`,
                     color: "hsl(var(--foreground))",
                     outline: "none",
+                    transition: "border-color 0.15s ease",
                   }}
                 />
               ))}
             </div>
-            <motion.button className="btn-primary" onClick={() => navigate("home")} whileTap={{ scale: 0.97 }}>Verify & Continue</motion.button>
+            <motion.button className="btn-primary" onClick={() => navigate("home")} whileTap={{ scale: 0.98 }}>Verify & Continue</motion.button>
             <div className="text-center">
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>
                 Didn't receive the code?{" "}
