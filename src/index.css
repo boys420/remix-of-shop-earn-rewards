@@ -2,70 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* RegalShop Design System — Premium mobile e-commerce */
+/* RegalShop Design System — Enterprise Mobile */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Core backgrounds — soft off-white */
-    --background: 220 20% 96%;
-    --foreground: 220 25% 10%;
+    /* Core backgrounds — warm off-white */
+    --background: 220 16% 96%;
+    --foreground: 220 20% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 10%;
+    --card-foreground: 220 20% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
+    --popover-foreground: 220 20% 12%;
 
     /* Primary: Royal Blue tonal system */
-    --primary: 221 71% 40%;
-    --primary-dark: 221 71% 30%;
-    --primary-mid: 221 60% 50%;
+    --primary: 221 65% 42%;
+    --primary-dark: 221 65% 28%;
+    --primary-mid: 221 55% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 221 60% 95%;
-    --primary-muted: 221 35% 88%;
+    --primary-light: 221 50% 96%;
+    --primary-muted: 221 30% 90%;
 
-    /* Secondary: Crimson — alerts/errors/urgency ONLY */
-    --secondary: 0 63% 31%;
+    /* Secondary: Deep Crimson — alerts/errors ONLY */
+    --secondary: 0 55% 38%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 0 50% 96%;
+    --secondary-light: 0 40% 96%;
 
-    /* Accent/Champagne Gold: #C9A96E — rewards ONLY */
-    --accent: 36 42% 61%;
-    --accent-foreground: 36 50% 15%;
-    --accent-light: 36 50% 96%;
-    --accent-muted: 36 30% 86%;
-    --accent-dark: 36 50% 42%;
+    /* Accent/Champagne Gold — rewards ONLY */
+    --accent: 36 38% 56%;
+    --accent-foreground: 36 45% 14%;
+    --accent-light: 38 40% 96%;
+    --accent-muted: 36 25% 88%;
+    --accent-dark: 36 42% 38%;
 
     /* Ivory */
-    --ivory: 40 60% 96%;
-    --ivory-foreground: 36 30% 25%;
+    --ivory: 40 40% 97%;
+    --ivory-foreground: 36 25% 28%;
 
-    --muted: 220 14% 93%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 220 12% 94%;
+    --muted-foreground: 220 8% 50%;
 
-    --border: 220 13% 89%;
-    --input: 220 13% 89%;
-    --ring: 221 71% 40%;
+    --border: 220 12% 90%;
+    --input: 220 12% 90%;
+    --ring: 221 65% 42%;
 
-    --radius: 0.75rem;
-    --radius-sm: 0.5rem;
-    --radius-lg: 0.875rem;
+    --radius: 0.625rem;
+    --radius-sm: 0.375rem;
+    --radius-lg: 0.75rem;
 
     /* Ledger colors */
-    --ledger-credit: 152 55% 35%;
-    --ledger-debit: 0 63% 31%;
+    --ledger-credit: 152 45% 38%;
+    --ledger-debit: 0 50% 42%;
 
     /* Surface layers */
     --surface-1: 0 0% 100%;
-    --surface-2: 220 14% 97%;
-    --surface-3: 220 14% 93%;
+    --surface-2: 220 12% 97%;
+    --surface-3: 220 12% 94%;
 
-    /* Shadows — more refined */
-    --shadow-card: 0 1px 3px 0 hsl(220 25% 10% / 0.04), 0 4px 14px 0 hsl(220 25% 10% / 0.04);
-    --shadow-bottom-nav: 0 -1px 12px 0 hsl(220 25% 10% / 0.06);
-    --shadow-elevated: 0 4px 24px 0 hsl(220 25% 10% / 0.08), 0 1px 4px 0 hsl(220 25% 10% / 0.04);
+    /* Shadows — subtle and refined */
+    --shadow-card: 0 1px 2px 0 hsl(220 20% 12% / 0.03), 0 2px 8px 0 hsl(220 20% 12% / 0.03);
+    --shadow-bottom-nav: 0 -1px 0 0 hsl(220 20% 12% / 0.06);
+    --shadow-elevated: 0 4px 16px 0 hsl(220 20% 12% / 0.06), 0 1px 3px 0 hsl(220 20% 12% / 0.04);
 
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
@@ -74,31 +74,31 @@
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
+    --sidebar-border: 220 12% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 220 25% 7%;
-    --foreground: 220 14% 94%;
-    --card: 220 25% 10%;
-    --card-foreground: 220 14% 94%;
-    --popover: 220 25% 10%;
-    --popover-foreground: 220 14% 94%;
-    --primary: 221 71% 55%;
-    --primary-dark: 221 71% 45%;
-    --primary-mid: 221 60% 60%;
+    --background: 220 20% 7%;
+    --foreground: 220 12% 94%;
+    --card: 220 20% 10%;
+    --card-foreground: 220 12% 94%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 220 12% 94%;
+    --primary: 221 60% 55%;
+    --primary-dark: 221 60% 42%;
+    --primary-mid: 221 50% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 63% 45%;
+    --secondary: 0 50% 48%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 220 20% 16%;
-    --muted-foreground: 220 10% 55%;
-    --accent: 36 42% 55%;
-    --accent-foreground: 36 40% 8%;
-    --accent-dark: 36 42% 65%;
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 221 71% 55%;
+    --muted: 220 16% 16%;
+    --muted-foreground: 220 8% 55%;
+    --accent: 36 38% 52%;
+    --accent-foreground: 36 35% 8%;
+    --accent-dark: 36 38% 62%;
+    --border: 220 16% 18%;
+    --input: 220 16% 18%;
+    --ring: 221 60% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -123,7 +123,8 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    @apply font-semibold;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -136,9 +137,9 @@
     max-height: 844px;
     border-radius: 44px;
     box-shadow: 
-      0 0 0 2px hsl(220 25% 20%),
-      0 0 0 6px hsl(220 25% 12%),
-      0 30px 80px 0 hsl(220 25% 12% / 0.5);
+      0 0 0 2px hsl(220 20% 20%),
+      0 0 0 6px hsl(220 20% 12%),
+      0 30px 80px 0 hsl(220 20% 12% / 0.5);
   }
 
   .phone-screen {
@@ -155,7 +156,7 @@
 
   /* Status bar */
   .status-bar {
-    @apply flex items-center justify-between px-6 py-2;
+    @apply flex items-center justify-between px-6;
     height: 44px;
     font-size: 12px;
     font-weight: 600;
@@ -164,7 +165,7 @@
   /* Bottom navigation */
   .bottom-nav {
     @apply fixed bottom-0 left-0 right-0 flex items-center justify-around;
-    height: 80px;
+    height: 76px;
     padding-bottom: 20px;
     background: hsl(var(--card));
     box-shadow: var(--shadow-bottom-nav);
@@ -173,10 +174,13 @@
   }
 
   .nav-item {
-    @apply flex flex-col items-center gap-1 transition-colors;
+    @apply flex flex-col items-center gap-0.5 transition-colors;
     color: hsl(var(--muted-foreground));
     font-size: 10px;
     font-weight: 500;
+    min-width: 56px;
+    min-height: 44px;
+    justify-content: center;
   }
 
   .nav-item.active {
@@ -185,63 +189,77 @@
 
   /* Cards */
   .card-base {
-    @apply bg-card rounded-xl;
+    @apply bg-card;
+    border-radius: var(--radius);
     box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border));
   }
 
   .product-card {
     @apply bg-card overflow-hidden;
-    border-radius: 12px;
+    border-radius: var(--radius);
     box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border));
   }
 
   /* Reward badge — gold */
   .reward-badge {
-    @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5;
+    @apply inline-flex items-center gap-1 px-2 py-0.5;
     background: hsl(var(--accent-light));
     border: 1px solid hsl(var(--accent-muted));
     color: hsl(var(--accent-dark));
     font-size: 10px;
     font-weight: 600;
+    border-radius: var(--radius-sm);
   }
 
   /* Primary CTA */
   .btn-primary {
-    @apply w-full flex items-center justify-center font-semibold rounded-xl py-3.5;
+    @apply w-full flex items-center justify-center font-semibold py-3.5;
+    border-radius: var(--radius);
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: -0.01em;
-    transition: all 0.15s ease;
+    transition: opacity 0.15s ease, transform 0.1s ease;
   }
 
   .btn-primary:active {
-    opacity: 0.88;
-    transform: scale(0.985);
+    opacity: 0.9;
+    transform: scale(0.99);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   /* Secondary button */
   .btn-secondary {
-    @apply w-full flex items-center justify-center border font-medium rounded-xl py-3.5 bg-card;
+    @apply w-full flex items-center justify-center border font-medium bg-card;
     border-color: hsl(var(--border));
     color: hsl(var(--foreground));
-    font-size: 15px;
-    transition: all 0.15s ease;
+    font-size: 14px;
+    border-radius: var(--radius);
+    padding: 13px 0;
+    transition: opacity 0.15s ease, transform 0.1s ease;
   }
 
   .btn-secondary:active {
-    transform: scale(0.985);
+    transform: scale(0.99);
+    opacity: 0.9;
   }
 
   /* Input */
   .field-input {
-    @apply w-full rounded-xl px-4 py-3.5;
+    @apply w-full px-3.5 py-3;
+    border-radius: var(--radius);
     background: hsl(var(--muted));
     border: 1px solid hsl(var(--border));
     color: hsl(var(--foreground));
     font-size: 15px;
     outline: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s ease;
   }
 
   .field-input:focus {
@@ -250,13 +268,13 @@
 
   /* Section header */
   .section-header {
-    @apply flex items-center justify-between mb-3;
+    @apply flex items-center justify-between mb-2.5;
   }
 
   .section-title {
     @apply font-semibold;
     color: hsl(var(--foreground));
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .section-link {
@@ -277,8 +295,9 @@
 
   /* Chips */
   .chip {
-    @apply inline-flex items-center rounded-full px-3 py-1 font-medium;
+    @apply inline-flex items-center px-3 py-1.5 font-medium;
     font-size: 12px;
+    border-radius: var(--radius);
   }
 
   .chip-outline {
@@ -315,21 +334,47 @@
   /* Bottom sheet overlay */
   .sheet-overlay {
     @apply fixed inset-0 z-50;
-    background: hsl(220 25% 10% / 0.5);
+    background: hsl(220 20% 12% / 0.45);
     backdrop-filter: blur(4px);
   }
 
   .sheet-content {
-    @apply fixed bottom-0 left-0 right-0 z-50 bg-card rounded-t-3xl;
+    @apply fixed bottom-0 left-0 right-0 z-50 bg-card;
+    border-radius: 16px 16px 0 0;
     box-shadow: var(--shadow-elevated);
     max-height: 85vh;
     overflow-y: auto;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   .sheet-handle {
-    @apply mx-auto mt-3 mb-2 rounded-full;
+    @apply mx-auto mt-2.5 mb-2 rounded-full;
     width: 36px;
     height: 4px;
     background: hsl(var(--muted));
+  }
+
+  /* Safe area helpers */
+  .safe-bottom {
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 24px));
+  }
+
+  .sticky-cta {
+    @apply bg-card;
+    border-top: 1px solid hsl(var(--border));
+    padding: 12px 16px;
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 24px));
+  }
+
+  /* Screen header with back */
+  .screen-header {
+    @apply flex items-center gap-3 px-4 py-3 bg-card;
+    border-bottom: 1px solid hsl(var(--border));
+    min-height: 52px;
+  }
+
+  .screen-header h1 {
+    font-size: 17px;
+    font-weight: 600;
   }
 }
