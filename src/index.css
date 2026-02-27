@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RegalShop Design System — Premium mobile e-commerce */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Core backgrounds — soft off-white */
+    --background: 220 20% 96%;
+    --foreground: 220 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    /* Primary: Royal Blue tonal system */
+    --primary: 221 71% 40%;
+    --primary-dark: 221 71% 30%;
+    --primary-mid: 221 60% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 221 60% 95%;
+    --primary-muted: 221 35% 88%;
+
+    /* Secondary: Crimson — alerts/errors/urgency ONLY */
+    --secondary: 0 63% 31%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 0 50% 96%;
+
+    /* Accent/Champagne Gold: #C9A96E — rewards ONLY */
+    --accent: 36 42% 61%;
+    --accent-foreground: 36 50% 15%;
+    --accent-light: 36 50% 96%;
+    --accent-muted: 36 30% 86%;
+    --accent-dark: 36 50% 42%;
+
+    /* Ivory */
+    --ivory: 40 60% 96%;
+    --ivory-foreground: 36 30% 25%;
+
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 10% 46%;
+
+    --border: 220 13% 89%;
+    --input: 220 13% 89%;
+    --ring: 221 71% 40%;
+
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 0.875rem;
+
+    /* Ledger colors */
+    --ledger-credit: 152 55% 35%;
+    --ledger-debit: 0 63% 31%;
+
+    /* Surface layers */
+    --surface-1: 0 0% 100%;
+    --surface-2: 220 14% 97%;
+    --surface-3: 220 14% 93%;
+
+    /* Shadows — more refined */
+    --shadow-card: 0 1px 3px 0 hsl(220 25% 10% / 0.04), 0 4px 14px 0 hsl(220 25% 10% / 0.04);
+    --shadow-bottom-nav: 0 -1px 12px 0 hsl(220 25% 10% / 0.06);
+    --shadow-elevated: 0 4px 24px 0 hsl(220 25% 10% / 0.08), 0 1px 4px 0 hsl(220 25% 10% / 0.04);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 25% 7%;
+    --foreground: 220 14% 94%;
+    --card: 220 25% 10%;
+    --card-foreground: 220 14% 94%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 220 14% 94%;
+    --primary: 221 71% 55%;
+    --primary-dark: 221 71% 45%;
+    --primary-mid: 221 60% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 63% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 36 42% 55%;
+    --accent-foreground: 36 40% 8%;
+    --accent-dark: 36 42% 65%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 221 71% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Phone frame */
+  .phone-frame {
+    @apply relative mx-auto overflow-hidden bg-background;
+    width: 390px;
+    min-height: 844px;
+    max-height: 844px;
+    border-radius: 44px;
+    box-shadow: 
+      0 0 0 2px hsl(220 25% 20%),
+      0 0 0 6px hsl(220 25% 12%),
+      0 30px 80px 0 hsl(220 25% 12% / 0.5);
+  }
+
+  .phone-screen {
+    @apply relative overflow-hidden;
+    height: 844px;
+    border-radius: 44px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .phone-screen::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Status bar */
+  .status-bar {
+    @apply flex items-center justify-between px-6 py-2;
+    height: 44px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Bottom navigation */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 flex items-center justify-around;
+    height: 80px;
+    padding-bottom: 20px;
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-bottom-nav);
+    border-top: 1px solid hsl(var(--border));
+    z-index: 100;
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center gap-1 transition-colors;
+    color: hsl(var(--muted-foreground));
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .nav-item.active {
+    color: hsl(var(--primary));
+  }
+
+  /* Cards */
+  .card-base {
+    @apply bg-card rounded-xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  .product-card {
+    @apply bg-card overflow-hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Reward badge — gold */
+  .reward-badge {
+    @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5;
+    background: hsl(var(--accent-light));
+    border: 1px solid hsl(var(--accent-muted));
+    color: hsl(var(--accent-dark));
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  /* Primary CTA */
+  .btn-primary {
+    @apply w-full flex items-center justify-center font-semibold rounded-xl py-3.5;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary:active {
+    opacity: 0.88;
+    transform: scale(0.985);
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply w-full flex items-center justify-center border font-medium rounded-xl py-3.5 bg-card;
+    border-color: hsl(var(--border));
+    color: hsl(var(--foreground));
+    font-size: 15px;
+    transition: all 0.15s ease;
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.985);
+  }
+
+  /* Input */
+  .field-input {
+    @apply w-full rounded-xl px-4 py-3.5;
+    background: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .field-input:focus {
+    border-color: hsl(var(--primary));
+  }
+
+  /* Section header */
+  .section-header {
+    @apply flex items-center justify-between mb-3;
+  }
+
+  .section-title {
+    @apply font-semibold;
+    color: hsl(var(--foreground));
+    font-size: 15px;
+  }
+
+  .section-link {
+    @apply font-medium;
+    color: hsl(var(--primary));
+    font-size: 13px;
+  }
+
+  /* Ledger rows */
+  .ledger-row {
+    @apply flex items-center justify-between py-3;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .ledger-row:last-child {
+    border-bottom: none;
+  }
+
+  /* Chips */
+  .chip {
+    @apply inline-flex items-center rounded-full px-3 py-1 font-medium;
+    font-size: 12px;
+  }
+
+  .chip-outline {
+    @apply chip;
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+    background: transparent;
+  }
+
+  .chip-active {
+    @apply chip;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: 1px solid transparent;
+  }
+
+  .contest-card {
+    @apply card-base overflow-hidden;
+  }
+
+  .screen-content {
+    @apply overflow-y-auto;
+    padding-bottom: 80px;
+  }
+
+  .surface-1 {
+    background: hsl(var(--surface-1));
+  }
+
+  .surface-2 {
+    background: hsl(var(--surface-2));
+  }
+
+  /* Bottom sheet overlay */
+  .sheet-overlay {
+    @apply fixed inset-0 z-50;
+    background: hsl(220 25% 10% / 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  .sheet-content {
+    @apply fixed bottom-0 left-0 right-0 z-50 bg-card rounded-t-3xl;
+    box-shadow: var(--shadow-elevated);
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .sheet-handle {
+    @apply mx-auto mt-3 mb-2 rounded-full;
+    width: 36px;
+    height: 4px;
+    background: hsl(var(--muted));
+  }
+}

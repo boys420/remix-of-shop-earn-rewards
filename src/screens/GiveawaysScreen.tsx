@@ -1,0 +1,140 @@
+import React, { useState } from "react";
+import { useApp } from "@/context/AppContext";
+import { GIVEAWAYS } from "@/data/giveaways";
+import { RedeemSheet } from "@/components/RedeemSheet";
+import { motion } from "framer-motion";
+import { Award, Lock, ChevronRight, Check } from "lucide-react";
+import type { Giveaway } from "@/types/app";
+
+export const GiveawaysScreen: React.FC = () => {
+  const { navigate, userPoints } = useApp();
+  const [selectedGiveaway, setSelectedGiveaway] = useState<Giveaway | null>(null);
+  const [enteredIds, setEnteredIds] = useState<Set<string>>(new Set());
+
+  const getStatus = (g: Giveaway): Giveaway["status"] => {
+    if (enteredIds.has(g.id)) return "entered";
+    if (userPoints >= g.pointsRequired) return "eligible";
+    return "locked";
+  };
+
+  const handleClose = () => {
+    if (selectedGiveaway) {
+      setEnteredIds((prev) => new Set(prev).add(selectedGiveaway.id));
+    }
+    setSelectedGiveaway(null);
+  };
+
+  return (
+    <div className="flex flex-col h-full bg-background">
+      <div className="status-bar" style={{ background: "hsl(var(--card))", borderBottom: "1px solid hsl(var(--border))" }}>
+        <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
+        <div className="flex items-center gap-1 text-xs">●●●</div>
+      </div>
+
+      {/* Header */}
+      <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+        <h1 className="font-bold" style={{ fontSize: 20, letterSpacing: "-0.02em" }}>Giveaways</h1>
+        <p className="text-muted-foreground" style={{ fontSize: 13 }}>Redeem points for a chance to win prizes</p>
+      </div>
+
+      {/* Balance bar */}
+      <div className="px-4 py-3" style={{ background: "hsl(var(--ivory))", borderBottom: "1px solid hsl(var(--accent-muted))" }}>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Award size={16} style={{ color: "hsl(var(--accent-dark))" }} />
+            <span className="font-semibold" style={{ fontSize: 14 }}>Your Balance</span>
+          </div>
+          <span className="font-bold" style={{ fontSize: 18, color: "hsl(var(--accent-dark))" }}>
+            {userPoints.toLocaleString()} pts
+          </span>
+        </div>
+      </div>
+
+      {/* Giveaway grid */}
+      <div className="flex-1 overflow-y-auto px-4 pt-3" style={{ paddingBottom: 80 }}>
+        <div className="grid grid-cols-2 gap-3">
+          {GIVEAWAYS.map((g, i) => {
+            const status = getStatus(g);
+            const isLocked = status === "locked";
+            const isEntered = status === "entered";
+
+            return (
+              <motion.button
+                key={g.id}
+                className="card-base overflow-hidden text-left"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.04 }}
+                onClick={() => {
+                  if (!isLocked && !isEntered) setSelectedGiveaway(g);
+                }}
+                style={{ opacity: isLocked ? 0.65 : 1 }}
+              >
+                <div className="relative">
+                  <img
+                    src={g.image}
+                    alt={g.name}
+                    style={{ width: "100%", height: 110, objectFit: "cover" }}
+                  />
+                  {isLocked && (
+                    <div
+                      className="absolute inset-0 flex items-center justify-center"
+                      style={{ background: "hsl(220 25% 10% / 0.35)" }}
+                    >
+                      <Lock size={20} style={{ color: "white" }} />
+                    </div>
+                  )}
+                  {isEntered && (
+                    <div
+                      className="absolute top-2 right-2 rounded-full px-2 py-0.5 flex items-center gap-1"
+                      style={{ background: "hsl(var(--ledger-credit))", color: "white", fontSize: 10, fontWeight: 600 }}
+                    >
+                      <Check size={10} /> Entered
+                    </div>
+                  )}
+                </div>
+                <div className="p-2.5">
+                  <p className="font-semibold leading-tight" style={{ fontSize: 13 }}>{g.name}</p>
+                  <p className="text-muted-foreground" style={{ fontSize: 11 }}>{g.value}</p>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span
+                      className="font-bold"
+                      style={{ fontSize: 13, color: isLocked ? "hsl(var(--muted-foreground))" : "hsl(var(--accent-dark))" }}
+                    >
+                      {g.pointsRequired} pts
+                    </span>
+                    {!isLocked && !isEntered && (
+                      <ChevronRight size={14} style={{ color: "hsl(var(--primary))" }} />
+                    )}
+                  </div>
+                  {/* Progress bar */}
+                  {isLocked && (
+                    <div className="mt-1.5">
+                      <div className="h-1 rounded-full overflow-hidden" style={{ background: "hsl(var(--muted))" }}>
+                        <div
+                          className="h-full rounded-full"
+                          style={{
+                            width: `${Math.min(100, (userPoints / g.pointsRequired) * 100)}%`,
+                            background: "hsl(var(--accent))",
+                          }}
+                        />
+                      </div>
+                      <p className="text-muted-foreground mt-0.5" style={{ fontSize: 9 }}>
+                        {g.pointsRequired - userPoints} pts to go
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Redeem sheet */}
+      {selectedGiveaway && (
+        <RedeemSheet giveaway={selectedGiveaway} onClose={handleClose} />
+      )}
+    </div>
+  );
+};
