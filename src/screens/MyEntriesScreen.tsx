@@ -12,7 +12,7 @@ const ENTRIES = [
 
 const STATUS_CONFIG = {
   active: { label: "Active", color: "hsl(var(--primary))", bg: "hsl(var(--primary-light))", icon: Clock },
-  won: { label: "Won", color: "hsl(var(--ledger-credit))", bg: "hsl(152 55% 35% / 0.1)", icon: CheckCircle },
+  won: { label: "Won", color: "hsl(var(--ledger-credit))", bg: "hsl(152 45% 38% / 0.06)", icon: CheckCircle },
   "not-won": { label: "Not Selected", color: "hsl(var(--muted-foreground))", bg: "hsl(var(--muted))", icon: XCircle },
 };
 
@@ -26,11 +26,11 @@ export const MyEntriesScreen: React.FC = () => {
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
-      <div className="flex items-center gap-3 px-4 py-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-        <button onClick={() => navigate("wallet")}>
-          <ChevronLeft size={22} />
-        </button>
-        <h1 className="font-bold" style={{ fontSize: 18 }}>My Entries</h1>
+      <div className="screen-header">
+        <motion.button onClick={() => navigate("wallet")} whileTap={{ scale: 0.92 }}>
+          <ChevronLeft size={21} strokeWidth={1.6} />
+        </motion.button>
+        <h1>My Entries</h1>
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 pt-3" style={{ paddingBottom: 80 }}>
@@ -41,18 +41,18 @@ export const MyEntriesScreen: React.FC = () => {
           return (
             <motion.div
               key={entry.id}
-              className="card-base p-4 mb-3"
-              initial={{ opacity: 0, y: 8 }}
+              className="card-base p-4 mb-2.5"
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
+              transition={{ delay: i * 0.04, duration: 0.2 }}
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Award size={16} style={{ color: "hsl(var(--accent-dark))" }} />
-                  <h3 className="font-semibold" style={{ fontSize: 14 }}>{entry.prize}</h3>
+                  <Award size={15} style={{ color: "hsl(var(--accent-dark))" }} />
+                  <h3 className="font-medium" style={{ fontSize: 14 }}>{entry.prize}</h3>
                 </div>
                 <span
-                  className="flex items-center gap-1 rounded-full px-2.5 py-0.5 font-semibold"
+                  className="flex items-center gap-1 rounded-md px-2 py-0.5 font-medium"
                   style={{ fontSize: 11, color: config.color, background: config.bg }}
                 >
                   <Icon size={11} />
@@ -67,11 +67,11 @@ export const MyEntriesScreen: React.FC = () => {
 
               {entry.status === "won" && (
                 <motion.div
-                  className="mt-3 p-2.5 rounded-lg flex items-center gap-2"
-                  style={{ background: "hsl(152 55% 35% / 0.08)", border: "1px solid hsl(152 55% 35% / 0.15)" }}
+                  className="mt-3 p-2.5 rounded-md flex items-center gap-2"
+                  style={{ background: "hsl(152 45% 38% / 0.06)", border: "1px solid hsl(152 45% 38% / 0.12)" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.25 }}
                 >
                   <CheckCircle size={14} style={{ color: "hsl(var(--ledger-credit))" }} />
                   <span className="font-medium" style={{ fontSize: 12, color: "hsl(var(--ledger-credit))" }}>

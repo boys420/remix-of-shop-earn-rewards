@@ -43,21 +43,21 @@ export const ContestsScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-background" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-        <h1 className="font-bold mb-0.5" style={{ fontSize: 20, letterSpacing: "-0.02em" }}>Contests</h1>
+        <h1 className="font-semibold mb-0.5" style={{ fontSize: 18, letterSpacing: "-0.01em" }}>Contests</h1>
         <p className="text-muted-foreground" style={{ fontSize: 13 }}>Entries earned through purchases only</p>
       </div>
 
       {/* Info banner */}
-      <div className="mx-4 mt-3 p-3 rounded-xl" style={{ background: "hsl(var(--primary-light))", border: "1px solid hsl(var(--primary-muted))" }}>
+      <div className="mx-4 mt-3 p-3 rounded-lg" style={{ background: "hsl(var(--primary-light))", border: "1px solid hsl(var(--primary-muted))" }}>
         <div className="flex items-center gap-2 mb-1">
-          <Info size={14} className="text-primary" strokeWidth={1.7} />
-          <p className="font-semibold" style={{ fontSize: 13 }}>How contest entries work</p>
+          <Info size={14} className="text-primary" strokeWidth={1.6} />
+          <p className="font-medium" style={{ fontSize: 13 }}>How contest entries work</p>
         </div>
         <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 12 }}>
           Complete eligible purchases to earn entries. Each qualifying order automatically adds entries to open contests.
@@ -74,22 +74,22 @@ export const ContestsScreen: React.FC = () => {
       </div>
 
       {/* Contest list */}
-      <div className="flex-1 overflow-y-auto px-4 flex flex-col gap-3 pb-24">
+      <div className="flex-1 overflow-y-auto px-4 flex flex-col gap-2.5" style={{ paddingBottom: 80 }}>
         {filtered.map((contest, i) => (
           <motion.button
             key={contest.id}
             className="contest-card text-left"
             onClick={() => navigate("contest-detail")}
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
-            whileTap={{ scale: 0.98 }}
+            transition={{ delay: i * 0.04, duration: 0.2 }}
+            whileTap={{ scale: 0.99 }}
           >
-            <div className="px-4 pt-3.5 pb-3" style={{ background: contest.color, borderBottom: `1px solid ${contest.borderColor}` }}>
+            <div className="px-4 pt-3 pb-2.5" style={{ background: contest.color, borderBottom: `1px solid ${contest.borderColor}` }}>
               <div className="flex items-start justify-between gap-2">
-                <h3 className="font-semibold leading-tight" style={{ fontSize: 14 }}>{contest.title}</h3>
+                <h3 className="font-medium leading-tight" style={{ fontSize: 14 }}>{contest.title}</h3>
                 <span
-                  className="rounded-full font-semibold flex-shrink-0 px-2.5 py-0.5"
+                  className="rounded-md font-medium flex-shrink-0 px-2 py-0.5"
                   style={{
                     fontSize: 11,
                     background: contest.status === "active" ? "hsl(var(--primary))"
@@ -101,7 +101,7 @@ export const ContestsScreen: React.FC = () => {
                 </span>
               </div>
               <p className="text-muted-foreground mt-0.5" style={{ fontSize: 12 }}>Prize: {contest.prize}</p>
-              <p className="font-bold mt-0.5" style={{ fontSize: 18, color: "hsl(var(--accent-dark))", letterSpacing: "-0.01em" }}>
+              <p className="font-semibold mt-0.5" style={{ fontSize: 17, color: "hsl(var(--accent-dark))", letterSpacing: "-0.01em" }}>
                 ${contest.prizeValue.toLocaleString()} value
               </p>
             </div>
@@ -109,11 +109,11 @@ export const ContestsScreen: React.FC = () => {
             <div className="px-4 py-3">
               <div className="flex items-center gap-4 mb-2.5">
                 <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Clock size={13} strokeWidth={1.7} />
+                  <Clock size={13} strokeWidth={1.6} />
                   <span style={{ fontSize: 12 }}>Ends {contest.endsAt}</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Users size={13} strokeWidth={1.7} />
+                  <Users size={13} strokeWidth={1.6} />
                   <span style={{ fontSize: 12 }}>{contest.totalEntries.toLocaleString()} entries</span>
                 </div>
               </div>
@@ -125,8 +125,8 @@ export const ContestsScreen: React.FC = () => {
                 <div className="text-right">
                   <p className="text-muted-foreground" style={{ fontSize: 11 }}>Your entries</p>
                   <p
-                    className="font-bold"
-                    style={{ fontSize: 18, color: contest.userEntries > 0 ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))" }}
+                    className="font-semibold"
+                    style={{ fontSize: 17, color: contest.userEntries > 0 ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))" }}
                   >
                     {contest.userEntries}
                   </p>

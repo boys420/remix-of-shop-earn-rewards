@@ -27,9 +27,9 @@ export const ProductDetailScreen: React.FC = () => {
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
-      <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 96 }}>
+      <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 88 }}>
         {/* Image carousel */}
-        <div className="relative bg-card" style={{ height: 320 }}>
+        <div className="relative bg-card" style={{ height: 300 }}>
           <motion.img
             key={imgIdx}
             src={IMAGES[imgIdx]}
@@ -37,7 +37,7 @@ export const ProductDetailScreen: React.FC = () => {
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
           />
 
           <div className="absolute top-3 left-4 right-4 flex items-center justify-between">
@@ -45,40 +45,39 @@ export const ProductDetailScreen: React.FC = () => {
               className="flex items-center justify-center rounded-full bg-card"
               style={{ width: 36, height: 36, boxShadow: "var(--shadow-card)" }}
               onClick={() => navigate("product-list")}
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.92 }}
             >
-              <ChevronLeft size={20} strokeWidth={1.7} />
+              <ChevronLeft size={20} strokeWidth={1.6} />
             </motion.button>
             <div className="flex gap-2">
               <motion.button
                 className="flex items-center justify-center rounded-full bg-card"
                 style={{ width: 36, height: 36, boxShadow: "var(--shadow-card)" }}
                 onClick={() => setWishlisted(!wishlisted)}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.92 }}
               >
-                <Heart size={18} strokeWidth={1.7} fill={wishlisted ? "hsl(var(--secondary))" : "none"} stroke={wishlisted ? "hsl(var(--secondary))" : "currentColor"} />
+                <Heart size={17} strokeWidth={1.6} fill={wishlisted ? "hsl(var(--secondary))" : "none"} stroke={wishlisted ? "hsl(var(--secondary))" : "currentColor"} />
               </motion.button>
               <motion.button
                 className="flex items-center justify-center rounded-full bg-card"
                 style={{ width: 36, height: 36, boxShadow: "var(--shadow-card)" }}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.92 }}
               >
-                <Share2 size={18} strokeWidth={1.7} />
+                <Share2 size={17} strokeWidth={1.6} />
               </motion.button>
             </div>
           </div>
 
-          {/* Dots */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
             {IMAGES.map((_, i) => (
               <button
                 key={i}
                 className="rounded-full"
                 style={{
-                  width: i === imgIdx ? 18 : 6,
-                  height: 6,
+                  width: i === imgIdx ? 16 : 5,
+                  height: 5,
                   background: i === imgIdx ? "hsl(var(--primary))" : "hsl(0 0% 100% / 0.5)",
-                  transition: "all 0.3s",
+                  transition: "all 0.25s ease",
                 }}
                 onClick={() => setImgIdx(i)}
               />
@@ -100,8 +99,8 @@ export const ProductDetailScreen: React.FC = () => {
               key={i}
               onClick={() => setImgIdx(i)}
               style={{
-                width: 56, height: 56, borderRadius: 8, overflow: "hidden",
-                border: i === imgIdx ? "2px solid hsl(var(--primary))" : "1.5px solid hsl(var(--border))",
+                width: 52, height: 52, borderRadius: 8, overflow: "hidden",
+                border: i === imgIdx ? "2px solid hsl(var(--primary))" : "1px solid hsl(var(--border))",
               }}
             >
               <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -111,26 +110,26 @@ export const ProductDetailScreen: React.FC = () => {
 
         {/* Product info */}
         <div className="px-4 pt-4">
-          <p className="text-muted-foreground font-medium" style={{ fontSize: 12 }}>SONY · ELECTRONICS</p>
-          <h1 className="font-bold mt-0.5 leading-tight" style={{ fontSize: 20, letterSpacing: "-0.015em" }}>
+          <p className="text-muted-foreground font-medium" style={{ fontSize: 11 }}>SONY · ELECTRONICS</p>
+          <h1 className="font-semibold mt-0.5 leading-tight" style={{ fontSize: 19, letterSpacing: "-0.01em" }}>
             Sony WH-1000XM5 Wireless Headphones
           </h1>
 
           <div className="flex items-center gap-2 mt-2">
             <div className="flex gap-0.5">
               {[1,2,3,4,5].map(i => (
-                <Star key={i} size={14} fill="hsl(var(--accent))" stroke="none" />
+                <Star key={i} size={13} fill="hsl(var(--accent))" stroke="none" />
               ))}
             </div>
-            <span className="font-semibold" style={{ fontSize: 13 }}>4.8</span>
+            <span className="font-medium" style={{ fontSize: 13 }}>4.8</span>
             <span className="text-muted-foreground" style={{ fontSize: 13 }}>(2,341 reviews)</span>
           </div>
 
           <div className="flex items-center gap-3 mt-3">
-            <span className="font-bold" style={{ fontSize: 28, letterSpacing: "-0.02em" }}>$279</span>
-            <span className="text-muted-foreground line-through" style={{ fontSize: 17 }}>$349</span>
+            <span className="font-semibold" style={{ fontSize: 26, letterSpacing: "-0.02em" }}>$279</span>
+            <span className="text-muted-foreground line-through" style={{ fontSize: 16 }}>$349</span>
             <span
-              className="rounded-full font-semibold px-2.5 py-1"
+              className="rounded-md font-medium px-2 py-0.5"
               style={{ background: "hsl(var(--secondary-light))", color: "hsl(var(--secondary))", fontSize: 12 }}
             >
               Save $70
@@ -138,23 +137,23 @@ export const ProductDetailScreen: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-1.5 mt-2">
-            <CheckCircle size={14} strokeWidth={1.7} style={{ color: "hsl(var(--ledger-credit))" }} />
+            <CheckCircle size={14} strokeWidth={1.6} style={{ color: "hsl(var(--ledger-credit))" }} />
             <span style={{ fontSize: 13, color: "hsl(var(--ledger-credit))", fontWeight: 500 }}>In stock — 12 units left</span>
           </div>
 
           {/* Reward info */}
           <div
-            className="mt-3 p-3 rounded-xl flex items-center gap-3"
+            className="mt-3 p-3 rounded-lg flex items-center gap-3"
             style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}
           >
             <div
-              className="flex items-center justify-center rounded-lg flex-shrink-0"
-              style={{ width: 36, height: 36, background: "hsl(var(--accent-light))" }}
+              className="flex items-center justify-center rounded-md flex-shrink-0"
+              style={{ width: 34, height: 34, background: "hsl(var(--accent-light))" }}
             >
-              <Sparkles size={16} style={{ color: "hsl(var(--accent-dark))" }} />
+              <Sparkles size={15} style={{ color: "hsl(var(--accent-dark))" }} />
             </div>
             <div>
-              <p className="font-semibold" style={{ fontSize: 13 }}>
+              <p className="font-medium" style={{ fontSize: 13 }}>
                 Earn <span style={{ color: "hsl(var(--accent-dark))" }}>+139 points</span> on this purchase
               </p>
               <p className="text-muted-foreground" style={{ fontSize: 11 }}>
@@ -168,19 +167,19 @@ export const ProductDetailScreen: React.FC = () => {
             <span className="font-medium" style={{ fontSize: 14 }}>Quantity</span>
             <div className="flex items-center gap-3">
               <motion.button
-                className="flex items-center justify-center rounded-lg border bg-muted"
+                className="flex items-center justify-center rounded-md border bg-muted"
                 style={{ width: 32, height: 32, fontSize: 18, borderColor: "hsl(var(--border))" }}
                 onClick={() => setQty(Math.max(1, qty - 1))}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.92 }}
               >
                 −
               </motion.button>
               <span className="font-semibold" style={{ fontSize: 16, minWidth: 20, textAlign: "center" }}>{qty}</span>
               <motion.button
-                className="flex items-center justify-center rounded-lg border bg-muted"
+                className="flex items-center justify-center rounded-md border bg-muted"
                 style={{ width: 32, height: 32, fontSize: 18, borderColor: "hsl(var(--border))" }}
                 onClick={() => setQty(qty + 1)}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.92 }}
               >
                 +
               </motion.button>
@@ -196,7 +195,7 @@ export const ProductDetailScreen: React.FC = () => {
           </div>
 
           {/* Specs */}
-          <div className="mt-4 rounded-xl overflow-hidden" style={{ border: "1px solid hsl(var(--border))" }}>
+          <div className="mt-4 rounded-lg overflow-hidden" style={{ border: "1px solid hsl(var(--border))" }}>
             {[
               ["Driver Unit", "30 mm"],
               ["Frequency Response", "4–40,000 Hz"],
@@ -214,23 +213,20 @@ export const ProductDetailScreen: React.FC = () => {
       </div>
 
       {/* CTA */}
-      <div
-        className="absolute bottom-0 left-0 right-0 px-4 pb-8 pt-3 bg-card"
-        style={{ borderTop: "1px solid hsl(var(--border))" }}
-      >
+      <div className="sticky-cta">
         <div className="flex gap-3">
           <motion.button
-            className="flex items-center justify-center rounded-xl border bg-muted"
-            style={{ width: 52, height: 52, borderColor: "hsl(var(--border))" }}
+            className="flex items-center justify-center rounded-lg border bg-muted"
+            style={{ width: 48, height: 48, borderColor: "hsl(var(--border))" }}
             onClick={() => navigate("cart")}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.92 }}
           >
-            <ShoppingBag size={20} strokeWidth={1.7} />
+            <ShoppingBag size={19} strokeWidth={1.6} />
           </motion.button>
           <motion.button
             className="btn-primary flex-1"
             onClick={handleAddToCart}
-            whileTap={{ scale: 0.97 }}
+            whileTap={{ scale: 0.98 }}
           >
             Add to Cart — $279
           </motion.button>

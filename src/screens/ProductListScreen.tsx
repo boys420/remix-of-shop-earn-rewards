@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { motion } from "framer-motion";
-import { Search, SlidersHorizontal, Star, ChevronDown, Sparkles } from "lucide-react";
+import { Search, SlidersHorizontal, Star, ChevronDown, ChevronLeft, Sparkles } from "lucide-react";
 
 const PRODUCTS = [
   { id: "p1", name: "Sony WH-1000XM5", brand: "Sony", price: 279, originalPrice: 349, discount: 20, rating: 4.8, reviews: 2341, points: 139, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", inStock: true },
@@ -23,30 +23,30 @@ export const ProductListScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-background" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-        <h1 className="font-bold mb-3" style={{ fontSize: 20, letterSpacing: "-0.02em" }}>Shop</h1>
+        <h1 className="font-semibold mb-3" style={{ fontSize: 18, letterSpacing: "-0.01em" }}>Shop</h1>
         <div className="flex gap-2">
-          <div className="flex-1 flex items-center gap-2 rounded-xl px-3 py-2.5 bg-muted" style={{ border: "1px solid hsl(var(--border))" }}>
-            <Search size={15} strokeWidth={1.7} className="text-muted-foreground" />
+          <div className="flex-1 flex items-center gap-2 rounded-lg px-3 py-2.5 bg-muted" style={{ border: "1px solid hsl(var(--border))" }}>
+            <Search size={15} strokeWidth={1.6} className="text-muted-foreground" />
             <span className="text-muted-foreground" style={{ fontSize: 14 }}>Search products...</span>
           </div>
           <motion.button
-            className="flex items-center gap-1.5 rounded-xl px-3 py-2.5 bg-muted"
+            className="flex items-center gap-1.5 rounded-lg px-3 py-2.5 bg-muted"
             style={{ border: "1px solid hsl(var(--border))" }}
             onClick={() => setShowSort(!showSort)}
-            whileTap={{ scale: 0.93 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <SlidersHorizontal size={15} strokeWidth={1.7} />
+            <SlidersHorizontal size={15} strokeWidth={1.6} />
           </motion.button>
         </div>
 
         {showSort && (
-          <div className="absolute left-4 right-4 bg-card rounded-xl mt-2 z-50 overflow-hidden" style={{ boxShadow: "var(--shadow-elevated)", top: 150, border: "1px solid hsl(var(--border))" }}>
+          <div className="absolute left-4 right-4 bg-card rounded-lg mt-2 z-50 overflow-hidden" style={{ boxShadow: "var(--shadow-elevated)", top: 140, border: "1px solid hsl(var(--border))" }}>
             {SORTS.map((s, i) => (
               <button
                 key={s}
@@ -75,23 +75,22 @@ export const ProductListScreen: React.FC = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-3 gap-y-3.5 px-4">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-3 px-4">
           {PRODUCTS.map((p, idx) => (
             <motion.button
               key={p.id}
               className="product-card text-left"
-              style={{ marginTop: idx % 2 === 1 ? 12 : 0 }}
               onClick={() => navigate("product-detail")}
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.04 }}
-              whileTap={{ scale: 0.97 }}
+              transition={{ delay: idx * 0.03, duration: 0.2 }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className="relative">
-                <img src={p.image} alt={p.name} style={{ width: "100%", height: 130, objectFit: "cover" }} />
+                <img src={p.image} alt={p.name} style={{ width: "100%", height: 125, objectFit: "cover" }} loading="lazy" />
                 {!p.inStock && (
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "hsl(220 25% 10% / 0.45)" }}>
-                    <span className="font-semibold text-white rounded px-2 py-1" style={{ fontSize: 11, background: "hsl(var(--muted-foreground))" }}>Out of stock</span>
+                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "hsl(220 20% 12% / 0.4)" }}>
+                    <span className="font-medium text-white rounded px-2 py-1" style={{ fontSize: 11, background: "hsl(var(--muted-foreground))" }}>Out of stock</span>
                   </div>
                 )}
                 <span className="absolute top-2 left-2 rounded font-semibold" style={{ background: "hsl(var(--secondary))", color: "white", fontSize: 10, padding: "2px 5px" }}>
@@ -107,7 +106,7 @@ export const ProductListScreen: React.FC = () => {
                   <span className="text-muted-foreground" style={{ fontSize: 10 }}>({p.reviews.toLocaleString()})</span>
                 </div>
                 <div className="mt-1.5">
-                  <span className="font-bold" style={{ fontSize: 14 }}>${p.price}</span>
+                  <span className="font-semibold" style={{ fontSize: 14 }}>${p.price}</span>
                   <span className="text-muted-foreground line-through ml-1" style={{ fontSize: 11 }}>${p.originalPrice}</span>
                 </div>
                 <div className="reward-badge mt-1.5"><Sparkles size={9} /> +{p.points} pts</div>
