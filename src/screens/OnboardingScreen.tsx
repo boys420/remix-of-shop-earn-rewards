@@ -59,17 +59,17 @@ export const OnboardingScreen: React.FC = () => {
           >
             <div className="flex justify-center">
               <div
-                className="flex items-center justify-center rounded-2xl"
-                style={{ width: 88, height: 88, background: slide.iconBg }}
+                className="flex items-center justify-center"
+                style={{ width: 92, height: 92, background: slide.iconBg, borderRadius: "var(--radius-lg)" }}
               >
-                <Icon size={40} strokeWidth={1.4} style={{ color: slide.iconColor }} />
+                <Icon size={42} strokeWidth={1.3} style={{ color: slide.iconColor }} />
               </div>
             </div>
             <div>
-              <h2 className="font-semibold leading-tight mb-3" style={{ fontSize: 22, letterSpacing: "-0.015em", whiteSpace: "pre-line" }}>
+              <h2 className="font-semibold leading-tight mb-3" style={{ fontSize: 23, letterSpacing: "-0.02em", whiteSpace: "pre-line" }}>
                 {slide.title}
               </h2>
-              <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 14 }}>{slide.body}</p>
+              <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 14, lineHeight: 1.6 }}>{slide.body}</p>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -82,9 +82,9 @@ export const OnboardingScreen: React.FC = () => {
               key={i}
               className="rounded-full"
               style={{
-                width: i === idx ? 18 : 6, height: 5,
+                width: i === idx ? 20 : 6, height: 5,
                 background: i === idx ? "hsl(var(--primary))" : "hsl(var(--muted))",
-                transition: "all 0.25s ease",
+                transition: "all 0.3s ease",
               }}
             />
           ))}

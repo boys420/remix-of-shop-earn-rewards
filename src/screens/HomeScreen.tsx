@@ -20,19 +20,19 @@ const HERO_SLIDES = [
     headline: "Shop Smarter,\nEarn Rewards",
     subtext: "Every purchase earns you points towards exclusive prizes",
     cta: "Start Shopping",
-    bg: "hsl(221 65% 28%)",
+    bg: "linear-gradient(135deg, hsl(222 68% 22%), hsl(222 55% 32%))",
   },
   {
     headline: "New Giveaways\nAvailable Now",
     subtext: "Redeem your points for Smartwatches, Tablets & more",
     cta: "View Giveaways",
-    bg: "hsl(36 38% 38%)",
+    bg: "linear-gradient(135deg, hsl(38 48% 30%), hsl(38 42% 42%))",
   },
   {
     headline: "Up to 25% Off\nTop Brands",
     subtext: "Plus earn double points on featured items this week",
     cta: "See Deals",
-    bg: "hsl(152 40% 32%)",
+    bg: "linear-gradient(135deg, hsl(158 42% 26%), hsl(158 38% 36%))",
   },
 ];
 
@@ -82,31 +82,31 @@ export const HomeScreen: React.FC = () => {
       </div>
 
       {/* Top bar */}
-      <div className="px-4 pb-3.5 pt-1" style={{ background: "hsl(var(--primary-dark))" }}>
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-1.5">
+      <div className="px-4 pb-4 pt-1.5" style={{ background: "hsl(var(--primary-dark))" }}>
+        <div className="flex items-center justify-between mb-3.5">
+          <div className="flex items-center gap-2">
             <MapPin size={13} style={{ color: "hsl(var(--accent))" }} />
             <div>
-              <p style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 10 }}>Deliver to</p>
+              <p style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 10, fontWeight: 500 }}>Deliver to</p>
               <p style={{ color: "white", fontSize: 13, fontWeight: 500 }}>New York, NY 10001</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <motion.button className="relative" whileTap={{ scale: 0.92 }}>
-              <Bell size={19} strokeWidth={1.6} style={{ color: "white" }} />
+          <div className="flex items-center gap-3.5">
+            <motion.button className="relative" whileTap={{ scale: 0.9 }} transition={{ duration: 0.1 }}>
+              <Bell size={19} strokeWidth={1.5} style={{ color: "hsl(0 0% 100% / 0.85)" }} />
               <span
                 className="absolute -top-1 -right-1 rounded-full flex items-center justify-center"
-                style={{ width: 14, height: 14, background: "hsl(var(--accent))", fontSize: 8, fontWeight: 700, color: "hsl(var(--accent-foreground))" }}
+                style={{ width: 15, height: 15, background: "hsl(var(--accent))", fontSize: 8, fontWeight: 700, color: "hsl(var(--accent-foreground))" }}
               >
                 3
               </span>
             </motion.button>
-            <motion.button onClick={() => navigate("cart")} className="relative" whileTap={{ scale: 0.92 }}>
-              <ShoppingBag size={19} strokeWidth={1.6} style={{ color: "white" }} />
+            <motion.button onClick={() => navigate("cart")} className="relative" whileTap={{ scale: 0.9 }} transition={{ duration: 0.1 }}>
+              <ShoppingBag size={19} strokeWidth={1.5} style={{ color: "hsl(0 0% 100% / 0.85)" }} />
               {cartCount > 0 && (
                 <span
                   className="absolute -top-1 -right-1 rounded-full flex items-center justify-center"
-                  style={{ width: 14, height: 14, background: "hsl(var(--accent))", fontSize: 8, fontWeight: 700, color: "hsl(var(--accent-foreground))" }}
+                  style={{ width: 15, height: 15, background: "hsl(var(--accent))", fontSize: 8, fontWeight: 700, color: "hsl(var(--accent-foreground))" }}
                 >
                   {cartCount}
                 </span>
@@ -114,7 +114,7 @@ export const HomeScreen: React.FC = () => {
             </motion.button>
             <div
               className="flex items-center justify-center rounded-full font-semibold"
-              style={{ width: 30, height: 30, background: "hsl(0 0% 100% / 0.1)", color: "white", fontSize: 12 }}
+              style={{ width: 32, height: 32, background: "hsl(0 0% 100% / 0.1)", color: "white", fontSize: 12, border: "1px solid hsl(0 0% 100% / 0.08)" }}
             >
               AM
             </div>
@@ -122,17 +122,21 @@ export const HomeScreen: React.FC = () => {
         </div>
 
         {/* Search */}
-        <div className="flex items-center gap-2.5 rounded-lg px-3.5 py-2.5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-          <Search size={15} strokeWidth={1.6} style={{ color: "hsl(0 0% 100% / 0.45)" }} />
-          <span style={{ color: "hsl(0 0% 100% / 0.4)", fontSize: 14 }}>Search products, brands...</span>
-        </div>
+        <motion.div
+          className="flex items-center gap-2.5 px-3.5 py-2.5"
+          style={{ background: "hsl(0 0% 100% / 0.08)", borderRadius: "var(--radius)", border: "1px solid hsl(0 0% 100% / 0.06)" }}
+          whileTap={{ scale: 0.99 }}
+        >
+          <Search size={15} strokeWidth={1.5} style={{ color: "hsl(0 0% 100% / 0.4)" }} />
+          <span style={{ color: "hsl(0 0% 100% / 0.35)", fontSize: 14 }}>Search products, brands...</span>
+        </motion.div>
       </div>
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 80 }}>
         {/* Hero carousel */}
-        <div className="px-4 mt-3">
-          <div className="relative rounded-xl overflow-hidden" style={{ height: 148 }}>
+        <div className="px-4 mt-3.5">
+          <div className="relative overflow-hidden" style={{ height: 156, borderRadius: "var(--radius-lg)" }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={heroIdx}
@@ -141,33 +145,33 @@ export const HomeScreen: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
               >
-                <h2 className="font-semibold leading-tight" style={{ fontSize: 18, color: "white", whiteSpace: "pre-line", letterSpacing: "-0.01em" }}>
+                <h2 className="font-semibold leading-tight" style={{ fontSize: 18, color: "white", whiteSpace: "pre-line", letterSpacing: "-0.02em" }}>
                   {HERO_SLIDES[heroIdx].headline}
                 </h2>
-                <p style={{ fontSize: 12, color: "hsl(0 0% 100% / 0.65)", marginTop: 6 }}>
+                <p style={{ fontSize: 12, color: "hsl(0 0% 100% / 0.6)", marginTop: 6, lineHeight: 1.5 }}>
                   {HERO_SLIDES[heroIdx].subtext}
                 </p>
                 <button
-                  className="mt-3 self-start rounded-md px-3.5 py-2 font-medium"
-                  style={{ background: "hsl(0 0% 100% / 0.15)", color: "white", fontSize: 12 }}
+                  className="mt-3.5 self-start px-4 py-2 font-medium"
+                  style={{ background: "hsl(0 0% 100% / 0.14)", color: "white", fontSize: 12, borderRadius: "var(--radius-sm)", border: "1px solid hsl(0 0% 100% / 0.08)", backdropFilter: "blur(8px)" }}
                   onClick={() => navigate(heroIdx === 1 ? "giveaways" : "product-list")}
                 >
                   {HERO_SLIDES[heroIdx].cta}
                 </button>
               </motion.div>
             </AnimatePresence>
-            <div className="absolute bottom-3 right-4 flex gap-1.5">
+            <div className="absolute bottom-3.5 right-4 flex gap-1.5">
               {HERO_SLIDES.map((_, i) => (
                 <div
                   key={i}
                   className="rounded-full"
                   style={{
-                    width: i === heroIdx ? 14 : 5,
+                    width: i === heroIdx ? 16 : 5,
                     height: 5,
-                    background: i === heroIdx ? "white" : "hsl(0 0% 100% / 0.3)",
-                    transition: "all 0.25s ease",
+                    background: i === heroIdx ? "white" : "hsl(0 0% 100% / 0.25)",
+                    transition: "all 0.3s ease",
                   }}
                 />
               ))}
@@ -176,30 +180,30 @@ export const HomeScreen: React.FC = () => {
         </div>
 
         {/* Reward summary card */}
-        <div className="px-4 mt-3">
+        <div className="px-4 mt-3.5">
           <motion.div
-            className="rounded-lg p-3.5 flex items-center justify-between"
-            style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}
+            className="p-3.5 flex items-center justify-between"
+            style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)", borderRadius: "var(--radius)" }}
             whileTap={{ scale: 0.99 }}
             onClick={() => navigate("wallet")}
           >
             <div>
-              <p className="text-muted-foreground font-medium mb-0.5" style={{ fontSize: 10, letterSpacing: "0.04em" }}>YOUR REWARDS</p>
+              <p className="text-muted-foreground font-medium mb-0.5" style={{ fontSize: 10, letterSpacing: "0.05em" }}>YOUR REWARDS</p>
               <div className="flex items-baseline gap-1.5">
-                <span className="font-semibold" style={{ fontSize: 24, color: "hsl(var(--accent-dark))", letterSpacing: "-0.02em" }}>
+                <span className="font-semibold" style={{ fontSize: 26, color: "hsl(var(--accent-dark))", letterSpacing: "-0.03em" }}>
                   {userPoints.toLocaleString()}
                 </span>
                 <span className="text-muted-foreground font-medium" style={{ fontSize: 13 }}>pts</span>
               </div>
-              <div className="flex items-center gap-1 mt-0.5">
+              <div className="flex items-center gap-1 mt-1">
                 <TrendingUp size={11} style={{ color: "hsl(var(--ledger-credit))" }} />
                 <p style={{ fontSize: 11, color: "hsl(var(--ledger-credit))", fontWeight: 500 }}>+340 this week</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-muted-foreground font-medium mb-0.5" style={{ fontSize: 10, letterSpacing: "0.04em" }}>ENTRIES</p>
+              <p className="text-muted-foreground font-medium mb-0.5" style={{ fontSize: 10, letterSpacing: "0.05em" }}>ENTRIES</p>
               <div className="flex items-baseline gap-1 justify-end">
-                <span className="font-semibold" style={{ fontSize: 24, color: "hsl(var(--primary))", letterSpacing: "-0.02em" }}>
+                <span className="font-semibold" style={{ fontSize: 26, color: "hsl(var(--primary))", letterSpacing: "-0.03em" }}>
                   {userEntries}
                 </span>
               </div>
@@ -213,14 +217,14 @@ export const HomeScreen: React.FC = () => {
         {/* Giveaway preview */}
         <div className="px-4 mt-3">
           <motion.div
-            className="rounded-lg p-3 flex items-center gap-3"
-            style={{ background: "hsl(var(--primary-light))", border: "1px solid hsl(var(--primary-muted))" }}
+            className="p-3 flex items-center gap-3"
+            style={{ background: "hsl(var(--primary-light))", border: "1px solid hsl(var(--primary-muted) / 0.7)", borderRadius: "var(--radius)" }}
             whileTap={{ scale: 0.99 }}
             onClick={() => navigate("giveaways")}
           >
-            <div className="flex items-center justify-center rounded-md flex-shrink-0"
-              style={{ width: 34, height: 34, background: "hsl(var(--primary) / 0.08)" }}>
-              <Award size={17} className="text-primary" strokeWidth={1.6} />
+            <div className="flex items-center justify-center rounded-lg flex-shrink-0"
+              style={{ width: 36, height: 36, background: "hsl(var(--primary) / 0.08)" }}>
+              <Award size={17} className="text-primary" strokeWidth={1.5} />
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-medium text-foreground truncate" style={{ fontSize: 13 }}>
@@ -238,17 +242,18 @@ export const HomeScreen: React.FC = () => {
             <span className="section-title">Categories</span>
             <button className="section-link" onClick={() => navigate("product-list")}>All</button>
           </div>
-          <div className="flex gap-2.5 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
+          <div className="flex gap-3 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
             {CATEGORIES.map((cat) => (
               <motion.button
                 key={cat.label}
                 className="flex flex-col items-center gap-1.5 flex-shrink-0"
                 onClick={() => navigate("product-list")}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.93 }}
+                transition={{ duration: 0.1 }}
               >
                 <div
-                  className="flex items-center justify-center rounded-lg"
-                  style={{ width: 50, height: 50, background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: 20 }}
+                  className="flex items-center justify-center"
+                  style={{ width: 52, height: 52, background: "hsl(var(--card))", border: "1px solid hsl(var(--border) / 0.7)", fontSize: 21, borderRadius: "var(--radius)" }}
                 >
                   {cat.icon}
                 </div>
@@ -269,24 +274,25 @@ export const HomeScreen: React.FC = () => {
               <motion.button
                 key={product.id}
                 className="product-card flex-shrink-0"
-                style={{ width: 170 }}
+                style={{ width: 172 }}
                 onClick={() => navigate("product-detail")}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.1 }}
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  style={{ width: "100%", height: 130, objectFit: "cover" }}
+                  style={{ width: "100%", height: 134, objectFit: "cover" }}
                   loading="lazy"
                 />
-                <div className="p-2.5">
+                <div className="p-3">
                   <p className="text-muted-foreground font-medium" style={{ fontSize: 10 }}>{product.brand}</p>
                   <p className="font-medium text-foreground leading-tight mt-0.5" style={{ fontSize: 13 }}>
                     {product.name}
                   </p>
                   <div className="flex items-center gap-1 mt-1.5">
                     <Star size={10} fill="hsl(var(--accent))" stroke="none" />
-                    <span style={{ fontSize: 11, color: "hsl(var(--accent-dark))" }}>{product.rating}</span>
+                    <span style={{ fontSize: 11, color: "hsl(var(--accent-dark))", fontWeight: 500 }}>{product.rating}</span>
                   </div>
                   <div className="flex items-center justify-between mt-2">
                     <div>
@@ -294,8 +300,8 @@ export const HomeScreen: React.FC = () => {
                       <span className="text-muted-foreground line-through ml-1.5" style={{ fontSize: 11 }}>${product.originalPrice}</span>
                     </div>
                     <span
-                      className="rounded font-semibold"
-                      style={{ background: "hsl(var(--secondary-light))", color: "hsl(var(--secondary))", fontSize: 10, padding: "1px 5px" }}
+                      className="font-semibold"
+                      style={{ background: "hsl(var(--secondary-light))", color: "hsl(var(--secondary))", fontSize: 10, padding: "2px 6px", borderRadius: "var(--radius-sm)" }}
                     >
                       -{product.discount}%
                     </span>
@@ -322,11 +328,12 @@ export const HomeScreen: React.FC = () => {
                 className="product-card flex items-center gap-3 p-3"
                 onClick={() => navigate("product-detail")}
                 whileTap={{ scale: 0.99 }}
+                transition={{ duration: 0.1 }}
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  style={{ width: 68, height: 68, objectFit: "cover", borderRadius: 8 }}
+                  style={{ width: 70, height: 70, objectFit: "cover", borderRadius: "var(--radius-sm)" }}
                   loading="lazy"
                 />
                 <div className="flex-1 text-left">
@@ -336,7 +343,7 @@ export const HomeScreen: React.FC = () => {
                   </p>
                   <div className="flex items-center gap-1 mt-1">
                     <Star size={10} fill="hsl(var(--accent))" stroke="none" />
-                    <span style={{ fontSize: 11, color: "hsl(var(--accent-dark))" }}>{product.rating}</span>
+                    <span style={{ fontSize: 11, color: "hsl(var(--accent-dark))", fontWeight: 500 }}>{product.rating}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-1.5">
                     <span className="font-semibold text-foreground" style={{ fontSize: 15 }}>${product.price}</span>
@@ -345,8 +352,8 @@ export const HomeScreen: React.FC = () => {
                   </div>
                 </div>
                 <span
-                  className="rounded font-semibold self-start mt-1"
-                  style={{ background: "hsl(var(--secondary-light))", color: "hsl(var(--secondary))", fontSize: 10, padding: "2px 6px" }}
+                  className="font-semibold self-start mt-1"
+                  style={{ background: "hsl(var(--secondary-light))", color: "hsl(var(--secondary))", fontSize: 10, padding: "2px 6px", borderRadius: "var(--radius-sm)" }}
                 >
                   -{product.discount}%
                 </span>

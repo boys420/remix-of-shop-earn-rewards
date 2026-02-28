@@ -24,18 +24,18 @@ export const ProfileScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 80 }}>
         {/* Profile header */}
-        <div className="px-4 py-4 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+        <div className="px-4 py-4 bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
           <div className="flex items-center gap-3.5">
             <div
               className="flex items-center justify-center rounded-full font-semibold flex-shrink-0"
-              style={{ width: 56, height: 56, background: "hsl(var(--primary-dark))", color: "white", fontSize: 20 }}
+              style={{ width: 56, height: 56, background: "linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary-mid)))", color: "white", fontSize: 20, boxShadow: "0 2px 8px 0 hsl(222 62% 30% / 0.2)" }}
             >
               AM
             </div>
@@ -44,16 +44,16 @@ export const ProfileScreen: React.FC = () => {
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>alex.morgan@example.com</p>
               <p className="text-muted-foreground" style={{ fontSize: 11 }}>Member since Feb 2025</p>
             </div>
-            <button className="text-primary" style={{ fontSize: 13, fontWeight: 500 }}>Edit</button>
+            <button className="text-primary font-medium" style={{ fontSize: 13 }}>Edit</button>
           </div>
         </div>
 
         {/* Reward tier */}
-        <div className="mx-4 mt-3">
-          <div className="rounded-lg p-3.5" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}>
+        <div className="mx-4 mt-3.5">
+          <div className="p-3.5" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)", borderRadius: "var(--radius)" }}>
             <div className="flex items-center justify-between mb-2.5">
               <div>
-                <p className="text-muted-foreground font-medium" style={{ fontSize: 10, letterSpacing: "0.04em" }}>MEMBER TIER</p>
+                <p className="text-muted-foreground font-medium" style={{ fontSize: 10, letterSpacing: "0.05em" }}>MEMBER TIER</p>
                 <p className="font-semibold" style={{ fontSize: 17, color: "hsl(var(--accent-dark))" }}>Gold Member</p>
               </div>
               <div className="text-right">
@@ -61,7 +61,7 @@ export const ProfileScreen: React.FC = () => {
                 <p className="font-semibold" style={{ fontSize: 18, color: "hsl(var(--accent-dark))" }}>{userPoints.toLocaleString()}</p>
               </div>
             </div>
-            <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center justify-between mb-1.5">
               <span className="text-muted-foreground" style={{ fontSize: 11 }}>Gold</span>
               <span className="text-muted-foreground" style={{ fontSize: 11 }}>Platinum · 10,000 pts</span>
             </div>
@@ -71,7 +71,7 @@ export const ProfileScreen: React.FC = () => {
                 style={{ background: "hsl(var(--accent))" }}
                 initial={{ width: 0 }}
                 animate={{ width: `${Math.min(100, (userPoints / 10000) * 100)}%` }}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               />
             </div>
             <p className="text-muted-foreground mt-1.5" style={{ fontSize: 11 }}>
@@ -114,10 +114,11 @@ export const ProfileScreen: React.FC = () => {
                 <div className="text-right">
                   <p className="font-medium" style={{ fontSize: 13 }}>{order.total}</p>
                   <span
-                    className="inline-block rounded-md font-medium px-2 py-0.5"
+                    className="inline-block font-medium px-2 py-0.5"
                     style={{
                       fontSize: 10,
-                      background: order.status === "Delivered" ? "hsl(152 45% 38% / 0.06)" : "hsl(var(--primary-light))",
+                      borderRadius: "var(--radius-sm)",
+                      background: order.status === "Delivered" ? "hsl(158 42% 34% / 0.06)" : "hsl(var(--primary-light))",
                       color: order.status === "Delivered" ? "hsl(var(--ledger-credit))" : "hsl(var(--primary))",
                     }}
                   >
@@ -136,23 +137,25 @@ export const ProfileScreen: React.FC = () => {
             return (
               <motion.button
                 key={item.label}
-                className="w-full flex items-center gap-3 px-4 py-3 text-left"
-                style={{ borderBottom: i < MENU_ITEMS.length - 1 ? "1px solid hsl(var(--border))" : "none" }}
+                className="w-full flex items-center gap-3 px-4 py-3.5 text-left"
+                style={{ borderBottom: i < MENU_ITEMS.length - 1 ? "1px solid hsl(var(--border) / 0.5)" : "none" }}
                 onClick={() => navigate(item.screen)}
-                whileTap={{ scale: 0.99 }}
+                whileTap={{ scale: 0.99, backgroundColor: "hsl(var(--muted))" }}
+                transition={{ duration: 0.08 }}
               >
                 <div
-                  className="flex items-center justify-center rounded-md flex-shrink-0"
-                  style={{ width: 32, height: 32, background: "hsl(var(--muted))" }}
+                  className="flex items-center justify-center flex-shrink-0"
+                  style={{ width: 34, height: 34, background: "hsl(var(--muted))", borderRadius: "var(--radius-sm)" }}
                 >
-                  <Icon size={16} strokeWidth={1.6} className="text-muted-foreground" />
+                  <Icon size={16} strokeWidth={1.5} className="text-muted-foreground" />
                 </div>
                 <span className="flex-1 font-medium" style={{ fontSize: 14 }}>{item.label}</span>
                 {item.badge && (
                   <span
-                    className="rounded-md font-medium px-2 py-0.5"
+                    className="font-medium px-2 py-0.5"
                     style={{
                       fontSize: 11,
+                      borderRadius: "var(--radius-sm)",
                       background: item.badge.includes("new") ? "hsl(var(--primary))" : "hsl(var(--muted))",
                       color: item.badge.includes("new") ? "white" : "hsl(var(--muted-foreground))",
                     }}
@@ -169,12 +172,12 @@ export const ProfileScreen: React.FC = () => {
         {/* Sign out */}
         <div className="mx-4 mt-3 mb-4">
           <motion.button
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-lg"
-            style={{ fontSize: 14, color: "hsl(var(--secondary))", fontWeight: 500, border: "1px solid hsl(var(--border))" }}
+            className="w-full flex items-center justify-center gap-2 py-3"
+            style={{ fontSize: 14, color: "hsl(var(--secondary))", fontWeight: 500, border: "1px solid hsl(var(--border) / 0.7)", borderRadius: "var(--radius)" }}
             onClick={() => navigate("login")}
             whileTap={{ scale: 0.98 }}
           >
-            <LogOut size={15} strokeWidth={1.6} />
+            <LogOut size={15} strokeWidth={1.5} />
             Sign Out
           </motion.button>
         </div>
