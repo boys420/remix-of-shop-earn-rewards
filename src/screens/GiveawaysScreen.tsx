@@ -26,19 +26,19 @@ export const GiveawaysScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       {/* Header */}
-      <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-        <h1 className="font-semibold" style={{ fontSize: 18, letterSpacing: "-0.01em" }}>Giveaways</h1>
+      <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
+        <h1 className="font-semibold" style={{ fontSize: 18, letterSpacing: "-0.015em" }}>Giveaways</h1>
         <p className="text-muted-foreground" style={{ fontSize: 13 }}>Redeem points for a chance to win prizes</p>
       </div>
 
       {/* Balance bar */}
-      <div className="px-4 py-2.5" style={{ background: "hsl(var(--ivory))", borderBottom: "1px solid hsl(var(--accent-muted))" }}>
+      <div className="px-4 py-2.5" style={{ background: "hsl(var(--ivory))", borderBottom: "1px solid hsl(var(--accent-muted) / 0.7)" }}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Award size={15} style={{ color: "hsl(var(--accent-dark))" }} />
@@ -51,8 +51,8 @@ export const GiveawaysScreen: React.FC = () => {
       </div>
 
       {/* Giveaway grid */}
-      <div className="flex-1 overflow-y-auto px-4 pt-3" style={{ paddingBottom: 80 }}>
-        <div className="grid grid-cols-2 gap-2.5">
+      <div className="flex-1 overflow-y-auto px-4 pt-3.5" style={{ paddingBottom: 80 }}>
+        <div className="grid grid-cols-2 gap-3">
           {GIVEAWAYS.map((g, i) => {
             const status = getStatus(g);
             const isLocked = status === "locked";
@@ -64,31 +64,31 @@ export const GiveawaysScreen: React.FC = () => {
                 className="card-base overflow-hidden text-left"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.03, duration: 0.2 }}
+                transition={{ delay: i * 0.03, duration: 0.18 }}
                 onClick={() => {
                   if (!isLocked && !isEntered) setSelectedGiveaway(g);
                 }}
-                style={{ opacity: isLocked ? 0.6 : 1 }}
+                style={{ opacity: isLocked ? 0.55 : 1 }}
               >
                 <div className="relative">
                   <img
                     src={g.image}
                     alt={g.name}
-                    style={{ width: "100%", height: 105, objectFit: "cover" }}
+                    style={{ width: "100%", height: 108, objectFit: "cover" }}
                     loading="lazy"
                   />
                   {isLocked && (
                     <div
                       className="absolute inset-0 flex items-center justify-center"
-                      style={{ background: "hsl(220 20% 12% / 0.3)" }}
+                      style={{ background: "hsl(222 22% 10% / 0.3)", backdropFilter: "blur(1px)" }}
                     >
                       <Lock size={18} style={{ color: "white" }} />
                     </div>
                   )}
                   {isEntered && (
                     <div
-                      className="absolute top-2 right-2 rounded-md px-2 py-0.5 flex items-center gap-1"
-                      style={{ background: "hsl(var(--ledger-credit))", color: "white", fontSize: 10, fontWeight: 600 }}
+                      className="absolute top-2 right-2 px-2 py-0.5 flex items-center gap-1"
+                      style={{ background: "hsl(var(--ledger-credit))", color: "white", fontSize: 10, fontWeight: 600, borderRadius: "var(--radius-sm)" }}
                     >
                       <Check size={10} /> Entered
                     </div>

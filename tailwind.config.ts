@@ -90,8 +90,10 @@ export default {
       },
       boxShadow: {
         card: "var(--shadow-card)",
+        "card-hover": "var(--shadow-card-hover)",
         "bottom-nav": "var(--shadow-bottom-nav)",
         elevated: "var(--shadow-elevated)",
+        float: "var(--shadow-float)",
       },
       keyframes: {
         "accordion-down": {

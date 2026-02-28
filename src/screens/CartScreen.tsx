@@ -28,14 +28,14 @@ export const CartScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       <div className="screen-header">
-        <motion.button onClick={() => navigate("product-list")} whileTap={{ scale: 0.92 }}>
-          <ChevronLeft size={21} strokeWidth={1.6} />
+        <motion.button onClick={() => navigate("product-list")} whileTap={{ scale: 0.9 }} transition={{ duration: 0.1 }}>
+          <ChevronLeft size={21} strokeWidth={1.5} />
         </motion.button>
         <h1 className="flex-1">
           Cart <span className="text-muted-foreground font-normal" style={{ fontSize: 14 }}>({items.length})</span>
@@ -56,9 +56,9 @@ export const CartScreen: React.FC = () => {
               className="card-base p-3 flex gap-3"
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.04, duration: 0.2 }}
+              transition={{ delay: i * 0.04, duration: 0.18 }}
             >
-              <img src={item.image} alt={item.name} style={{ width: 72, height: 72, objectFit: "cover", borderRadius: 8 }} />
+              <img src={item.image} alt={item.name} style={{ width: 72, height: 72, objectFit: "cover", borderRadius: "var(--radius-sm)" }} />
               <div className="flex-1 min-w-0">
                 <p className="text-muted-foreground" style={{ fontSize: 10 }}>{item.brand}</p>
                 <p className="font-medium leading-tight" style={{ fontSize: 13 }}>{item.name}</p>
@@ -67,19 +67,21 @@ export const CartScreen: React.FC = () => {
                 <div className="flex items-center justify-between mt-2">
                   <div className="flex items-center gap-2">
                     <motion.button
-                      className="flex items-center justify-center rounded-md border bg-muted"
-                      style={{ width: 28, height: 28, borderColor: "hsl(var(--border))" }}
+                      className="flex items-center justify-center border bg-muted"
+                      style={{ width: 28, height: 28, borderColor: "hsl(var(--border))", borderRadius: "var(--radius-sm)" }}
                       onClick={() => updateQty(item.id, -1)}
-                      whileTap={{ scale: 0.88 }}
+                      whileTap={{ scale: 0.85 }}
+                      transition={{ duration: 0.08 }}
                     >
                       {item.qty === 1 ? <Trash2 size={12} style={{ color: "hsl(var(--secondary))" }} /> : <Minus size={12} />}
                     </motion.button>
                     <span className="font-semibold" style={{ fontSize: 14 }}>{item.qty}</span>
                     <motion.button
-                      className="flex items-center justify-center rounded-md border bg-muted"
-                      style={{ width: 28, height: 28, borderColor: "hsl(var(--border))" }}
+                      className="flex items-center justify-center border bg-muted"
+                      style={{ width: 28, height: 28, borderColor: "hsl(var(--border))", borderRadius: "var(--radius-sm)" }}
                       onClick={() => updateQty(item.id, 1)}
-                      whileTap={{ scale: 0.88 }}
+                      whileTap={{ scale: 0.85 }}
+                      transition={{ duration: 0.08 }}
                     >
                       <Plus size={12} />
                     </motion.button>
@@ -92,7 +94,7 @@ export const CartScreen: React.FC = () => {
         </div>
 
         {shipping > 0 && items.length > 0 && (
-          <div className="mx-4 mt-3 p-3 rounded-lg" style={{ background: "hsl(var(--primary-light))" }}>
+          <div className="mx-4 mt-3 p-3" style={{ background: "hsl(var(--primary-light))", borderRadius: "var(--radius)" }}>
             <p style={{ fontSize: 13 }}>Add <strong>${(199 - subtotal).toFixed(2)}</strong> more for free shipping</p>
             <div className="mt-2 h-1.5 rounded-full overflow-hidden" style={{ background: "hsl(var(--primary-muted))" }}>
               <div className="h-full rounded-full" style={{ width: `${Math.min(100, (subtotal / 199) * 100)}%`, background: "hsl(var(--primary))" }} />
@@ -101,7 +103,7 @@ export const CartScreen: React.FC = () => {
         )}
 
         {items.length > 0 && (
-          <div className="mx-4 mt-3 p-3 rounded-lg flex items-center gap-3" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}>
+          <div className="mx-4 mt-3 p-3 flex items-center gap-3" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)", borderRadius: "var(--radius)" }}>
             <Sparkles size={15} style={{ color: "hsl(var(--accent-dark))" }} />
             <div>
               <p className="font-medium" style={{ fontSize: 13 }}>
@@ -124,7 +126,7 @@ export const CartScreen: React.FC = () => {
                   <span style={{ fontSize: 13, color: val === "Free" ? "hsl(var(--ledger-credit))" : undefined, fontWeight: val === "Free" ? 600 : 400 }}>{val}</span>
                 </div>
               ))}
-              <div className="pt-2.5 flex justify-between" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+              <div className="pt-2.5 flex justify-between" style={{ borderTop: "1px solid hsl(var(--border) / 0.5)" }}>
                 <span className="font-semibold" style={{ fontSize: 14 }}>Total</span>
                 <span className="font-semibold" style={{ fontSize: 14 }}>${total.toFixed(2)}</span>
               </div>

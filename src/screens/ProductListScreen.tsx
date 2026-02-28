@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { motion } from "framer-motion";
-import { Search, SlidersHorizontal, Star, ChevronDown, ChevronLeft, Sparkles } from "lucide-react";
+import { Search, SlidersHorizontal, Star, ChevronDown, Sparkles } from "lucide-react";
 
 const PRODUCTS = [
   { id: "p1", name: "Sony WH-1000XM5", brand: "Sony", price: 279, originalPrice: 349, discount: 20, rating: 4.8, reviews: 2341, points: 139, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", inStock: true },
@@ -23,35 +23,36 @@ export const ProductListScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
-      <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-        <h1 className="font-semibold mb-3" style={{ fontSize: 18, letterSpacing: "-0.01em" }}>Shop</h1>
+      <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
+        <h1 className="font-semibold mb-3" style={{ fontSize: 18, letterSpacing: "-0.015em" }}>Shop</h1>
         <div className="flex gap-2">
-          <div className="flex-1 flex items-center gap-2 rounded-lg px-3 py-2.5 bg-muted" style={{ border: "1px solid hsl(var(--border))" }}>
-            <Search size={15} strokeWidth={1.6} className="text-muted-foreground" />
+          <div className="flex-1 flex items-center gap-2 px-3.5 py-2.5" style={{ background: "hsl(var(--surface-2))", border: "1.5px solid hsl(var(--border))", borderRadius: "var(--radius)" }}>
+            <Search size={15} strokeWidth={1.5} className="text-muted-foreground" />
             <span className="text-muted-foreground" style={{ fontSize: 14 }}>Search products...</span>
           </div>
           <motion.button
-            className="flex items-center gap-1.5 rounded-lg px-3 py-2.5 bg-muted"
-            style={{ border: "1px solid hsl(var(--border))" }}
+            className="flex items-center gap-1.5 px-3 py-2.5"
+            style={{ background: "hsl(var(--surface-2))", border: "1.5px solid hsl(var(--border))", borderRadius: "var(--radius)" }}
             onClick={() => setShowSort(!showSort)}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.93 }}
+            transition={{ duration: 0.1 }}
           >
-            <SlidersHorizontal size={15} strokeWidth={1.6} />
+            <SlidersHorizontal size={15} strokeWidth={1.5} />
           </motion.button>
         </div>
 
         {showSort && (
-          <div className="absolute left-4 right-4 bg-card rounded-lg mt-2 z-50 overflow-hidden" style={{ boxShadow: "var(--shadow-elevated)", top: 140, border: "1px solid hsl(var(--border))" }}>
+          <div className="absolute left-4 right-4 bg-card z-50 overflow-hidden" style={{ boxShadow: "var(--shadow-float)", top: 140, border: "1px solid hsl(var(--border) / 0.5)", borderRadius: "var(--radius)" }}>
             {SORTS.map((s, i) => (
               <button
                 key={s}
                 className="w-full text-left px-4 py-3"
-                style={{ fontSize: 14, fontWeight: i === sortIdx ? 600 : 400, color: i === sortIdx ? "hsl(var(--primary))" : "hsl(var(--foreground))", borderBottom: "1px solid hsl(var(--border))" }}
+                style={{ fontSize: 14, fontWeight: i === sortIdx ? 600 : 400, color: i === sortIdx ? "hsl(var(--primary))" : "hsl(var(--foreground))", borderBottom: "1px solid hsl(var(--border) / 0.5)" }}
                 onClick={() => { setSortIdx(i); setShowSort(false); }}
               >
                 {s}
@@ -61,7 +62,7 @@ export const ProductListScreen: React.FC = () => {
         )}
       </div>
 
-      <div className="flex gap-2 px-4 py-2.5 bg-card overflow-x-auto" style={{ scrollbarWidth: "none", borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="flex gap-2 px-4 py-2.5 bg-card overflow-x-auto" style={{ scrollbarWidth: "none", borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         {FILTERS.map((f) => (
           <button key={f} className={activeFilter === f ? "chip-active" : "chip-outline"} onClick={() => setActiveFilter(f)}>{f}</button>
         ))}
@@ -75,7 +76,7 @@ export const ProductListScreen: React.FC = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-3 gap-y-3 px-4">
+        <div className="grid grid-cols-2 gap-3 px-4">
           {PRODUCTS.map((p, idx) => (
             <motion.button
               key={p.id}
@@ -83,17 +84,17 @@ export const ProductListScreen: React.FC = () => {
               onClick={() => navigate("product-detail")}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.03, duration: 0.2 }}
-              whileTap={{ scale: 0.98 }}
+              transition={{ delay: idx * 0.03, duration: 0.18 }}
+              whileTap={{ scale: 0.97 }}
             >
               <div className="relative">
-                <img src={p.image} alt={p.name} style={{ width: "100%", height: 125, objectFit: "cover" }} loading="lazy" />
+                <img src={p.image} alt={p.name} style={{ width: "100%", height: 128, objectFit: "cover" }} loading="lazy" />
                 {!p.inStock && (
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "hsl(220 20% 12% / 0.4)" }}>
-                    <span className="font-medium text-white rounded px-2 py-1" style={{ fontSize: 11, background: "hsl(var(--muted-foreground))" }}>Out of stock</span>
+                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "hsl(222 22% 10% / 0.4)", backdropFilter: "blur(2px)" }}>
+                    <span className="font-medium text-white px-2.5 py-1" style={{ fontSize: 11, background: "hsl(var(--muted-foreground))", borderRadius: "var(--radius-sm)" }}>Out of stock</span>
                   </div>
                 )}
-                <span className="absolute top-2 left-2 rounded font-semibold" style={{ background: "hsl(var(--secondary))", color: "white", fontSize: 10, padding: "2px 5px" }}>
+                <span className="absolute top-2 left-2 font-semibold" style={{ background: "hsl(var(--secondary))", color: "white", fontSize: 10, padding: "2px 6px", borderRadius: "var(--radius-sm)" }}>
                   -{p.discount}%
                 </span>
               </div>
@@ -102,7 +103,7 @@ export const ProductListScreen: React.FC = () => {
                 <p className="font-medium leading-tight mt-0.5 line-clamp-2" style={{ fontSize: 12 }}>{p.name}</p>
                 <div className="flex items-center gap-1 mt-1">
                   <Star size={9} fill="hsl(var(--accent))" stroke="none" />
-                  <span style={{ fontSize: 10, color: "hsl(var(--accent-dark))" }}>{p.rating}</span>
+                  <span style={{ fontSize: 10, color: "hsl(var(--accent-dark))", fontWeight: 500 }}>{p.rating}</span>
                   <span className="text-muted-foreground" style={{ fontSize: 10 }}>({p.reviews.toLocaleString()})</span>
                 </div>
                 <div className="mt-1.5">

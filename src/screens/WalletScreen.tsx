@@ -26,29 +26,29 @@ export const WalletScreen: React.FC = () => {
       </div>
 
       {/* Balance header */}
-      <div className="px-4 pb-4 pt-2" style={{ background: "hsl(var(--primary-dark))" }}>
-        <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 11, letterSpacing: "0.04em" }}>
+      <div className="px-4 pb-4 pt-2" style={{ background: "linear-gradient(180deg, hsl(var(--primary-dark)), hsl(222 62% 26%))" }}>
+        <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 11, letterSpacing: "0.05em" }}>
           WALLET BALANCE
         </p>
         <div className="flex items-end gap-2">
           <motion.span
             className="font-semibold"
-            style={{ fontSize: 36, color: "white", letterSpacing: "-0.03em" }}
+            style={{ fontSize: 38, color: "white", letterSpacing: "-0.03em", lineHeight: 1 }}
             key={userPoints}
-            initial={{ scale: 1.04 }}
+            initial={{ scale: 1.03 }}
             animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
           >
             {userPoints.toLocaleString()}
           </motion.span>
-          <span className="mb-1.5 font-medium" style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 14 }}>pts</span>
+          <span className="mb-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 14 }}>pts</span>
         </div>
-        <p style={{ color: "hsl(var(--accent))", fontSize: 13, fontWeight: 500 }}>
+        <p style={{ color: "hsl(var(--accent))", fontSize: 13, fontWeight: 500, marginTop: 2 }}>
           ≈ ${walletValue} wallet value
         </p>
 
         {/* Quick stats */}
-        <div className="flex gap-2.5 mt-3.5">
+        <div className="flex gap-2.5 mt-4">
           {[
             { label: "This month", value: "+428 pts" },
             { label: "Redeemed", value: "350 pts" },
@@ -57,24 +57,25 @@ export const WalletScreen: React.FC = () => {
             <div
               key={stat.label}
               className="flex-1 rounded-lg p-2.5 text-center"
-              style={{ background: "hsl(0 0% 100% / 0.06)" }}
+              style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.04)" }}
             >
               <p style={{ color: "white", fontSize: 13, fontWeight: 600 }}>{stat.value}</p>
-              <p style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 10 }}>{stat.label}</p>
+              <p style={{ color: "hsl(0 0% 100% / 0.4)", fontSize: 10 }}>{stat.label}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Action cards */}
-      <div className="px-4 mt-3 flex gap-2.5">
+      <div className="px-4 mt-3.5 flex gap-2.5">
         <motion.button
           className="flex-1 card-base p-3 flex items-center gap-2.5"
-          whileTap={{ scale: 0.98 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ duration: 0.1 }}
           onClick={() => navigate("giveaways")}
         >
-          <div className="flex items-center justify-center rounded-md" style={{ width: 34, height: 34, background: "hsl(var(--accent-light))" }}>
-            <Gift size={16} style={{ color: "hsl(var(--accent-dark))" }} strokeWidth={1.6} />
+          <div className="flex items-center justify-center" style={{ width: 36, height: 36, background: "hsl(var(--accent-light))", borderRadius: "var(--radius-sm)" }}>
+            <Gift size={16} style={{ color: "hsl(var(--accent-dark))" }} strokeWidth={1.5} />
           </div>
           <div className="text-left">
             <p className="font-medium" style={{ fontSize: 13 }}>Giveaways</p>
@@ -83,11 +84,12 @@ export const WalletScreen: React.FC = () => {
         </motion.button>
         <motion.button
           className="flex-1 card-base p-3 flex items-center gap-2.5"
-          whileTap={{ scale: 0.98 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ duration: 0.1 }}
           onClick={() => navigate("my-entries")}
         >
-          <div className="flex items-center justify-center rounded-md" style={{ width: 34, height: 34, background: "hsl(var(--primary-light))" }}>
-            <Award size={16} className="text-primary" strokeWidth={1.6} />
+          <div className="flex items-center justify-center" style={{ width: 36, height: 36, background: "hsl(var(--primary-light))", borderRadius: "var(--radius-sm)" }}>
+            <Award size={16} className="text-primary" strokeWidth={1.5} />
           </div>
           <div className="text-left">
             <p className="font-medium" style={{ fontSize: 13 }}>My Entries</p>
@@ -97,13 +99,14 @@ export const WalletScreen: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex mx-4 mt-3 mb-3 rounded-lg p-1" style={{ background: "hsl(var(--muted))" }}>
+      <div className="flex mx-4 mt-3.5 mb-3 p-1" style={{ background: "hsl(var(--muted))", borderRadius: "var(--radius)" }}>
         {(["points", "entries"] as const).map((t) => (
           <button
             key={t}
-            className="flex-1 rounded-md py-2 font-medium transition-colors"
+            className="flex-1 py-2 font-medium transition-all"
             style={{
               fontSize: 13,
+              borderRadius: "calc(var(--radius) - 4px)",
               background: tab === t ? "hsl(var(--card))" : "transparent",
               color: tab === t ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
               boxShadow: tab === t ? "var(--shadow-card)" : "none",
@@ -125,19 +128,20 @@ export const WalletScreen: React.FC = () => {
                 className="ledger-row"
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.025, duration: 0.2 }}
+                transition={{ delay: i * 0.02, duration: 0.18 }}
               >
                 <div className="flex items-start gap-3">
                   <div
-                    className="flex items-center justify-center rounded-md flex-shrink-0 mt-0.5"
+                    className="flex items-center justify-center flex-shrink-0 mt-0.5"
                     style={{
-                      width: 30, height: 30,
-                      background: tx.type === "credit" ? "hsl(152 45% 38% / 0.06)" : "hsl(var(--secondary-light))",
+                      width: 32, height: 32,
+                      borderRadius: "var(--radius-sm)",
+                      background: tx.type === "credit" ? "hsl(158 42% 34% / 0.06)" : "hsl(var(--secondary-light))",
                     }}
                   >
                     {tx.type === "credit"
-                      ? <TrendingUp size={14} strokeWidth={1.6} style={{ color: "hsl(var(--ledger-credit))" }} />
-                      : <TrendingDown size={14} strokeWidth={1.6} style={{ color: "hsl(var(--ledger-debit))" }} />
+                      ? <TrendingUp size={14} strokeWidth={1.5} style={{ color: "hsl(var(--ledger-credit))" }} />
+                      : <TrendingDown size={14} strokeWidth={1.5} style={{ color: "hsl(var(--ledger-debit))" }} />
                     }
                   </div>
                   <div>
@@ -174,8 +178,8 @@ export const WalletScreen: React.FC = () => {
                   <p className="font-medium" style={{ fontSize: 13 }}>{item.contest}</p>
                   <p className="text-muted-foreground" style={{ fontSize: 11 }}>Ends {item.deadline}</p>
                   <span
-                    className="inline-block rounded-md font-medium mt-0.5 px-2 py-0.5"
-                    style={{ fontSize: 10, background: "hsl(var(--primary-light))", color: "hsl(var(--primary))" }}
+                    className="inline-block font-medium mt-0.5 px-2 py-0.5"
+                    style={{ fontSize: 10, background: "hsl(var(--primary-light))", color: "hsl(var(--primary))", borderRadius: "var(--radius-sm)" }}
                   >
                     {item.status}
                   </span>

@@ -43,23 +43,23 @@ export const ContestsScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
-      <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-        <h1 className="font-semibold mb-0.5" style={{ fontSize: 18, letterSpacing: "-0.01em" }}>Contests</h1>
+      <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
+        <h1 className="font-semibold mb-0.5" style={{ fontSize: 18, letterSpacing: "-0.015em" }}>Contests</h1>
         <p className="text-muted-foreground" style={{ fontSize: 13 }}>Entries earned through purchases only</p>
       </div>
 
       {/* Info banner */}
-      <div className="mx-4 mt-3 p-3 rounded-lg" style={{ background: "hsl(var(--primary-light))", border: "1px solid hsl(var(--primary-muted))" }}>
+      <div className="mx-4 mt-3 p-3" style={{ background: "hsl(var(--primary-light))", border: "1px solid hsl(var(--primary-muted) / 0.7)", borderRadius: "var(--radius)" }}>
         <div className="flex items-center gap-2 mb-1">
-          <Info size={14} className="text-primary" strokeWidth={1.6} />
+          <Info size={14} className="text-primary" strokeWidth={1.5} />
           <p className="font-medium" style={{ fontSize: 13 }}>How contest entries work</p>
         </div>
-        <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 12 }}>
+        <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 12, lineHeight: 1.5 }}>
           Complete eligible purchases to earn entries. Each qualifying order automatically adds entries to open contests.
         </p>
       </div>
@@ -82,16 +82,17 @@ export const ContestsScreen: React.FC = () => {
             onClick={() => navigate("contest-detail")}
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.04, duration: 0.2 }}
+            transition={{ delay: i * 0.04, duration: 0.18 }}
             whileTap={{ scale: 0.99 }}
           >
             <div className="px-4 pt-3 pb-2.5" style={{ background: contest.color, borderBottom: `1px solid ${contest.borderColor}` }}>
               <div className="flex items-start justify-between gap-2">
                 <h3 className="font-medium leading-tight" style={{ fontSize: 14 }}>{contest.title}</h3>
                 <span
-                  className="rounded-md font-medium flex-shrink-0 px-2 py-0.5"
+                  className="font-medium flex-shrink-0 px-2 py-0.5"
                   style={{
                     fontSize: 11,
+                    borderRadius: "var(--radius-sm)",
                     background: contest.status === "active" ? "hsl(var(--primary))"
                       : contest.status === "joined" ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))",
                     color: "white",
@@ -109,11 +110,11 @@ export const ContestsScreen: React.FC = () => {
             <div className="px-4 py-3">
               <div className="flex items-center gap-4 mb-2.5">
                 <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Clock size={13} strokeWidth={1.6} />
+                  <Clock size={13} strokeWidth={1.5} />
                   <span style={{ fontSize: 12 }}>Ends {contest.endsAt}</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Users size={13} strokeWidth={1.6} />
+                  <Users size={13} strokeWidth={1.5} />
                   <span style={{ fontSize: 12 }}>{contest.totalEntries.toLocaleString()} entries</span>
                 </div>
               </div>

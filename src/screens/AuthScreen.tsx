@@ -25,17 +25,18 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
             className="flex items-center gap-1 text-muted-foreground mb-4"
             style={{ fontSize: 13 }}
             onClick={() => setView(view === "otp" ? "signup" : "login")}
-            whileTap={{ scale: 0.96 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.08 }}
           >
-            <ChevronLeft size={16} strokeWidth={1.6} /> Back
+            <ChevronLeft size={16} strokeWidth={1.5} /> Back
           </motion.button>
         )}
         <div className="flex items-center gap-2.5 mb-1">
-          <div className="flex items-center justify-center rounded-xl" style={{ width: 36, height: 36, background: "hsl(var(--primary-dark))" }}>
+          <div className="flex items-center justify-center" style={{ width: 36, height: 36, background: "hsl(var(--primary-dark))", borderRadius: "var(--radius)" }}>
             <svg width="18" height="18" viewBox="0 0 38 38" fill="none">
               <rect x="5" y="14" width="28" height="20" rx="3" fill="white" opacity="0.9" />
               <path d="M12 14v-3a7 7 0 0 1 14 0v3" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
-              <circle cx="19" cy="24" r="3" fill="hsl(221 65% 28%)" />
+              <circle cx="19" cy="24" r="3" fill="hsl(222 68% 22%)" />
             </svg>
           </div>
           <span className="font-semibold text-foreground" style={{ fontSize: 16 }}>RegalShop</span>
@@ -44,9 +45,9 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
 
       <div className="px-5 flex-1 overflow-y-auto safe-bottom">
         {view === "login" && (
-          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
+          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18 }}>
             <div>
-              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.015em" }}>Sign in</h1>
+              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Sign in</h1>
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>Enter your credentials to continue</p>
             </div>
             <div className="flex flex-col gap-3">
@@ -59,7 +60,7 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
                 <div className="relative">
                   <input className="field-input pr-11" type={showPass ? "text" : "password"} placeholder="••••••••" />
                   <button className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" onClick={() => setShowPass(!showPass)}>
-                    {showPass ? <EyeOff size={16} strokeWidth={1.6} /> : <Eye size={16} strokeWidth={1.6} />}
+                    {showPass ? <EyeOff size={16} strokeWidth={1.5} /> : <Eye size={16} strokeWidth={1.5} />}
                   </button>
                 </div>
               </div>
@@ -90,9 +91,9 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
         )}
 
         {view === "signup" && (
-          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.2 }}>
+          <motion.div className="flex flex-col gap-5" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.18 }}>
             <div>
-              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.015em" }}>Create account</h1>
+              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Create account</h1>
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>Fill in your details to get started</p>
             </div>
             <div className="flex flex-col gap-3">
@@ -134,13 +135,13 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
         )}
 
         {view === "otp" && (
-          <motion.div className="flex flex-col gap-6" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.2 }}>
-            <div className="flex items-center gap-3 p-3.5 rounded-lg" style={{ background: "hsl(var(--primary-light))" }}>
-              <Shield size={16} strokeWidth={1.6} className="text-primary flex-shrink-0" />
+          <motion.div className="flex flex-col gap-6" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.18 }}>
+            <div className="flex items-center gap-3 p-3.5" style={{ background: "hsl(var(--primary-light))", borderRadius: "var(--radius)" }}>
+              <Shield size={16} strokeWidth={1.5} className="text-primary flex-shrink-0" />
               <p style={{ fontSize: 13 }}>We sent a 6-digit code to <strong>you@example.com</strong></p>
             </div>
             <div>
-              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.015em" }}>Verify your email</h1>
+              <h1 className="font-semibold mb-1" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Verify your email</h1>
               <p className="text-muted-foreground" style={{ fontSize: 13 }}>Enter the code to confirm your identity</p>
             </div>
             <div className="flex gap-2 justify-between">
@@ -150,14 +151,16 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
                   maxLength={1}
                   value={val}
                   onChange={(e) => handleOtpChange(e.target.value, i)}
-                  className="text-center font-semibold rounded-lg"
+                  className="text-center font-semibold"
                   style={{
                     width: 46, height: 52, fontSize: 20,
-                    background: "hsl(var(--muted))",
+                    borderRadius: "var(--radius)",
+                    background: "hsl(var(--surface-2))",
                     border: `1.5px solid ${val ? "hsl(var(--primary))" : "hsl(var(--border))"}`,
                     color: "hsl(var(--foreground))",
                     outline: "none",
-                    transition: "border-color 0.15s ease",
+                    transition: "border-color 0.2s ease, box-shadow 0.2s ease",
+                    boxShadow: val ? "0 0 0 3px hsl(var(--primary) / 0.08)" : "none",
                   }}
                 />
               ))}

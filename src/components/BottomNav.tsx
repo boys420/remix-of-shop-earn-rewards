@@ -33,14 +33,17 @@ export const BottomNav: React.FC = () => {
             aria-label={item.label}
           >
             <motion.div
-              className="p-1.5 rounded-lg"
-              style={{ background: isActive ? "hsl(var(--primary-light))" : "transparent" }}
-              whileTap={{ scale: 0.92 }}
-              transition={{ duration: 0.1 }}
+              className="p-1.5"
+              style={{
+                background: isActive ? "hsl(var(--primary) / 0.08)" : "transparent",
+                borderRadius: "var(--radius-sm)",
+              }}
+              whileTap={{ scale: 0.88 }}
+              transition={{ duration: 0.08 }}
             >
-              <Icon size={20} strokeWidth={isActive ? 2 : 1.6} />
+              <Icon size={20} strokeWidth={isActive ? 1.8 : 1.5} />
             </motion.div>
-            <span style={{ fontWeight: isActive ? 600 : 400 }}>{item.label}</span>
+            <span style={{ fontWeight: isActive ? 600 : 400, fontSize: 10 }}>{item.label}</span>
           </button>
         );
       })}
