@@ -20,21 +20,21 @@ export const CheckoutScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       <div className="screen-header">
-        <motion.button onClick={() => navigate("cart")} whileTap={{ scale: 0.92 }}>
-          <ChevronLeft size={21} strokeWidth={1.6} />
+        <motion.button onClick={() => navigate("cart")} whileTap={{ scale: 0.9 }} transition={{ duration: 0.1 }}>
+          <ChevronLeft size={21} strokeWidth={1.5} />
         </motion.button>
         <h1>Checkout</h1>
       </div>
 
       <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 110 }}>
         {/* Steps */}
-        <div className="flex items-center px-4 py-3 gap-2 bg-muted" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+        <div className="flex items-center px-4 py-3 gap-2 bg-muted" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
           {["Address", "Payment", "Review"].map((step, i) => (
             <React.Fragment key={step}>
               <div className="flex items-center gap-1.5">
@@ -62,18 +62,18 @@ export const CheckoutScreen: React.FC = () => {
               <motion.button
                 key={addr.id}
                 className="card-base p-3.5 flex items-start gap-3 text-left w-full mb-2"
-                style={{ border: selectedAddr === addr.id ? "1.5px solid hsl(var(--primary))" : "1px solid hsl(var(--border))" }}
+                style={{ border: selectedAddr === addr.id ? "1.5px solid hsl(var(--primary))" : "1px solid hsl(var(--border) / 0.7)" }}
                 onClick={() => setSelectedAddr(addr.id)}
                 whileTap={{ scale: 0.99 }}
               >
-                <div className="flex items-center justify-center rounded-md flex-shrink-0 mt-0.5"
-                  style={{ width: 32, height: 32, background: selectedAddr === addr.id ? "hsl(var(--primary-light))" : "hsl(var(--muted))" }}>
-                  <MapPin size={14} strokeWidth={1.6} className={selectedAddr === addr.id ? "text-primary" : "text-muted-foreground"} />
+                <div className="flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{ width: 34, height: 34, background: selectedAddr === addr.id ? "hsl(var(--primary-light))" : "hsl(var(--muted))", borderRadius: "var(--radius-sm)" }}>
+                  <MapPin size={14} strokeWidth={1.5} className={selectedAddr === addr.id ? "text-primary" : "text-muted-foreground"} />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <span className="font-medium" style={{ fontSize: 13 }}>{addr.label}</span>
-                    {addr.default && <span className="rounded-md px-1.5 py-0.5" style={{ fontSize: 10, background: "hsl(var(--primary-light))", color: "hsl(var(--primary))" }}>Default</span>}
+                    {addr.default && <span className="px-1.5 py-0.5" style={{ fontSize: 10, background: "hsl(var(--primary-light))", color: "hsl(var(--primary))", borderRadius: "var(--radius-sm)" }}>Default</span>}
                   </div>
                   <p className="text-muted-foreground mt-0.5" style={{ fontSize: 12 }}>{addr.line1}</p>
                   <p className="text-muted-foreground" style={{ fontSize: 12 }}>{addr.line2}</p>
@@ -87,7 +87,7 @@ export const CheckoutScreen: React.FC = () => {
           </div>
 
           {/* Delivery */}
-          <div className="p-3 rounded-lg flex items-center justify-between" style={{ background: "hsl(var(--primary-light))" }}>
+          <div className="p-3 flex items-center justify-between" style={{ background: "hsl(var(--primary-light))", borderRadius: "var(--radius)" }}>
             <div>
               <p className="font-medium" style={{ fontSize: 13 }}>Standard Delivery</p>
               <p className="text-muted-foreground" style={{ fontSize: 12 }}>Estimated: Feb 22–24, 2026</p>
@@ -105,12 +105,12 @@ export const CheckoutScreen: React.FC = () => {
               <motion.button
                 key={pm.id}
                 className="card-base p-3.5 flex items-center gap-3 w-full mb-2"
-                style={{ border: selectedPM === pm.id ? "1.5px solid hsl(var(--primary))" : "1px solid hsl(var(--border))" }}
+                style={{ border: selectedPM === pm.id ? "1.5px solid hsl(var(--primary))" : "1px solid hsl(var(--border) / 0.7)" }}
                 onClick={() => setSelectedPM(pm.id)}
                 whileTap={{ scale: 0.99 }}
               >
-                <div className="flex items-center justify-center rounded-md flex-shrink-0"
-                  style={{ width: 32, height: 32, background: "hsl(var(--muted))", fontSize: 16 }}>{pm.icon}</div>
+                <div className="flex items-center justify-center flex-shrink-0"
+                  style={{ width: 34, height: 34, background: "hsl(var(--muted))", fontSize: 16, borderRadius: "var(--radius-sm)" }}>{pm.icon}</div>
                 <div className="flex-1 text-left">
                   <p className="font-medium" style={{ fontSize: 13 }}>{pm.type}</p>
                   {pm.last4 && <p className="text-muted-foreground" style={{ fontSize: 12 }}>•••• {pm.last4} · Expires {pm.expires}</p>}
@@ -132,14 +132,14 @@ export const CheckoutScreen: React.FC = () => {
                 <span style={{ fontSize: 13, color: v === "Free" ? "hsl(var(--ledger-credit))" : undefined, fontWeight: v === "Free" ? 600 : 400 }}>{v}</span>
               </div>
             ))}
-            <div className="pt-2.5 flex justify-between" style={{ borderTop: "1px solid hsl(var(--border))" }}>
+            <div className="pt-2.5 flex justify-between" style={{ borderTop: "1px solid hsl(var(--border) / 0.5)" }}>
               <span className="font-semibold" style={{ fontSize: 14 }}>Total</span>
               <span className="font-semibold" style={{ fontSize: 14 }}>$429.84</span>
             </div>
           </div>
 
           {/* Rewards */}
-          <div className="p-3.5 rounded-lg" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}>
+          <div className="p-3.5" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)", borderRadius: "var(--radius)" }}>
             <div className="flex items-center gap-2 mb-2">
               <Sparkles size={14} style={{ color: "hsl(var(--accent-dark))" }} />
               <p className="font-medium" style={{ fontSize: 13 }}>Rewards on this order</p>

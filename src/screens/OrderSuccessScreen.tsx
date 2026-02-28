@@ -1,7 +1,7 @@
 import React from "react";
 import { useApp } from "@/context/AppContext";
 import { motion } from "framer-motion";
-import { CheckCircle, Package, Wallet, Sparkles, ChevronLeft } from "lucide-react";
+import { CheckCircle, Package, Wallet, Sparkles } from "lucide-react";
 
 export const OrderSuccessScreen: React.FC = () => {
   const { navigate, userPoints } = useApp();
@@ -19,18 +19,18 @@ export const OrderSuccessScreen: React.FC = () => {
           className="flex flex-col items-center pt-10 pb-6"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
             className="flex items-center justify-center rounded-full"
-            style={{ width: 64, height: 64, background: "hsl(152 45% 38% / 0.08)" }}
+            style={{ width: 64, height: 64, background: "hsl(158 42% 34% / 0.08)" }}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ type: "spring", damping: 14, stiffness: 200, delay: 0.12 }}
+            transition={{ type: "spring", damping: 16, stiffness: 220, delay: 0.1 }}
           >
-            <CheckCircle size={32} strokeWidth={1.6} style={{ color: "hsl(var(--ledger-credit))" }} />
+            <CheckCircle size={32} strokeWidth={1.5} style={{ color: "hsl(var(--ledger-credit))" }} />
           </motion.div>
-          <h1 className="font-semibold mt-4" style={{ fontSize: 20, letterSpacing: "-0.01em" }}>Order Confirmed</h1>
+          <h1 className="font-semibold mt-4" style={{ fontSize: 20, letterSpacing: "-0.015em" }}>Order Confirmed</h1>
           <p className="text-muted-foreground mt-1 text-center" style={{ fontSize: 14 }}>
             Your order has been placed successfully.
           </p>
@@ -56,8 +56,8 @@ export const OrderSuccessScreen: React.FC = () => {
         {/* Delivery */}
         <div className="card-base p-4 mb-3">
           <div className="flex items-center gap-3 mb-3">
-            <div className="flex items-center justify-center rounded-md" style={{ width: 34, height: 34, background: "hsl(var(--primary-light))" }}>
-              <Package size={17} className="text-primary" strokeWidth={1.6} />
+            <div className="flex items-center justify-center" style={{ width: 36, height: 36, background: "hsl(var(--primary-light))", borderRadius: "var(--radius-sm)" }}>
+              <Package size={17} className="text-primary" strokeWidth={1.5} />
             </div>
             <div>
               <p className="font-medium" style={{ fontSize: 14 }}>Estimated delivery</p>
@@ -90,11 +90,11 @@ export const OrderSuccessScreen: React.FC = () => {
 
         {/* Rewards credited */}
         <motion.div
-          className="p-4 rounded-lg mb-3"
-          style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}
+          className="p-4 mb-3"
+          style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)", borderRadius: "var(--radius)" }}
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.25 }}
+          transition={{ delay: 0.2, duration: 0.22 }}
         >
           <div className="flex items-center gap-2 mb-2.5">
             <Sparkles size={14} style={{ color: "hsl(var(--accent-dark))" }} />
@@ -129,8 +129,8 @@ export const OrderSuccessScreen: React.FC = () => {
             { name: "Sony WH-1000XM5", price: "$279", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=60&h=60&fit=crop" },
             { name: "Kindle Paperwhite (16 GB)", price: "$119", image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=60&h=60&fit=crop" },
           ].map((item) => (
-            <div key={item.name} className="flex items-center gap-3 py-2" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
-              <img src={item.image} alt={item.name} style={{ width: 40, height: 40, objectFit: "cover", borderRadius: 6 }} />
+            <div key={item.name} className="flex items-center gap-3 py-2" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
+              <img src={item.image} alt={item.name} style={{ width: 40, height: 40, objectFit: "cover", borderRadius: "var(--radius-sm)" }} />
               <p className="font-medium flex-1" style={{ fontSize: 13 }}>{item.name}</p>
               <span className="font-medium" style={{ fontSize: 13 }}>{item.price}</span>
             </div>

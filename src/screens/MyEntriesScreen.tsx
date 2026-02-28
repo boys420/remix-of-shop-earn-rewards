@@ -12,7 +12,7 @@ const ENTRIES = [
 
 const STATUS_CONFIG = {
   active: { label: "Active", color: "hsl(var(--primary))", bg: "hsl(var(--primary-light))", icon: Clock },
-  won: { label: "Won", color: "hsl(var(--ledger-credit))", bg: "hsl(152 45% 38% / 0.06)", icon: CheckCircle },
+  won: { label: "Won", color: "hsl(var(--ledger-credit))", bg: "hsl(158 42% 34% / 0.06)", icon: CheckCircle },
   "not-won": { label: "Not Selected", color: "hsl(var(--muted-foreground))", bg: "hsl(var(--muted))", icon: XCircle },
 };
 
@@ -21,14 +21,14 @@ export const MyEntriesScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
+      <div className="status-bar bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
         <span style={{ fontSize: 12, fontWeight: 600 }}>9:41</span>
         <div className="flex items-center gap-1 text-xs">●●●</div>
       </div>
 
       <div className="screen-header">
-        <motion.button onClick={() => navigate("wallet")} whileTap={{ scale: 0.92 }}>
-          <ChevronLeft size={21} strokeWidth={1.6} />
+        <motion.button onClick={() => navigate("wallet")} whileTap={{ scale: 0.9 }} transition={{ duration: 0.1 }}>
+          <ChevronLeft size={21} strokeWidth={1.5} />
         </motion.button>
         <h1>My Entries</h1>
       </div>
@@ -44,7 +44,7 @@ export const MyEntriesScreen: React.FC = () => {
               className="card-base p-4 mb-2.5"
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.04, duration: 0.2 }}
+              transition={{ delay: i * 0.04, duration: 0.18 }}
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
@@ -52,8 +52,8 @@ export const MyEntriesScreen: React.FC = () => {
                   <h3 className="font-medium" style={{ fontSize: 14 }}>{entry.prize}</h3>
                 </div>
                 <span
-                  className="flex items-center gap-1 rounded-md px-2 py-0.5 font-medium"
-                  style={{ fontSize: 11, color: config.color, background: config.bg }}
+                  className="flex items-center gap-1 px-2 py-0.5 font-medium"
+                  style={{ fontSize: 11, color: config.color, background: config.bg, borderRadius: "var(--radius-sm)" }}
                 >
                   <Icon size={11} />
                   {config.label}
@@ -67,11 +67,11 @@ export const MyEntriesScreen: React.FC = () => {
 
               {entry.status === "won" && (
                 <motion.div
-                  className="mt-3 p-2.5 rounded-md flex items-center gap-2"
-                  style={{ background: "hsl(152 45% 38% / 0.06)", border: "1px solid hsl(152 45% 38% / 0.12)" }}
+                  className="mt-3 p-2.5 flex items-center gap-2"
+                  style={{ background: "hsl(158 42% 34% / 0.06)", border: "1px solid hsl(158 42% 34% / 0.1)", borderRadius: "var(--radius-sm)" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.25 }}
+                  transition={{ delay: 0.2 }}
                 >
                   <CheckCircle size={14} style={{ color: "hsl(var(--ledger-credit))" }} />
                   <span className="font-medium" style={{ fontSize: 12, color: "hsl(var(--ledger-credit))" }}>

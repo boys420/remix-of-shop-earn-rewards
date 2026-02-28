@@ -20,20 +20,20 @@ export const ContestDetailScreen: React.FC = () => {
       </div>
 
       <div className="flex items-center gap-3 px-4 py-3" style={{ background: "hsl(var(--primary-dark))" }}>
-        <motion.button onClick={() => navigate("contests")} whileTap={{ scale: 0.92 }}>
-          <ChevronLeft size={21} strokeWidth={1.6} style={{ color: "white" }} />
+        <motion.button onClick={() => navigate("contests")} whileTap={{ scale: 0.9 }} transition={{ duration: 0.1 }}>
+          <ChevronLeft size={21} strokeWidth={1.5} style={{ color: "white" }} />
         </motion.button>
         <h1 className="font-semibold flex-1" style={{ fontSize: 17, color: "white" }}>Contest Details</h1>
-        <span className="rounded-md font-medium px-2 py-0.5" style={{ background: "hsl(0 0% 100% / 0.12)", color: "white", fontSize: 11 }}>
+        <span className="font-medium px-2 py-0.5" style={{ background: "hsl(0 0% 100% / 0.1)", color: "white", fontSize: 11, borderRadius: "var(--radius-sm)" }}>
           Active
         </span>
       </div>
 
       <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 88 }}>
         {/* Prize banner */}
-        <div className="px-4 py-5" style={{ background: "hsl(var(--primary-dark))" }}>
-          <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 11, letterSpacing: "0.04em" }}>PRIZE</p>
-          <h2 className="font-semibold leading-tight" style={{ fontSize: 20, color: "white", letterSpacing: "-0.01em" }}>
+        <div className="px-4 py-5" style={{ background: "linear-gradient(180deg, hsl(var(--primary-dark)), hsl(222 62% 26%))" }}>
+          <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 11, letterSpacing: "0.05em" }}>PRIZE</p>
+          <h2 className="font-semibold leading-tight" style={{ fontSize: 20, color: "white", letterSpacing: "-0.015em" }}>
             iPhone 15 Pro 256GB
           </h2>
           <p className="font-semibold mt-1" style={{ color: "hsl(var(--accent))", fontSize: 18 }}>$1,199 value</p>
@@ -75,12 +75,12 @@ export const ContestDetailScreen: React.FC = () => {
           <div className="grid grid-cols-2 gap-2.5">
             <div className="card-base p-3.5">
               <div className="flex items-center gap-2 mb-1.5">
-                <Users size={14} strokeWidth={1.6} className="text-muted-foreground" />
+                <Users size={14} strokeWidth={1.5} className="text-muted-foreground" />
                 <p className="text-muted-foreground" style={{ fontSize: 12 }}>Total entries</p>
               </div>
               <p className="font-semibold" style={{ fontSize: 20, letterSpacing: "-0.02em" }}>4,821</p>
             </div>
-            <div className="card-base p-3.5" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted))" }}>
+            <div className="card-base p-3.5" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)" }}>
               <div className="flex items-center gap-2 mb-1.5">
                 <Award size={14} style={{ color: "hsl(var(--accent-dark))" }} />
                 <p className="text-muted-foreground" style={{ fontSize: 12 }}>Your entries</p>
@@ -92,13 +92,13 @@ export const ContestDetailScreen: React.FC = () => {
           {/* Entry requirement */}
           <div className="card-base p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Info size={14} strokeWidth={1.6} className="text-primary" />
+              <Info size={14} strokeWidth={1.5} className="text-primary" />
               <h3 className="font-semibold" style={{ fontSize: 14 }}>Entry requirement</h3>
             </div>
-            <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 13 }}>
+            <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 13, lineHeight: 1.6 }}>
               Complete any purchase of <strong>$50 or more</strong> during the contest period to earn entries.
             </p>
-            <div className="mt-3 rounded-md p-3" style={{ background: "hsl(var(--muted))" }}>
+            <div className="mt-3 p-3" style={{ background: "hsl(var(--muted))", borderRadius: "var(--radius-sm)" }}>
               {[["$50–$99", "1 entry"], ["$100–$199", "2 entries"], ["$200+", "3 entries"]].map(([range, entry]) => (
                 <div key={range} className="flex justify-between mb-1 last:mb-0">
                   <span className="text-muted-foreground" style={{ fontSize: 12 }}>{range}</span>
@@ -111,7 +111,7 @@ export const ContestDetailScreen: React.FC = () => {
           {/* Entry history */}
           <div className="card-base p-4">
             <div className="flex items-center gap-2 mb-3">
-              <ShoppingBag size={14} strokeWidth={1.6} className="text-primary" />
+              <ShoppingBag size={14} strokeWidth={1.5} className="text-primary" />
               <h3 className="font-semibold" style={{ fontSize: 14 }}>Your entry history</h3>
             </div>
             {ENTRY_HISTORY.map((entry) => (
