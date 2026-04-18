@@ -33,8 +33,8 @@ export const GiveawaysScreen: React.FC = () => {
 
       {/* Header */}
       <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
-        <h1 className="font-semibold" style={{ fontSize: 18, letterSpacing: "-0.015em" }}>Giveaways</h1>
-        <p className="text-muted-foreground" style={{ fontSize: 13 }}>Redeem points for a chance to win prizes</p>
+        <h1 className="font-semibold" style={{ fontSize: 18, letterSpacing: "-0.015em" }}>Destiny Deals</h1>
+        <p className="text-muted-foreground" style={{ fontSize: 13 }}>Redeem points to enter exclusive prize draws</p>
       </div>
 
       {/* Balance bar */}

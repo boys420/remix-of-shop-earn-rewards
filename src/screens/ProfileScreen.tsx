@@ -10,7 +10,7 @@ import type { Screen } from "@/types/app";
 
 const MENU_ITEMS: { label: string; icon: LucideIcon; badge: string; screen: Screen }[] = [
   { label: "My Orders", icon: Package, badge: "3 active", screen: "home" },
-  { label: "Rewards & Giveaways", icon: Gift, badge: "", screen: "giveaways" },
+  { label: "Destiny Deals", icon: Gift, badge: "", screen: "giveaways" },
   { label: "My Entries", icon: Award, badge: "4 entries", screen: "my-entries" },
   { label: "Saved Addresses", icon: MapPin, badge: "", screen: "home" },
   { label: "Notifications", icon: Bell, badge: "3 new", screen: "home" },
@@ -35,13 +35,13 @@ export const ProfileScreen: React.FC = () => {
           <div className="flex items-center gap-3.5">
             <div
               className="flex items-center justify-center rounded-full font-semibold flex-shrink-0"
-              style={{ width: 56, height: 56, background: "linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary-mid)))", color: "white", fontSize: 20, boxShadow: "0 2px 8px 0 hsl(222 62% 30% / 0.2)" }}
+              style={{ width: 56, height: 56, background: "linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary-mid)))", color: "white", fontSize: 20, boxShadow: "0 2px 8px 0 hsl(290 55% 30% / 0.22)" }}
             >
               AM
             </div>
             <div className="flex-1 min-w-0">
-              <h2 className="font-semibold" style={{ fontSize: 17 }}>Alex Morgan</h2>
-              <p className="text-muted-foreground" style={{ fontSize: 13 }}>alex.morgan@example.com</p>
+              <h2 className="font-semibold" style={{ fontSize: 17 }}>Aarav Mehta</h2>
+              <p className="text-muted-foreground" style={{ fontSize: 13 }}>aarav.mehta@example.in</p>
               <p className="text-muted-foreground" style={{ fontSize: 11 }}>Member since Feb 2025</p>
             </div>
             <button className="text-primary font-medium" style={{ fontSize: 13 }}>Edit</button>
@@ -102,9 +102,9 @@ export const ProfileScreen: React.FC = () => {
           </div>
           <div className="card-base px-4">
             {[
-              { id: "#RS-88412", date: "Feb 18, 2026", status: "Processing", total: "$429.84", items: 2 },
-              { id: "#RS-88410", date: "Feb 16, 2026", status: "Delivered", total: "$284.00", items: 3 },
-              { id: "#RS-88387", date: "Feb 12, 2026", status: "Delivered", total: "$119.00", items: 1 },
+              { id: "#GP-88412", date: "Feb 18, 2026", status: "Processing", total: "₹40,118", items: 2 },
+              { id: "#GP-88410", date: "Feb 16, 2026", status: "Delivered", total: "₹23,999", items: 3 },
+              { id: "#GP-88387", date: "Feb 12, 2026", status: "Delivered", total: "₹9,999", items: 1 },
             ].map((order) => (
               <div key={order.id} className="ledger-row">
                 <div>

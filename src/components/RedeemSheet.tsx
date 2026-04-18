@@ -96,7 +96,7 @@ export const RedeemSheet: React.FC<RedeemSheetProps> = ({ giveaway, onClose }) =
               onClick={handleConfirm}
               disabled={!canAfford}
             >
-              {canAfford ? `Enter Giveaway — ${giveaway.pointsRequired} pts` : "Not Enough Points"}
+              {canAfford ? `Enter Destiny Deal — ${giveaway.pointsRequired} pts` : "Not Enough Points"}
             </button>
 
             <p className="text-center text-muted-foreground mt-3" style={{ fontSize: 11 }}>
@@ -121,7 +121,7 @@ export const RedeemSheet: React.FC<RedeemSheetProps> = ({ giveaway, onClose }) =
             </motion.div>
             <h3 className="font-semibold mb-1" style={{ fontSize: 17 }}>Entry Confirmed</h3>
             <p className="text-muted-foreground text-center mb-5" style={{ fontSize: 13 }}>
-              You've entered the {giveaway.name} giveaway. Good luck!
+              You've entered the {giveaway.name} Destiny Deal. Good luck!
             </p>
 
             <div className="w-full p-3.5 mb-5" style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)", borderRadius: "var(--radius)" }}>

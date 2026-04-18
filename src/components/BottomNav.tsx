@@ -8,7 +8,7 @@ import type { LucideIcon } from "lucide-react";
 const NAV_ITEMS: { label: string; icon: LucideIcon; screen: Screen }[] = [
   { label: "Home", icon: Home, screen: "home" },
   { label: "Shop", icon: Store, screen: "product-list" },
-  { label: "Rewards", icon: Gift, screen: "giveaways" },
+  { label: "Destiny", icon: Gift, screen: "giveaways" },
   { label: "Wallet", icon: Wallet, screen: "wallet" },
   { label: "Profile", icon: UserCircle, screen: "profile" },
 ];

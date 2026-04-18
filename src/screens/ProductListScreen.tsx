@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { Search, SlidersHorizontal, Star, ChevronDown, Sparkles } from "lucide-react";
 
 const PRODUCTS = [
-  { id: "p1", name: "Sony WH-1000XM5", brand: "Sony", price: 279, originalPrice: 349, discount: 20, rating: 4.8, reviews: 2341, points: 139, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", inStock: true },
-  { id: "p2", name: "Nike Air Zoom Pegasus 40", brand: "Nike", price: 118, originalPrice: 140, discount: 16, rating: 4.6, reviews: 984, points: 59, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop", inStock: true },
-  { id: "p3", name: "Kindle Paperwhite (16 GB)", brand: "Amazon", price: 119, originalPrice: 149, discount: 20, rating: 4.7, reviews: 5812, points: 60, image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200&h=200&fit=crop", inStock: true },
-  { id: "p4", name: "Levi's 511 Slim Jeans", brand: "Levi's", price: 59, originalPrice: 79, discount: 25, rating: 4.5, reviews: 1220, points: 30, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=200&h=200&fit=crop", inStock: true },
-  { id: "p5", name: "Apple AirPods Pro (2nd gen)", brand: "Apple", price: 199, originalPrice: 249, discount: 20, rating: 4.9, reviews: 8420, points: 100, image: "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=200&h=200&fit=crop", inStock: false },
-  { id: "p6", name: "Instant Pot Duo 7-in-1", brand: "Instant Pot", price: 79, originalPrice: 99, discount: 20, rating: 4.7, reviews: 3891, points: 40, image: "https://images.unsplash.com/photo-1585515320310-259814833e62?w=200&h=200&fit=crop", inStock: true },
+  { id: "p1", name: "Sony WH-1000XM5", brand: "Sony", price: 23999, originalPrice: 29999, discount: 20, rating: 4.8, reviews: 2341, points: 139, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", inStock: true },
+  { id: "p2", name: "Nike Air Zoom Pegasus 40", brand: "Nike", price: 9799, originalPrice: 11999, discount: 16, rating: 4.6, reviews: 984, points: 59, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop", inStock: true },
+  { id: "p3", name: "Kindle Paperwhite (16 GB)", brand: "Amazon", price: 9999, originalPrice: 12499, discount: 20, rating: 4.7, reviews: 5812, points: 60, image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200&h=200&fit=crop", inStock: true },
+  { id: "p4", name: "Levi's 511 Slim Jeans", brand: "Levi's", price: 4999, originalPrice: 6499, discount: 25, rating: 4.5, reviews: 1220, points: 30, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=200&h=200&fit=crop", inStock: true },
+  { id: "p5", name: "Apple AirPods Pro (2nd gen)", brand: "Apple", price: 16999, originalPrice: 20900, discount: 20, rating: 4.9, reviews: 8420, points: 100, image: "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=200&h=200&fit=crop", inStock: false },
+  { id: "p6", name: "Instant Pot Duo 7-in-1", brand: "Instant Pot", price: 6499, originalPrice: 8299, discount: 20, rating: 4.7, reviews: 3891, points: 40, image: "https://images.unsplash.com/photo-1585515320310-259814833e62?w=200&h=200&fit=crop", inStock: true },
 ];
 
 const FILTERS = ["All", "Electronics", "Clothing", "Home", "Books", "Sports"];
@@ -107,8 +107,8 @@ export const ProductListScreen: React.FC = () => {
                   <span className="text-muted-foreground" style={{ fontSize: 10 }}>({p.reviews.toLocaleString()})</span>
                 </div>
                 <div className="mt-1.5">
-                  <span className="font-semibold" style={{ fontSize: 14 }}>${p.price}</span>
-                  <span className="text-muted-foreground line-through ml-1" style={{ fontSize: 11 }}>${p.originalPrice}</span>
+                  <span className="font-semibold" style={{ fontSize: 14 }}>₹{p.price.toLocaleString("en-IN")}</span>
+                  <span className="text-muted-foreground line-through ml-1" style={{ fontSize: 11 }}>₹{p.originalPrice.toLocaleString("en-IN")}</span>
                 </div>
                 <div className="reward-badge mt-1.5"><Sparkles size={9} /> +{p.points} pts</div>
               </div>

@@ -130,13 +130,13 @@ export const ProductDetailScreen: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3 mt-3">
-            <span className="font-semibold" style={{ fontSize: 26, letterSpacing: "-0.02em" }}>$279</span>
-            <span className="text-muted-foreground line-through" style={{ fontSize: 16 }}>$349</span>
+            <span className="font-semibold" style={{ fontSize: 26, letterSpacing: "-0.02em" }}>₹23,999</span>
+            <span className="text-muted-foreground line-through" style={{ fontSize: 16 }}>₹29,999</span>
             <span
               className="font-medium px-2 py-0.5"
               style={{ background: "hsl(var(--secondary-light))", color: "hsl(var(--secondary))", fontSize: 12, borderRadius: "var(--radius-sm)" }}
             >
-              Save $70
+              Save ₹6,000
             </span>
           </div>
 
@@ -235,7 +235,7 @@ export const ProductDetailScreen: React.FC = () => {
             onClick={handleAddToCart}
             whileTap={{ scale: 0.98 }}
           >
-            Add to Cart — $279
+            Add to Cart — ₹23,999
           </motion.button>
         </div>
       </div>

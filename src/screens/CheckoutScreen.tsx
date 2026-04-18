@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { ChevronLeft, MapPin, CreditCard, Check, Sparkles } from "lucide-react";
 
 const ADDRESSES = [
-  { id: "a1", label: "Home", line1: "142 West 83rd Street", line2: "New York, NY 10024", default: true },
-  { id: "a2", label: "Office", line1: "1 World Trade Center", line2: "New York, NY 10007", default: false },
+  { id: "a1", label: "Home", line1: "B-402, Lodha Park, Lower Parel", line2: "Mumbai, MH 400013", default: true },
+  { id: "a2", label: "Office", line1: "BKC One, Bandra Kurla Complex", line2: "Mumbai, MH 400051", default: false },
 ];
 
 const PAYMENT_METHODS = [
-  { id: "pm1", type: "Visa", last4: "4242", expires: "08/27", icon: "💳" },
-  { id: "pm2", type: "Apple Pay", last4: "", expires: "", icon: "⬛" },
+  { id: "pm1", type: "HDFC Visa", last4: "4242", expires: "08/27", icon: "💳" },
+  { id: "pm2", type: "UPI / GPay", last4: "", expires: "", icon: "📱" },
 ];
 
 export const CheckoutScreen: React.FC = () => {
@@ -126,7 +126,7 @@ export const CheckoutScreen: React.FC = () => {
           {/* Order summary */}
           <div className="card-base p-4">
             <h2 className="font-semibold mb-3" style={{ fontSize: 14 }}>Order Summary</h2>
-            {[["2 items", "$398.00"], ["Shipping", "Free"], ["Tax (8%)", "$31.84"]].map(([l, v]) => (
+            {[["2 items", "₹33,998"], ["Shipping", "Free"], ["GST (18%)", "₹6,120"]].map(([l, v]) => (
               <div key={l} className="flex justify-between mb-2">
                 <span className="text-muted-foreground" style={{ fontSize: 13 }}>{l}</span>
                 <span style={{ fontSize: 13, color: v === "Free" ? "hsl(var(--ledger-credit))" : undefined, fontWeight: v === "Free" ? 600 : 400 }}>{v}</span>
@@ -134,7 +134,7 @@ export const CheckoutScreen: React.FC = () => {
             ))}
             <div className="pt-2.5 flex justify-between" style={{ borderTop: "1px solid hsl(var(--border) / 0.5)" }}>
               <span className="font-semibold" style={{ fontSize: 14 }}>Total</span>
-              <span className="font-semibold" style={{ fontSize: 14 }}>$429.84</span>
+              <span className="font-semibold" style={{ fontSize: 14 }}>₹40,118</span>
             </div>
           </div>
 
@@ -144,7 +144,7 @@ export const CheckoutScreen: React.FC = () => {
               <Sparkles size={14} style={{ color: "hsl(var(--accent-dark))" }} />
               <p className="font-medium" style={{ fontSize: 13 }}>Rewards on this order</p>
             </div>
-            {[["Points earned", "+199 pts"], ["Contest entries", "+1 entry"], ["Wallet value", "≈ $1.99"]].map(([l, v]) => (
+            {[["Points earned", "+199 pts"], ["Destiny Deal entries", "+1 entry"], ["Wallet value", "≈ ₹995"]].map(([l, v]) => (
               <div key={l} className="flex justify-between mb-1.5">
                 <span className="text-muted-foreground" style={{ fontSize: 12 }}>{l}</span>
                 <span className="font-medium" style={{ fontSize: 12, color: "hsl(var(--accent-dark))" }}>{v}</span>
@@ -157,7 +157,7 @@ export const CheckoutScreen: React.FC = () => {
       {/* CTA */}
       <div className="sticky-cta">
         <motion.button className="btn-primary" onClick={placeOrder} whileTap={{ scale: 0.98 }}>
-          Place Order — $429.84
+          Place Order — ₹40,118
         </motion.button>
         <p className="text-center text-muted-foreground mt-2" style={{ fontSize: 11 }}>
           By placing this order you agree to our Terms of Sale

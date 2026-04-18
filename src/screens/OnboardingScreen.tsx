@@ -19,7 +19,7 @@ const SLIDES = [
     iconColor: "hsl(var(--accent-dark))",
   },
   {
-    title: "Giveaways earned,\nnot purchased",
+    title: "Destiny Deals,\nearned not bought",
     body: "Redeem your points for exclusive prizes — from earbuds to international trips. No gambling, no luck. Just rewards.",
     icon: Award,
     iconBg: "hsl(var(--primary-light))",
