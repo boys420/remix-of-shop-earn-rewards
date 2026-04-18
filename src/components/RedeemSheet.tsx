@@ -108,16 +108,37 @@ export const RedeemSheet: React.FC<RedeemSheetProps> = ({ giveaway, onClose }) =
             className="px-5 pb-6 flex flex-col items-center"
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.06, duration: 0.18 }}
+            transition={{ delay: 0.06, duration: 0.22 }}
           >
             <motion.div
-              className="flex items-center justify-center rounded-full mt-4 mb-4"
-              style={{ width: 56, height: 56, background: "hsl(var(--ledger-credit) / 0.08)" }}
+              className="relative flex items-center justify-center rounded-full mt-4 mb-4"
+              style={{ width: 64, height: 64, background: "hsl(var(--ledger-credit) / 0.1)" }}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ type: "spring", damping: 16, stiffness: 220, delay: 0.08 }}
+              transition={{ type: "spring", damping: 14, stiffness: 220, delay: 0.08 }}
             >
-              <Check size={24} style={{ color: "hsl(var(--ledger-credit))" }} />
+              {/* Rippling success ring */}
+              <motion.span
+                className="absolute inset-0 rounded-full"
+                style={{ border: "2px solid hsl(var(--ledger-credit) / 0.4)" }}
+                initial={{ scale: 0.6, opacity: 0.8 }}
+                animate={{ scale: 1.7, opacity: 0 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.18 }}
+              />
+              <motion.span
+                className="absolute inset-0 rounded-full"
+                style={{ border: "2px solid hsl(var(--ledger-credit) / 0.3)" }}
+                initial={{ scale: 0.6, opacity: 0.6 }}
+                animate={{ scale: 2.1, opacity: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.32 }}
+              />
+              <motion.div
+                initial={{ scale: 0, rotate: -30 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: "spring", damping: 12, stiffness: 260, delay: 0.18 }}
+              >
+                <Check size={28} strokeWidth={2.4} style={{ color: "hsl(var(--ledger-credit))" }} />
+              </motion.div>
             </motion.div>
             <h3 className="font-semibold mb-1" style={{ fontSize: 17 }}>Entry Confirmed</h3>
             <p className="text-muted-foreground text-center mb-5" style={{ fontSize: 13 }}>

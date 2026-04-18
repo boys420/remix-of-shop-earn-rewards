@@ -52,13 +52,33 @@ export const ProductDetailScreen: React.FC = () => {
             </motion.button>
             <div className="flex gap-2">
               <motion.button
-                className="flex items-center justify-center bg-card"
+                className="flex items-center justify-center bg-card relative"
                 style={{ width: 38, height: 38, boxShadow: "var(--shadow-card)", borderRadius: "50%" }}
                 onClick={() => setWishlisted(!wishlisted)}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.85 }}
                 transition={{ duration: 0.1 }}
               >
-                <Heart size={17} strokeWidth={1.5} fill={wishlisted ? "hsl(var(--secondary))" : "none"} stroke={wishlisted ? "hsl(var(--secondary))" : "currentColor"} />
+                <motion.div
+                  animate={wishlisted ? { scale: [1, 1.4, 1] } : { scale: 1 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Heart
+                    size={17}
+                    strokeWidth={1.5}
+                    fill={wishlisted ? "hsl(var(--secondary))" : "none"}
+                    stroke={wishlisted ? "hsl(var(--secondary))" : "currentColor"}
+                  />
+                </motion.div>
+                {wishlisted && (
+                  <motion.span
+                    className="absolute inset-0 rounded-full"
+                    style={{ border: "2px solid hsl(var(--secondary) / 0.5)" }}
+                    initial={{ scale: 0.8, opacity: 0.8 }}
+                    animate={{ scale: 1.6, opacity: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    key={String(wishlisted)}
+                  />
+                )}
               </motion.button>
               <motion.button
                 className="flex items-center justify-center bg-card"

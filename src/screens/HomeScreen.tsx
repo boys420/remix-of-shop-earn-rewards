@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useApp } from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import {
   MapPin, Search, Bell, ShoppingBag, Star, ChevronRight,
   Award, TrendingUp, Sparkles
@@ -136,43 +137,60 @@ export const HomeScreen: React.FC = () => {
       <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 80 }}>
         {/* Hero carousel */}
         <div className="px-4 mt-3.5">
-          <div className="relative overflow-hidden" style={{ height: 156, borderRadius: "var(--radius-lg)" }}>
+          <div className="relative overflow-hidden shine-overlay" style={{ height: 158, borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-elevated)" }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={heroIdx}
-                className="absolute inset-0 flex flex-col justify-center px-5"
-                style={{ background: HERO_SLIDES[heroIdx].bg }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="absolute inset-0 flex flex-col justify-center px-5 overflow-hidden"
+                style={{ background: HERO_SLIDES[heroIdx].bg, backgroundSize: "180% 180%" }}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ opacity: { duration: 0.45, ease: "easeInOut" }, scale: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }}
               >
-                <h2 className="font-semibold leading-tight" style={{ fontSize: 18, color: "white", whiteSpace: "pre-line", letterSpacing: "-0.02em" }}>
+                <div className="orb" style={{ width: 130, height: 130, top: "-30%", right: "-10%", background: "hsl(0 0% 100%)", opacity: 0.12 }} />
+
+                <motion.h2
+                  className="font-semibold leading-tight relative"
+                  style={{ fontSize: 19, color: "white", whiteSpace: "pre-line", letterSpacing: "-0.025em" }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.08 }}
+                >
                   {HERO_SLIDES[heroIdx].headline}
-                </h2>
-                <p style={{ fontSize: 12, color: "hsl(0 0% 100% / 0.6)", marginTop: 6, lineHeight: 1.5 }}>
+                </motion.h2>
+                <motion.p
+                  style={{ fontSize: 12, color: "hsl(0 0% 100% / 0.7)", marginTop: 6, lineHeight: 1.5 }}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.16 }}
+                >
                   {HERO_SLIDES[heroIdx].subtext}
-                </p>
-                <button
-                  className="mt-3.5 self-start px-4 py-2 font-medium"
-                  style={{ background: "hsl(0 0% 100% / 0.14)", color: "white", fontSize: 12, borderRadius: "var(--radius-sm)", border: "1px solid hsl(0 0% 100% / 0.08)", backdropFilter: "blur(8px)" }}
+                </motion.p>
+                <motion.button
+                  className="mt-3.5 self-start px-4 py-2 font-medium relative"
+                  style={{ background: "hsl(0 0% 100% / 0.18)", color: "white", fontSize: 12, borderRadius: "var(--radius-sm)", border: "1px solid hsl(0 0% 100% / 0.18)", backdropFilter: "blur(10px)" }}
                   onClick={() => navigate(heroIdx === 1 ? "giveaways" : "product-list")}
+                  whileTap={{ scale: 0.96 }}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.24 }}
                 >
                   {HERO_SLIDES[heroIdx].cta}
-                </button>
+                </motion.button>
               </motion.div>
             </AnimatePresence>
-            <div className="absolute bottom-3.5 right-4 flex gap-1.5">
+            <div className="absolute bottom-3.5 right-4 flex gap-1.5 z-10">
               {HERO_SLIDES.map((_, i) => (
-                <div
+                <motion.div
                   key={i}
                   className="rounded-full"
-                  style={{
-                    width: i === heroIdx ? 16 : 5,
-                    height: 5,
-                    background: i === heroIdx ? "white" : "hsl(0 0% 100% / 0.25)",
-                    transition: "all 0.3s ease",
+                  animate={{
+                    width: i === heroIdx ? 18 : 5,
+                    backgroundColor: i === heroIdx ? "rgb(255,255,255)" : "rgba(255,255,255,0.3)",
                   }}
+                  style={{ height: 5 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 />
               ))}
             </div>
@@ -182,17 +200,20 @@ export const HomeScreen: React.FC = () => {
         {/* Reward summary card */}
         <div className="px-4 mt-3.5">
           <motion.div
-            className="p-3.5 flex items-center justify-between"
+            className="p-3.5 flex items-center justify-between card-lift relative overflow-hidden"
             style={{ background: "hsl(var(--ivory))", border: "1px solid hsl(var(--accent-muted) / 0.7)", borderRadius: "var(--radius)" }}
             whileTap={{ scale: 0.99 }}
             onClick={() => navigate("wallet")}
           >
-            <div>
+            <div className="orb" style={{ width: 90, height: 90, top: "-30%", right: "-10%", background: "hsl(var(--accent))", opacity: 0.18 }} />
+            <div className="relative">
               <p className="text-muted-foreground font-medium mb-0.5" style={{ fontSize: 10, letterSpacing: "0.05em" }}>YOUR REWARDS</p>
               <div className="flex items-baseline gap-1.5">
-                <span className="font-semibold" style={{ fontSize: 26, color: "hsl(var(--accent-dark))", letterSpacing: "-0.03em" }}>
-                  {userPoints.toLocaleString()}
-                </span>
+                <AnimatedNumber
+                  value={userPoints}
+                  className="font-semibold"
+                  style={{ fontSize: 27, color: "hsl(var(--accent-dark))", letterSpacing: "-0.03em" }}
+                />
                 <span className="text-muted-foreground font-medium" style={{ fontSize: 13 }}>pts</span>
               </div>
               <div className="flex items-center gap-1 mt-1">
@@ -200,12 +221,14 @@ export const HomeScreen: React.FC = () => {
                 <p style={{ fontSize: 11, color: "hsl(var(--ledger-credit))", fontWeight: 500 }}>+340 this week</p>
               </div>
             </div>
-            <div className="text-right">
+            <div className="text-right relative">
               <p className="text-muted-foreground font-medium mb-0.5" style={{ fontSize: 10, letterSpacing: "0.05em" }}>ENTRIES</p>
               <div className="flex items-baseline gap-1 justify-end">
-                <span className="font-semibold" style={{ fontSize: 26, color: "hsl(var(--primary))", letterSpacing: "-0.03em" }}>
-                  {userEntries}
-                </span>
+                <AnimatedNumber
+                  value={userEntries}
+                  className="font-semibold"
+                  style={{ fontSize: 27, color: "hsl(var(--primary))", letterSpacing: "-0.03em" }}
+                />
               </div>
               <span className="text-primary font-medium flex items-center gap-0.5 ml-auto justify-end" style={{ fontSize: 12 }}>
                 View wallet <ChevronRight size={12} />
@@ -243,20 +266,31 @@ export const HomeScreen: React.FC = () => {
             <button className="section-link" onClick={() => navigate("product-list")}>All</button>
           </div>
           <div className="flex gap-3 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
-            {CATEGORIES.map((cat) => (
+            {CATEGORIES.map((cat, i) => (
               <motion.button
                 key={cat.label}
                 className="flex flex-col items-center gap-1.5 flex-shrink-0"
                 onClick={() => navigate("product-list")}
-                whileTap={{ scale: 0.93 }}
-                transition={{ duration: 0.1 }}
+                whileTap={{ scale: 0.92 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.04 * i, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div
+                <motion.div
                   className="flex items-center justify-center"
-                  style={{ width: 52, height: 52, background: "hsl(var(--card))", border: "1px solid hsl(var(--border) / 0.7)", fontSize: 21, borderRadius: "var(--radius)" }}
+                  style={{
+                    width: 54, height: 54,
+                    background: "hsl(var(--card))",
+                    border: "1px solid hsl(var(--border) / 0.7)",
+                    fontSize: 22,
+                    borderRadius: "var(--radius)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                  whileHover={{ y: -2, boxShadow: "var(--shadow-card-hover)" }}
+                  transition={{ type: "spring", stiffness: 320, damping: 22 }}
                 >
                   {cat.icon}
-                </div>
+                </motion.div>
                 <span className="text-muted-foreground font-medium" style={{ fontSize: 10 }}>{cat.label}</span>
               </motion.button>
             ))}
