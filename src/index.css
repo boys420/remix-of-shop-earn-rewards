@@ -18,13 +18,13 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 22% 10%;
 
-    /* Primary: Royal Blue tonal system */
-    --primary: 222 62% 40%;
-    --primary-dark: 222 68% 22%;
-    --primary-mid: 222 55% 48%;
+    /* Primary: Plum tonal system */
+    --primary: 290 45% 38%;
+    --primary-dark: 290 55% 22%;
+    --primary-mid: 290 40% 48%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 222 45% 96%;
-    --primary-muted: 222 28% 90%;
+    --primary-light: 290 38% 96%;
+    --primary-muted: 290 22% 90%;
 
     /* Secondary: Deep Crimson — alerts/errors ONLY */
     --secondary: 0 52% 36%;
@@ -47,7 +47,7 @@
 
     --border: 225 10% 89%;
     --input: 225 10% 89%;
-    --ring: 222 62% 40%;
+    --ring: 290 45% 38%;
 
     --radius: 0.75rem;
     --radius-sm: 0.5rem;
@@ -87,9 +87,9 @@
     --card-foreground: 225 10% 94%;
     --popover: 222 22% 10%;
     --popover-foreground: 225 10% 94%;
-    --primary: 222 58% 52%;
-    --primary-dark: 222 58% 38%;
-    --primary-mid: 222 48% 56%;
+    --primary: 290 50% 56%;
+    --primary-dark: 290 50% 38%;
+    --primary-mid: 290 42% 58%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 48% 46%;
     --secondary-foreground: 0 0% 100%;
@@ -100,7 +100,7 @@
     --accent-dark: 38 40% 60%;
     --border: 222 16% 17%;
     --input: 222 16% 17%;
-    --ring: 222 58% 52%;
+    --ring: 290 50% 56%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -229,14 +229,14 @@
     color: hsl(var(--primary-foreground));
     font-size: 14px;
     letter-spacing: -0.01em;
-    box-shadow: 0 1px 2px 0 hsl(222 62% 20% / 0.2), 0 0 0 1px hsl(222 62% 35% / 0.1) inset;
+    box-shadow: 0 1px 2px 0 hsl(290 55% 18% / 0.22), 0 0 0 1px hsl(290 50% 32% / 0.12) inset;
     transition: opacity 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
   }
 
   .btn-primary:active {
     opacity: 0.92;
     transform: scale(0.99);
-    box-shadow: 0 0 0 1px hsl(222 62% 35% / 0.1) inset;
+    box-shadow: 0 0 0 1px hsl(290 50% 32% / 0.12) inset;
   }
 
   .btn-primary:disabled {
@@ -326,7 +326,7 @@
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
     border: 1px solid transparent;
-    box-shadow: 0 1px 3px 0 hsl(222 62% 30% / 0.15);
+    box-shadow: 0 1px 3px 0 hsl(290 50% 30% / 0.15);
   }
 
   .contest-card {
