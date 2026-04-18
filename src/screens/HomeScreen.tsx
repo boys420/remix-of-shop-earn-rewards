@@ -266,20 +266,31 @@ export const HomeScreen: React.FC = () => {
             <button className="section-link" onClick={() => navigate("product-list")}>All</button>
           </div>
           <div className="flex gap-3 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
-            {CATEGORIES.map((cat) => (
+            {CATEGORIES.map((cat, i) => (
               <motion.button
                 key={cat.label}
                 className="flex flex-col items-center gap-1.5 flex-shrink-0"
                 onClick={() => navigate("product-list")}
-                whileTap={{ scale: 0.93 }}
-                transition={{ duration: 0.1 }}
+                whileTap={{ scale: 0.92 }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.04 * i, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div
+                <motion.div
                   className="flex items-center justify-center"
-                  style={{ width: 52, height: 52, background: "hsl(var(--card))", border: "1px solid hsl(var(--border) / 0.7)", fontSize: 21, borderRadius: "var(--radius)" }}
+                  style={{
+                    width: 54, height: 54,
+                    background: "hsl(var(--card))",
+                    border: "1px solid hsl(var(--border) / 0.7)",
+                    fontSize: 22,
+                    borderRadius: "var(--radius)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                  whileHover={{ y: -2, boxShadow: "var(--shadow-card-hover)" }}
+                  transition={{ type: "spring", stiffness: 320, damping: 22 }}
                 >
                   {cat.icon}
-                </div>
+                </motion.div>
                 <span className="text-muted-foreground font-medium" style={{ fontSize: 10 }}>{cat.label}</span>
               </motion.button>
             ))}
