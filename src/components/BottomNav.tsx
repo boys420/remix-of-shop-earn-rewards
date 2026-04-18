@@ -33,17 +33,38 @@ export const BottomNav: React.FC = () => {
             aria-label={item.label}
           >
             <motion.div
-              className="p-1.5"
-              style={{
-                background: isActive ? "hsl(var(--primary) / 0.08)" : "transparent",
-                borderRadius: "var(--radius-sm)",
-              }}
-              whileTap={{ scale: 0.88 }}
-              transition={{ duration: 0.08 }}
+              className="relative p-1.5"
+              style={{ borderRadius: "var(--radius-sm)" }}
+              whileTap={{ scale: 0.86 }}
+              transition={{ duration: 0.1 }}
             >
-              <Icon size={20} strokeWidth={isActive ? 1.8 : 1.5} />
+              {isActive && (
+                <motion.div
+                  layoutId="nav-active-pill"
+                  className="absolute inset-0"
+                  style={{
+                    background: "hsl(var(--primary) / 0.1)",
+                    borderRadius: "var(--radius-sm)",
+                    border: "1px solid hsl(var(--primary) / 0.12)",
+                  }}
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              <motion.div
+                className="relative"
+                animate={{ y: isActive ? -1 : 0, scale: isActive ? 1.06 : 1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
+              >
+                <Icon size={20} strokeWidth={isActive ? 2 : 1.5} />
+              </motion.div>
             </motion.div>
-            <span style={{ fontWeight: isActive ? 600 : 400, fontSize: 10 }}>{item.label}</span>
+            <motion.span
+              animate={{ fontWeight: isActive ? 600 : 400, opacity: isActive ? 1 : 0.7 }}
+              transition={{ duration: 0.2 }}
+              style={{ fontSize: 10 }}
+            >
+              {item.label}
+            </motion.span>
           </button>
         );
       })}
