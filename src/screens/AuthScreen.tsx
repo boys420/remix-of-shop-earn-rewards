@@ -34,12 +34,12 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
         <div className="flex items-center gap-2.5 mb-1">
           <div className="flex items-center justify-center" style={{ width: 36, height: 36, background: "hsl(var(--primary-dark))", borderRadius: "var(--radius)" }}>
             <svg width="18" height="18" viewBox="0 0 38 38" fill="none">
-              <rect x="5" y="14" width="28" height="20" rx="3" fill="white" opacity="0.9" />
-              <path d="M12 14v-3a7 7 0 0 1 14 0v3" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
-              <circle cx="19" cy="24" r="3" fill="hsl(222 68% 22%)" />
+              <path d="M19 4 L31 11 L31 25 L19 32 L7 25 L7 11 Z" fill="white" opacity="0.95" />
+              <path d="M19 13 L25 16.5 L25 21.5 L19 25 L13 21.5 L13 16.5 Z" fill="hsl(290 55% 22%)" />
+              <circle cx="19" cy="19" r="2" fill="white" />
             </svg>
           </div>
-          <span className="font-semibold text-foreground" style={{ fontSize: 16 }}>RegalShop</span>
+          <span className="font-semibold text-foreground" style={{ fontSize: 16 }}>Gleepick</span>
         </div>
       </div>
 
@@ -114,8 +114,8 @@ export const AuthScreen: React.FC<{ initialView?: AuthView }> = ({ initialView =
               <div>
                 <label className="block font-medium mb-1.5" style={{ fontSize: 13 }}>Phone number</label>
                 <div className="flex gap-2">
-                  <div className="field-input flex items-center gap-1.5 font-medium" style={{ width: 72, flexShrink: 0, fontSize: 14 }}>🇺🇸 +1</div>
-                  <input className="field-input flex-1" type="tel" placeholder="(555) 000-0000" />
+                  <div className="field-input flex items-center gap-1.5 font-medium" style={{ width: 78, flexShrink: 0, fontSize: 14 }}>🇮🇳 +91</div>
+                  <input className="field-input flex-1" type="tel" placeholder="98765 43210" />
                 </div>
               </div>
               <div>
