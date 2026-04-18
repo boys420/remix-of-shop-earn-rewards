@@ -40,10 +40,10 @@ export const OrderSuccessScreen: React.FC = () => {
         <div className="card-base p-4 mb-3">
           <div className="flex flex-col gap-2.5">
             {[
-              ["Order number", "#RS-2024-88412"],
+              ["Order number", "#GP-2026-88412"],
               ["Date placed", "Feb 18, 2026 · 9:41 AM"],
-              ["Payment", "Visa •••• 4242"],
-              ["Total charged", "$429.84"],
+              ["Payment", "HDFC Visa •••• 4242"],
+              ["Total charged", "₹40,118"],
             ].map(([label, val]) => (
               <div key={label} className="flex justify-between">
                 <span className="text-muted-foreground" style={{ fontSize: 13 }}>{label}</span>
@@ -103,7 +103,7 @@ export const OrderSuccessScreen: React.FC = () => {
           <div className="flex flex-col gap-2">
             {[
               ["Points added", "+340 pts", true],
-              ["Contest entries", "+2 entries", true],
+              ["Destiny Deal entries", "+2 entries", true],
               ["New wallet balance", `${userPoints.toLocaleString()} pts`, false],
             ].map(([label, val, isGold]) => (
               <div key={label as string} className="flex justify-between">
@@ -126,8 +126,8 @@ export const OrderSuccessScreen: React.FC = () => {
         <div className="card-base p-3.5 mb-6">
           <p className="font-semibold mb-2.5" style={{ fontSize: 13 }}>Items ordered</p>
           {[
-            { name: "Sony WH-1000XM5", price: "$279", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=60&h=60&fit=crop" },
-            { name: "Kindle Paperwhite (16 GB)", price: "$119", image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=60&h=60&fit=crop" },
+            { name: "Sony WH-1000XM5", price: "₹23,999", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=60&h=60&fit=crop" },
+            { name: "Kindle Paperwhite (16 GB)", price: "₹9,999", image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=60&h=60&fit=crop" },
           ].map((item) => (
             <div key={item.name} className="flex items-center gap-3 py-2" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
               <img src={item.image} alt={item.name} style={{ width: 40, height: 40, objectFit: "cover", borderRadius: "var(--radius-sm)" }} />
