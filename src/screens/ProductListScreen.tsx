@@ -80,11 +80,11 @@ export const ProductListScreen: React.FC = () => {
           {PRODUCTS.map((p, idx) => (
             <motion.button
               key={p.id}
-              className="product-card text-left"
+              className="product-card card-lift text-left"
               onClick={() => navigate("product-detail")}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.03, duration: 0.18 }}
+              initial={{ opacity: 0, y: 10, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: idx * 0.04, duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
               whileTap={{ scale: 0.97 }}
             >
               <div className="relative">

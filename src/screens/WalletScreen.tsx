@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { motion } from "framer-motion";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { TrendingUp, TrendingDown, Award, ChevronRight, Gift } from "lucide-react";
 
 const TRANSACTIONS = [
@@ -20,49 +21,52 @@ export const WalletScreen: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background">
-      <div className="status-bar" style={{ background: "hsl(var(--primary-dark))", color: "white" }}>
+      <div className="status-bar mesh-plum" style={{ color: "white", position: "relative", zIndex: 2 }}>
         <span style={{ fontSize: 12, fontWeight: 600, color: "white" }}>9:41</span>
         <div className="flex items-center gap-1 text-xs" style={{ color: "white" }}>●●●</div>
       </div>
 
-      {/* Balance header */}
-      <div className="px-4 pb-4 pt-2" style={{ background: "linear-gradient(180deg, hsl(var(--primary-dark)), hsl(290 50% 30%))" }}>
-        <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 11, letterSpacing: "0.05em" }}>
-          WALLET BALANCE
-        </p>
-        <div className="flex items-end gap-2">
-          <motion.span
-            className="font-semibold"
-            style={{ fontSize: 38, color: "white", letterSpacing: "-0.03em", lineHeight: 1 }}
-            key={userPoints}
-            initial={{ scale: 1.03 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 22 }}
-          >
-            {userPoints.toLocaleString()}
-          </motion.span>
-          <span className="mb-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 14 }}>pts</span>
-        </div>
-        <p style={{ color: "hsl(var(--accent))", fontSize: 13, fontWeight: 500, marginTop: 2 }}>
-          ≈ ₹{walletValue} wallet value
-        </p>
+      {/* Balance header — mesh + ambient orbs */}
+      <div className="relative px-4 pb-4 pt-2 mesh-plum overflow-hidden">
+        <div className="orb" style={{ width: 200, height: 200, top: "-40%", right: "-20%", background: "hsl(38 70% 55%)", opacity: 0.3 }} />
+        <div className="orb" style={{ width: 160, height: 160, bottom: "-50%", left: "-15%", background: "hsl(290 80% 55%)", opacity: 0.45, animationDelay: "1.2s" }} />
 
-        {/* Quick stats */}
-        <div className="flex gap-2.5 mt-4">
-          {[
-            { label: "This month", value: "+428 pts" },
-            { label: "Redeemed", value: "350 pts" },
-            { label: "Entries", value: "3 total" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="flex-1 rounded-lg p-2.5 text-center"
-              style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.04)" }}
-            >
-              <p style={{ color: "white", fontSize: 13, fontWeight: 600 }}>{stat.value}</p>
-              <p style={{ color: "hsl(0 0% 100% / 0.4)", fontSize: 10 }}>{stat.label}</p>
-            </div>
-          ))}
+        <div className="relative">
+          <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.55)", fontSize: 11, letterSpacing: "0.08em" }}>
+            WALLET BALANCE
+          </p>
+          <div className="flex items-end gap-2">
+            <AnimatedNumber
+              value={userPoints}
+              className="font-semibold"
+              style={{ fontSize: 40, color: "white", letterSpacing: "-0.035em", lineHeight: 1 }}
+            />
+            <span className="mb-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.55)", fontSize: 14 }}>pts</span>
+          </div>
+          <p style={{ color: "hsl(var(--accent))", fontSize: 13, fontWeight: 500, marginTop: 4 }}>
+            ≈ ₹{walletValue} wallet value
+          </p>
+
+          {/* Quick stats */}
+          <div className="flex gap-2.5 mt-4">
+            {[
+              { label: "This month", value: "+428 pts" },
+              { label: "Redeemed", value: "350 pts" },
+              { label: "Entries", value: "3 total" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="flex-1 rounded-lg p-2.5 text-center"
+                style={{ background: "hsl(0 0% 100% / 0.1)", border: "1px solid hsl(0 0% 100% / 0.1)", backdropFilter: "blur(12px)" }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: 0.1 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <p style={{ color: "white", fontSize: 13, fontWeight: 600 }}>{stat.value}</p>
+                <p style={{ color: "hsl(0 0% 100% / 0.5)", fontSize: 10 }}>{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 

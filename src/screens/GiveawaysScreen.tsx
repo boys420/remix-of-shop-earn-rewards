@@ -61,14 +61,14 @@ export const GiveawaysScreen: React.FC = () => {
             return (
               <motion.button
                 key={g.id}
-                className="card-base overflow-hidden text-left"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.03, duration: 0.18 }}
+                className="card-base card-lift overflow-hidden text-left"
+                initial={{ opacity: 0, y: 12, scale: 0.97 }}
+                animate={{ opacity: isLocked ? 0.6 : 1, y: 0, scale: 1 }}
+                transition={{ delay: i * 0.04, duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                whileTap={{ scale: 0.97 }}
                 onClick={() => {
                   if (!isLocked && !isEntered) setSelectedGiveaway(g);
                 }}
-                style={{ opacity: isLocked ? 0.55 : 1 }}
               >
                 <div className="relative">
                   <img
