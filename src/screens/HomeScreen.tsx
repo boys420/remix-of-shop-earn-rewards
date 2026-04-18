@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useApp } from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import {
   MapPin, Search, Bell, ShoppingBag, Star, ChevronRight,
   Award, TrendingUp, Sparkles
