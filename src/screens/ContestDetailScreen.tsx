@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { ChevronLeft, Clock, Users, ShoppingBag, Info, Award } from "lucide-react";
 
 const ENTRY_HISTORY = [
-  { orderId: "#RS-2024-88410", date: "Feb 16, 2026", amount: "$284", entries: 3 },
-  { orderId: "#RS-2024-88387", date: "Feb 12, 2026", amount: "$119", entries: 2 },
-  { orderId: "#RS-2024-88301", date: "Feb 08, 2026", amount: "$79", entries: 2 },
+  { orderId: "#GP-2026-88410", date: "Feb 16, 2026", amount: "₹23,999", entries: 3 },
+  { orderId: "#GP-2026-88387", date: "Feb 12, 2026", amount: "₹9,999", entries: 2 },
+  { orderId: "#GP-2026-88301", date: "Feb 08, 2026", amount: "₹6,499", entries: 2 },
 ];
 
 export const ContestDetailScreen: React.FC = () => {
@@ -23,7 +23,7 @@ export const ContestDetailScreen: React.FC = () => {
         <motion.button onClick={() => navigate("contests")} whileTap={{ scale: 0.9 }} transition={{ duration: 0.1 }}>
           <ChevronLeft size={21} strokeWidth={1.5} style={{ color: "white" }} />
         </motion.button>
-        <h1 className="font-semibold flex-1" style={{ fontSize: 17, color: "white" }}>Contest Details</h1>
+        <h1 className="font-semibold flex-1" style={{ fontSize: 17, color: "white" }}>Destiny Deal Details</h1>
         <span className="font-medium px-2 py-0.5" style={{ background: "hsl(0 0% 100% / 0.1)", color: "white", fontSize: 11, borderRadius: "var(--radius-sm)" }}>
           Active
         </span>
@@ -31,12 +31,12 @@ export const ContestDetailScreen: React.FC = () => {
 
       <div className="flex-1 overflow-y-auto" style={{ paddingBottom: 88 }}>
         {/* Prize banner */}
-        <div className="px-4 py-5" style={{ background: "linear-gradient(180deg, hsl(var(--primary-dark)), hsl(222 62% 26%))" }}>
+        <div className="px-4 py-5" style={{ background: "linear-gradient(180deg, hsl(var(--primary-dark)), hsl(290 50% 30%))" }}>
           <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 11, letterSpacing: "0.05em" }}>PRIZE</p>
           <h2 className="font-semibold leading-tight" style={{ fontSize: 20, color: "white", letterSpacing: "-0.015em" }}>
             iPhone 15 Pro 256GB
           </h2>
-          <p className="font-semibold mt-1" style={{ color: "hsl(var(--accent))", fontSize: 18 }}>$1,199 value</p>
+          <p className="font-semibold mt-1" style={{ color: "hsl(var(--accent))", fontSize: 18 }}>₹99,999 value</p>
         </div>
 
         <div className="px-4 pt-4 flex flex-col gap-3.5">
@@ -96,10 +96,10 @@ export const ContestDetailScreen: React.FC = () => {
               <h3 className="font-semibold" style={{ fontSize: 14 }}>Entry requirement</h3>
             </div>
             <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 13, lineHeight: 1.6 }}>
-              Complete any purchase of <strong>$50 or more</strong> during the contest period to earn entries.
+              Complete any purchase of <strong>₹4,000 or more</strong> during the contest period to earn entries.
             </p>
             <div className="mt-3 p-3" style={{ background: "hsl(var(--muted))", borderRadius: "var(--radius-sm)" }}>
-              {[["$50–$99", "1 entry"], ["$100–$199", "2 entries"], ["$200+", "3 entries"]].map(([range, entry]) => (
+              {[["₹4,000–₹7,999", "1 entry"], ["₹8,000–₹15,999", "2 entries"], ["₹16,000+", "3 entries"]].map(([range, entry]) => (
                 <div key={range} className="flex justify-between mb-1 last:mb-0">
                   <span className="text-muted-foreground" style={{ fontSize: 12 }}>{range}</span>
                   <span className="font-medium" style={{ fontSize: 12 }}>{entry}</span>
@@ -132,7 +132,7 @@ export const ContestDetailScreen: React.FC = () => {
           <div className="card-base p-4 mb-4">
             <h3 className="font-semibold mb-2.5" style={{ fontSize: 14 }}>Official Rules</h3>
             {[
-              "Open to legal US residents 18+",
+              "Open to legal residents of India aged 18+",
               "Purchases must be completed before the entry deadline",
               "Returns void associated contest entries",
               "One winner selected randomly from all valid entries",

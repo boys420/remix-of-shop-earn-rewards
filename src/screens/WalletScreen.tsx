@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 import { TrendingUp, TrendingDown, Award, ChevronRight, Gift } from "lucide-react";
 
 const TRANSACTIONS = [
-  { id: "t1", type: "credit" as const, label: "Order #RS-2024-88412", sub: "Sony WH-1000XM5 + Kindle", points: 199, date: "Feb 18, 2026", entries: 2 },
-  { id: "t2", type: "credit" as const, label: "Order #RS-2024-88410", sub: "Nike Pegasus 40", points: 59, date: "Feb 16, 2026", entries: 1 },
-  { id: "t3", type: "debit" as const, label: "Giveaway Entry — Smartwatch", sub: "Entered giveaway draw", points: -50, date: "Feb 15, 2026", entries: 0 },
-  { id: "t4", type: "credit" as const, label: "Order #RS-2024-88387", sub: "Instant Pot Duo", points: 40, date: "Feb 12, 2026", entries: 1 },
-  { id: "t5", type: "credit" as const, label: "Order #RS-2024-88301", sub: "Levi's 511 Jeans", points: 30, date: "Feb 08, 2026", entries: 1 },
-  { id: "t6", type: "debit" as const, label: "Giveaway Entry — Earbuds", sub: "Entered giveaway draw", points: -60, date: "Feb 06, 2026", entries: 0 },
-  { id: "t7", type: "credit" as const, label: "Order #RS-2024-88201", sub: "AirPods Pro 2nd gen", points: 100, date: "Feb 03, 2026", entries: 2 },
+  { id: "t1", type: "credit" as const, label: "Order #GP-2026-88412", sub: "Sony WH-1000XM5 + Kindle", points: 199, date: "Feb 18, 2026", entries: 2 },
+  { id: "t2", type: "credit" as const, label: "Order #GP-2026-88410", sub: "Nike Pegasus 40", points: 59, date: "Feb 16, 2026", entries: 1 },
+  { id: "t3", type: "debit" as const, label: "Destiny Deal Entry — Smartwatch", sub: "Entered prize draw", points: -50, date: "Feb 15, 2026", entries: 0 },
+  { id: "t4", type: "credit" as const, label: "Order #GP-2026-88387", sub: "Instant Pot Duo", points: 40, date: "Feb 12, 2026", entries: 1 },
+  { id: "t5", type: "credit" as const, label: "Order #GP-2026-88301", sub: "Levi's 511 Jeans", points: 30, date: "Feb 08, 2026", entries: 1 },
+  { id: "t6", type: "debit" as const, label: "Destiny Deal Entry — Earbuds", sub: "Entered prize draw", points: -60, date: "Feb 06, 2026", entries: 0 },
+  { id: "t7", type: "credit" as const, label: "Order #GP-2026-88201", sub: "AirPods Pro 2nd gen", points: 100, date: "Feb 03, 2026", entries: 2 },
 ];
 
 export const WalletScreen: React.FC = () => {
   const { userPoints, navigate } = useApp();
   const [tab, setTab] = useState<"points" | "entries">("points");
-  const walletValue = (userPoints * 0.01).toFixed(2);
+  const walletValue = (userPoints * 5).toLocaleString("en-IN");
 
   return (
     <div className="flex flex-col h-full bg-background">
@@ -26,7 +26,7 @@ export const WalletScreen: React.FC = () => {
       </div>
 
       {/* Balance header */}
-      <div className="px-4 pb-4 pt-2" style={{ background: "linear-gradient(180deg, hsl(var(--primary-dark)), hsl(222 62% 26%))" }}>
+      <div className="px-4 pb-4 pt-2" style={{ background: "linear-gradient(180deg, hsl(var(--primary-dark)), hsl(290 50% 30%))" }}>
         <p className="font-medium mb-1" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 11, letterSpacing: "0.05em" }}>
           WALLET BALANCE
         </p>
@@ -44,7 +44,7 @@ export const WalletScreen: React.FC = () => {
           <span className="mb-1 font-medium" style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 14 }}>pts</span>
         </div>
         <p style={{ color: "hsl(var(--accent))", fontSize: 13, fontWeight: 500, marginTop: 2 }}>
-          ≈ ${walletValue} wallet value
+          ≈ ₹{walletValue} wallet value
         </p>
 
         {/* Quick stats */}
@@ -78,7 +78,7 @@ export const WalletScreen: React.FC = () => {
             <Gift size={16} style={{ color: "hsl(var(--accent-dark))" }} strokeWidth={1.5} />
           </div>
           <div className="text-left">
-            <p className="font-medium" style={{ fontSize: 13 }}>Giveaways</p>
+            <p className="font-medium" style={{ fontSize: 13 }}>Destiny Deals</p>
             <p className="text-muted-foreground" style={{ fontSize: 11 }}>10 prizes</p>
           </div>
         </motion.button>
@@ -113,7 +113,7 @@ export const WalletScreen: React.FC = () => {
             }}
             onClick={() => setTab(t)}
           >
-            {t === "points" ? "Points Ledger" : "Contest Entries"}
+            {t === "points" ? "Points Ledger" : "Destiny Entries"}
           </button>
         ))}
       </div>
@@ -169,7 +169,7 @@ export const WalletScreen: React.FC = () => {
         {tab === "entries" && (
           <div className="card-base px-4">
             {[
-              { contest: "iPhone 15 Pro Giveaway", entries: 7, status: "Active", deadline: "Feb 24, 2026" },
+              { contest: "iPhone 15 Pro Destiny Deal", entries: 7, status: "Active", deadline: "Feb 24, 2026" },
               { contest: "Sony PS5 Bundle", entries: 3, status: "Active", deadline: "Mar 01, 2026" },
               { contest: "Dyson V15 Vacuum", entries: 2, status: "Active", deadline: "Feb 28, 2026" },
             ].map((item) => (
@@ -196,7 +196,7 @@ export const WalletScreen: React.FC = () => {
                 style={{ fontSize: 13 }}
                 onClick={() => navigate("contests")}
               >
-                View all contests <ChevronRight size={14} />
+                View all Destiny Deals <ChevronRight size={14} />
               </button>
             </div>
           </div>

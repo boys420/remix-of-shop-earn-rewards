@@ -4,10 +4,10 @@ import { ChevronLeft, Award, Clock, CheckCircle, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ENTRIES = [
-  { id: "e1", prize: "Wireless Earbuds", points: 60, date: "Feb 20, 2026", status: "active" as const, value: "$179" },
-  { id: "e2", prize: "Smartwatch", points: 50, date: "Feb 18, 2026", status: "active" as const, value: "$249" },
-  { id: "e3", prize: "Bluetooth Speaker", points: 75, date: "Feb 10, 2026", status: "won" as const, value: "$299" },
-  { id: "e4", prize: "Smartphone", points: 200, date: "Jan 28, 2026", status: "not-won" as const, value: "$899" },
+  { id: "e1", prize: "Wireless Earbuds", points: 60, date: "Feb 20, 2026", status: "active" as const, value: "₹14,999" },
+  { id: "e2", prize: "Smartwatch", points: 50, date: "Feb 18, 2026", status: "active" as const, value: "₹20,499" },
+  { id: "e3", prize: "Bluetooth Speaker", points: 75, date: "Feb 10, 2026", status: "won" as const, value: "₹24,999" },
+  { id: "e4", prize: "Smartphone", points: 200, date: "Jan 28, 2026", status: "not-won" as const, value: "₹74,999" },
 ];
 
 const STATUS_CONFIG = {

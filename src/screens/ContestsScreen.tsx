@@ -5,29 +5,29 @@ import { Clock, Users, ChevronRight, Info } from "lucide-react";
 
 const CONTESTS = [
   {
-    id: "c1", title: "iPhone 15 Pro — Monthly Giveaway", prize: "iPhone 15 Pro 256GB",
-    prizeValue: 1199, status: "active" as const, endsAt: "Feb 24, 2026",
+    id: "c1", title: "iPhone 15 Pro — Monthly Destiny Deal", prize: "iPhone 15 Pro 256GB",
+    prizeValue: 99999, status: "active" as const, endsAt: "Feb 24, 2026",
     minEntries: 1, userEntries: 7, totalEntries: 4821,
-    requirement: "Complete any order of $50+",
+    requirement: "Complete any order of ₹4,000+",
     color: "hsl(var(--primary-light))", borderColor: "hsl(var(--primary-muted))",
   },
   {
     id: "c2", title: "Sony PlayStation 5 Bundle", prize: "PS5 + 2 Controllers + Game",
-    prizeValue: 699, status: "joined" as const, endsAt: "Mar 01, 2026",
+    prizeValue: 58999, status: "joined" as const, endsAt: "Mar 01, 2026",
     minEntries: 2, userEntries: 3, totalEntries: 2341,
-    requirement: "Complete orders totalling $100+",
+    requirement: "Complete orders totalling ₹8,000+",
     color: "hsl(var(--ivory))", borderColor: "hsl(var(--accent-muted))",
   },
   {
     id: "c3", title: "MacBook Air M3 — Spring Edition", prize: "MacBook Air M3 13-inch",
-    prizeValue: 1299, status: "upcoming" as const, endsAt: "Mar 15, 2026",
+    prizeValue: 107999, status: "upcoming" as const, endsAt: "Mar 15, 2026",
     minEntries: 3, userEntries: 0, totalEntries: 0,
     requirement: "Complete any Electronics purchase",
     color: "hsl(var(--muted))", borderColor: "hsl(var(--border))",
   },
   {
     id: "c4", title: "Dyson V15 Vacuum Cleaner", prize: "Dyson V15 Detect",
-    prizeValue: 749, status: "active" as const, endsAt: "Feb 28, 2026",
+    prizeValue: 62999, status: "active" as const, endsAt: "Feb 28, 2026",
     minEntries: 1, userEntries: 2, totalEntries: 1894,
     requirement: "Complete any Home & Kitchen order",
     color: "hsl(var(--primary-light))", borderColor: "hsl(var(--primary-muted))",
@@ -49,7 +49,7 @@ export const ContestsScreen: React.FC = () => {
       </div>
 
       <div className="px-4 pt-2 pb-3 bg-card" style={{ borderBottom: "1px solid hsl(var(--border) / 0.5)" }}>
-        <h1 className="font-semibold mb-0.5" style={{ fontSize: 18, letterSpacing: "-0.015em" }}>Contests</h1>
+        <h1 className="font-semibold mb-0.5" style={{ fontSize: 18, letterSpacing: "-0.015em" }}>Destiny Deals</h1>
         <p className="text-muted-foreground" style={{ fontSize: 13 }}>Entries earned through purchases only</p>
       </div>
 
@@ -57,10 +57,10 @@ export const ContestsScreen: React.FC = () => {
       <div className="mx-4 mt-3 p-3" style={{ background: "hsl(var(--primary-light))", border: "1px solid hsl(var(--primary-muted) / 0.7)", borderRadius: "var(--radius)" }}>
         <div className="flex items-center gap-2 mb-1">
           <Info size={14} className="text-primary" strokeWidth={1.5} />
-          <p className="font-medium" style={{ fontSize: 13 }}>How contest entries work</p>
+          <p className="font-medium" style={{ fontSize: 13 }}>How Destiny entries work</p>
         </div>
         <p className="text-muted-foreground leading-relaxed" style={{ fontSize: 12, lineHeight: 1.5 }}>
-          Complete eligible purchases to earn entries. Each qualifying order automatically adds entries to open contests.
+          Complete eligible purchases to earn entries. Each qualifying order automatically adds entries to open Destiny Deals.
         </p>
       </div>
 
@@ -103,7 +103,7 @@ export const ContestsScreen: React.FC = () => {
               </div>
               <p className="text-muted-foreground mt-0.5" style={{ fontSize: 12 }}>Prize: {contest.prize}</p>
               <p className="font-semibold mt-0.5" style={{ fontSize: 17, color: "hsl(var(--accent-dark))", letterSpacing: "-0.01em" }}>
-                ${contest.prizeValue.toLocaleString()} value
+                ₹{contest.prizeValue.toLocaleString("en-IN")} value
               </p>
             </div>
 
