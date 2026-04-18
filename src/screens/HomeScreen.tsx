@@ -17,15 +17,15 @@ const CATEGORIES = [
 
 const HERO_SLIDES = [
   {
-    headline: "Shop Smarter,\nEarn Rewards",
+    headline: "Shop Smarter,\nEarn Destiny",
     subtext: "Every purchase earns you points towards exclusive prizes",
     cta: "Start Shopping",
-    bg: "linear-gradient(135deg, hsl(222 68% 22%), hsl(222 55% 32%))",
+    bg: "linear-gradient(135deg, hsl(290 55% 22%), hsl(290 45% 32%))",
   },
   {
-    headline: "New Giveaways\nAvailable Now",
+    headline: "Destiny Deals\nlive now",
     subtext: "Redeem your points for Smartwatches, Tablets & more",
-    cta: "View Giveaways",
+    cta: "View Destiny Deals",
     bg: "linear-gradient(135deg, hsl(38 48% 30%), hsl(38 42% 42%))",
   },
   {
@@ -39,12 +39,12 @@ const HERO_SLIDES = [
 const FEATURED = [
   {
     id: "p1", name: "Sony WH-1000XM5 Headphones", brand: "Sony",
-    price: 279, originalPrice: 349, discount: 20, rating: 4.8, points: 139,
+    price: 23999, originalPrice: 29999, discount: 20, rating: 4.8, points: 139,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop",
   },
   {
     id: "p2", name: "Nike Air Zoom Pegasus 40", brand: "Nike",
-    price: 118, originalPrice: 140, discount: 16, rating: 4.6, points: 59,
+    price: 9799, originalPrice: 11999, discount: 16, rating: 4.6, points: 59,
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop",
   },
 ];
@@ -52,12 +52,12 @@ const FEATURED = [
 const DEALS = [
   {
     id: "p3", name: "Kindle Paperwhite (16 GB)", brand: "Amazon",
-    price: 119, originalPrice: 149, discount: 20, rating: 4.7, points: 60,
+    price: 9999, originalPrice: 12499, discount: 20, rating: 4.7, points: 60,
     image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200&h=200&fit=crop",
   },
   {
     id: "p4", name: "Levi's 511 Slim Fit Jeans", brand: "Levi's",
-    price: 59, originalPrice: 79, discount: 25, rating: 4.5, points: 30,
+    price: 4999, originalPrice: 6499, discount: 25, rating: 4.5, points: 30,
     image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=200&h=200&fit=crop",
   },
 ];
@@ -88,7 +88,7 @@ export const HomeScreen: React.FC = () => {
             <MapPin size={13} style={{ color: "hsl(var(--accent))" }} />
             <div>
               <p style={{ color: "hsl(0 0% 100% / 0.45)", fontSize: 10, fontWeight: 500 }}>Deliver to</p>
-              <p style={{ color: "white", fontSize: 13, fontWeight: 500 }}>New York, NY 10001</p>
+              <p style={{ color: "white", fontSize: 13, fontWeight: 500 }}>Mumbai, MH 400001</p>
             </div>
           </div>
           <div className="flex items-center gap-3.5">
@@ -228,7 +228,7 @@ export const HomeScreen: React.FC = () => {
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-medium text-foreground truncate" style={{ fontSize: 13 }}>
-                10 prizes available — Redeem points now
+                10 Destiny Deals available — Redeem now
               </p>
               <p className="text-muted-foreground" style={{ fontSize: 11 }}>From 50 to 1,200 points</p>
             </div>
@@ -296,8 +296,8 @@ export const HomeScreen: React.FC = () => {
                   </div>
                   <div className="flex items-center justify-between mt-2">
                     <div>
-                      <span className="font-semibold text-foreground" style={{ fontSize: 15 }}>${product.price}</span>
-                      <span className="text-muted-foreground line-through ml-1.5" style={{ fontSize: 11 }}>${product.originalPrice}</span>
+                      <span className="font-semibold text-foreground" style={{ fontSize: 15 }}>₹{product.price.toLocaleString("en-IN")}</span>
+                      <span className="text-muted-foreground line-through ml-1.5" style={{ fontSize: 11 }}>₹{product.originalPrice.toLocaleString("en-IN")}</span>
                     </div>
                     <span
                       className="font-semibold"
@@ -346,8 +346,8 @@ export const HomeScreen: React.FC = () => {
                     <span style={{ fontSize: 11, color: "hsl(var(--accent-dark))", fontWeight: 500 }}>{product.rating}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-1.5">
-                    <span className="font-semibold text-foreground" style={{ fontSize: 15 }}>${product.price}</span>
-                    <span className="text-muted-foreground line-through" style={{ fontSize: 11 }}>${product.originalPrice}</span>
+                    <span className="font-semibold text-foreground" style={{ fontSize: 15 }}>₹{product.price.toLocaleString("en-IN")}</span>
+                    <span className="text-muted-foreground line-through" style={{ fontSize: 11 }}>₹{product.originalPrice.toLocaleString("en-IN")}</span>
                     <div className="reward-badge">+{product.points} pts</div>
                   </div>
                 </div>
