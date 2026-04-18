@@ -46,15 +46,15 @@ const ScreenRouter: React.FC = () => {
 
   return (
     <div className="relative h-full overflow-hidden bg-background">
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={screen}
           className="h-full overflow-y-auto"
           style={{ scrollbarWidth: "none" }}
-          initial={{ opacity: 0, x: 6 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -4 }}
-          transition={{ duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+          initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: -4, filter: "blur(2px)" }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
         >
           {renderScreen()}
         </motion.div>
